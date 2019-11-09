@@ -75,6 +75,7 @@ void fragment(){
 	} else {
 		ALPHA = 1.0;
 	}
+	ALPHA_SCISSOR = 1.0;
 	//ALBEDO = vec3(noise);
     ALBEDO = col.rgb;
 }
