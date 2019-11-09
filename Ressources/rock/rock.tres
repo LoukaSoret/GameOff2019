@@ -1,0 +1,153 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=2]
+
+[ext_resource path="res://Ressources/rock/rock_P1.shader" type="Shader" id=1]
+
+[sub_resource type="ShaderMaterial" id=3]
+
+[sub_resource type="Shader" id=6]
+code = "shader_type spatial;
+//render_mode diffuse_toon,specular_disabled	;
+render_mode diffuse_toon;
+
+uniform int _DeformationSeed = 0;
+uniform float _Deformation : hint_range(0,1) = 0.5;
+uniform vec4 _Color : hint_color = vec4(0.5,0.5,0.5,1.0);
+uniform vec4 _OutlineColor : hint_color = vec4(0,0,0,1.0);
+uniform sampler2D _HatchingTexture;
+uniform sampler2D _HatchingNoiseTexture;
+uniform vec2 _HatchingScale = vec2(1);
+uniform float _HatchingThreshold1 : hint_range(0,1) = 0.3;
+uniform float _HatchingThreshold2 : hint_range(0,1) = 0.5;
+uniform float _HatchingFrequency = 8.0;
+uniform vec4 _MossColor : hint_color = vec4(0,0,0,1.0);
+uniform float _MossThreshold : hint_range(0,1) = 0.5;
+
+	float hash( float n )
+	{
+	    return fract(sin(n)*43758.5453);
+	}
+
+	float noise( vec3 x )
+	{
+	    // The noise function returns a value in the range -1.0f -> 1.0f
+
+	    vec3 p = floor(x);
+	    vec3 f = fract(x);
+
+	    f       = f*f*(3.0-2.0*f);
+	    float n = p.x + p.y*57.0 + 113.0*p.z;
+
+	    return mix(mix(mix( hash(n+0.0), hash(n+1.0),f.x),
+	                   mix( hash(n+57.0), hash(n+58.0),f.x),f.y),
+	               mix(mix( hash(n+113.0), hash(n+114.0),f.x),
+	                   mix( hash(n+170.0), hash(n+171.0),f.x),f.y),f.z);
+	}
+
+
+void vertex(){
+	float d = (noise(VERTEX.xyz+float(_DeformationSeed)) * 2.0 - 1.0)*_Deformation;
+	VERTEX.x += d;
+	VERTEX.y += d;
+	VERTEX.z += d;
+}
+
+vec2 hash2(vec2 p) {
+  p = vec2( dot(p,vec2(127.1,311.7)),
+        dot(p,vec2(269.5,183.3)) );
+ 
+  return -1.0 + 2.0*fract(sin(p)*43758.5453123);
+}
+
+float gnoise(in vec2 p) {
+  vec2 i = floor( p );
+  vec2 f = fract( p );
+   
+  vec2 u = f*f*(3.0-2.0*f);
+ 
+  return mix( mix( dot( hash2( i + vec2(0.0,0.0) ), f - vec2(0.0,0.0) ),
+           dot( hash2( i + vec2(1.0,0.0) ), f - vec2(1.0,0.0) ), u.x),
+          mix( dot( hash2( i + vec2(0.0,1.0) ), f - vec2(0.0,1.0) ),
+           dot( hash2( i + vec2(1.0,1.0) ), f - vec2(1.0,1.0) ), u.x), u.y);
+}
+
+float pnoise(vec2 p,float amplitude,float frequency,float persistence, int nboctaves, float power) {
+  float a = amplitude;
+  float f = frequency;
+  float n = 0.0;
+ 
+  for(int i=0;i<nboctaves;++i) {
+    n = n+a*gnoise(p*f);
+    f = f*2.;
+    a = a*persistence;
+  }
+ 
+  return pow(n,power);
+}
+
+void fragment(){
+	vec3 col = _Color.rgb;
+	
+	//float noiseH = texture(_HatchingNoiseTexture,UV).r;
+	float noiseM = pnoise(UV+vec2(5.0*float(_DeformationSeed),10.0*float(_DeformationSeed)),2.0,20.0,0.5,2,4)*0.8+0.4;
+	if(noiseM>_MossThreshold)
+		col = _MossColor.rgb;
+	else if (noiseM>_MossThreshold-0.03)
+		col = _OutlineColor.rgb;
+	float noiseH = pnoise(UV,2.0,_HatchingFrequency,0.5,1,1.0)*0.5+0.5;
+	float hatching1 = texture(_HatchingTexture,UV*_HatchingScale).r;
+	if(hatching1<=0.5 && noiseH>_HatchingThreshold1)
+		col = mix(col,_OutlineColor.rgb, clamp((noiseH-_HatchingThreshold1)/0.05,0,1));
+		
+	float hatching2 = texture(_HatchingTexture,UV*vec2(0,-1)*_HatchingScale).r;
+	if(hatching2<=0.5 && noiseH>_HatchingThreshold2)
+		col = mix(col,_OutlineColor.rgb, clamp((noiseH-_HatchingThreshold2)/0.05,0,1));
+	
+	
+	ALBEDO = _OutlineColor.rgb;
+	//EMISSION = col;
+	TRANSMISSION = col;
+}
+	
+void light(){
+	float NdotL =  dot(normalize(LIGHT), NORMAL);
+	float intensity = NdotL>0.5?1.0:-1.0;
+
+	if(intensity<=0.0){
+		DIFFUSE_LIGHT = ALBEDO;//_OutlineColor.rgb;
+	}
+	else
+		DIFFUSE_LIGHT = intensity * TRANSMISSION;
+
+}"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/PerlinNoise.png-f62808af774100c54cddfe33e64dc99d.s3tc.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/hatching.png-1a96cfa29e638c4b49729a55e9d0edc5.s3tc.stex"
+
+[sub_resource type="ShaderMaterial" id=1]
+next_pass = SubResource( 3 )
+shader = SubResource( 6 )
+shader_param/_DeformationSeed = 4
+shader_param/_Deformation = 0.236
+shader_param/_Color = Color( 0.619608, 0.533333, 0.45098, 1 )
+shader_param/_OutlineColor = Color( 0.184314, 0.164706, 0.0901961, 1 )
+shader_param/_HatchingScale = Vector2( 2, 2 )
+shader_param/_HatchingThreshold1 = 0.7
+shader_param/_HatchingThreshold2 = 0.85
+shader_param/_HatchingFrequency = 9.93
+shader_param/_MossColor = Color( 0.619608, 0.533333, 0.45098, 1 )
+shader_param/_MossThreshold = 0.5
+shader_param/_HatchingTexture = SubResource( 5 )
+shader_param/_HatchingNoiseTexture = SubResource( 4 )
+
+[resource]
+next_pass = SubResource( 1 )
+shader = ExtResource( 1 )
+shader_param/_DeformationSeed = 40
+shader_param/_Deformation = 0.5
+shader_param/_OutlineColor = Color( 0.184314, 0.164706, 0.0901961, 1 )
+shader_param/_OutlineWidth = 0.02

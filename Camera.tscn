@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://RotationCenter.gd" type="Script" id=1]
+
+[node name="RotationCenter" type="Spatial"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, -1 )
+script = ExtResource( 1 )
+
+[node name="RotationHelper" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.929475, 0.368884, 0, -0.368884, 0.929475, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="RotationHelper"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15 )
+current = true
+fov = 57.45
