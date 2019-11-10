@@ -1,17 +1,17 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=2]
 
 [ext_resource path="res://Ressources/clouds/postprocessclouds.shader" type="Shader" id=1]
-[ext_resource path="res://Ressources/clouds/testnoise3d.png" type="Texture3D" id=2]
+[ext_resource path="res://Ressources/clouds/cloudsTest.png" type="Texture3D" id=2]
 
 [resource]
 render_priority = 127
 shader = ExtResource( 1 )
-shader_param/_BoundsMin = Vector3( -100, -30, -100 )
-shader_param/_BoundsMax = Vector3( 100, 1, 100 )
-shader_param/_CloudScale = Vector3( 25, 20, 20 )
-shader_param/_Coverage = 0.39
+shader_param/_BoundsMin = Vector3( -100, -100, -100 )
+shader_param/_BoundsMax = Vector3( 100, 10, 100 )
+shader_param/_CloudScale = Vector3( 10, 10, 7 )
+shader_param/_Coverage = 0.3
 shader_param/_Margin = 10.0
-shader_param/_Density = 5.0
+shader_param/_Density = 3.0
 shader_param/_Steps = 128
 shader_param/_StepsLight = 0
 shader_param/_LightIntensity = 30.0

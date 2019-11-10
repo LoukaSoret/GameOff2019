@@ -13,18 +13,18 @@ agent/radius = 3.0
 
 [sub_resource type="PlaneMesh" id=2]
 
-[sub_resource type="ConcavePolygonShape" id=5]
+[sub_resource type="ConcavePolygonShape" id=3]
 data = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1 )
 
-[sub_resource type="ConcavePolygonShape" id=7]
+[sub_resource type="ConcavePolygonShape" id=4]
 data = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1 )
 
-[sub_resource type="CubeMesh" id=3]
+[sub_resource type="CubeMesh" id=5]
 
 [sub_resource type="ConcavePolygonShape" id=6]
 data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
 
-[sub_resource type="CapsuleShape" id=4]
+[sub_resource type="CapsuleShape" id=7]
 height = 1.41937
 
 [node name="EnemyTestScene" type="Spatial"]
@@ -34,6 +34,7 @@ transform = Transform( 1, 0, 0, 0, 0.880681, 0.47371, 0, -0.47371, 0.880681, 0, 
 shadow_enabled = true
 
 [node name="Navigation" type="Navigation" parent="."]
+editor/display_folded = true
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
 navmesh = SubResource( 1 )
@@ -49,7 +50,7 @@ material/0 = null
 editor/display_folded = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Ground/StaticBody"]
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="wall" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
 editor/display_folded = true
@@ -62,7 +63,7 @@ material/0 = null
 editor/display_folded = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/wall/StaticBody"]
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="wall2" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
 editor/display_folded = true
@@ -74,13 +75,13 @@ material/0 = null
 [node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/wall2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/wall2/StaticBody"]
-shape = SubResource( 7 )
+shape = SubResource( 4 )
 
 [node name="cube2" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
 editor/display_folded = true
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -25.9505, 3.123, -0.21237 )
 material_override = ExtResource( 2 )
-mesh = SubResource( 3 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/cube2"]
@@ -92,7 +93,7 @@ shape = SubResource( 6 )
 editor/display_folded = true
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 11.0495, 3.123, -0.21237 )
 material_override = ExtResource( 2 )
-mesh = SubResource( 3 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/cube5"]
@@ -104,7 +105,7 @@ shape = SubResource( 6 )
 editor/display_folded = true
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -19.9505, 3.123, -0.21237 )
 material_override = ExtResource( 2 )
-mesh = SubResource( 3 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/cube3"]
@@ -116,7 +117,7 @@ shape = SubResource( 6 )
 editor/display_folded = true
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -13.9505, 3.123, -0.21237 )
 material_override = ExtResource( 2 )
-mesh = SubResource( 3 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/cube4"]
@@ -132,8 +133,8 @@ move_speed = 20
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 1.81178, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.735768, -0.354289, 0.57717, 0, 0.852246, 0.523142, -0.677234, -0.384911, 0.627055, 17.7086, 19.8631, 21.9862 )
+transform = Transform( 0.735768, -0.354289, 0.57717, 0, 0.852246, 0.523142, -0.677234, -0.384911, 0.627055, 17.7086, 10.095, 21.9862 )
 script = ExtResource( 5 )

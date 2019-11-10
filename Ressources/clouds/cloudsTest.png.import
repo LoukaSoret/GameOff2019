@@ -2,15 +2,15 @@
 
 importer="texture_3d"
 type="Texture3D"
-path="res://.import/testnoise3d.png-6e6d49ae9fcebf5ef52912f60cf677e0.tex3d"
+path="res://.import/cloudsTest.png-dbcc64518a30cad50a7fa10454218701.tex3d"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/clouds/testnoise3d.png"
-dest_files=[ "res://.import/testnoise3d.png-6e6d49ae9fcebf5ef52912f60cf677e0.tex3d" ]
+source_file="res://Ressources/clouds/cloudsTest.png"
+dest_files=[ "res://.import/cloudsTest.png-dbcc64518a30cad50a7fa10454218701.tex3d" ]
 
 [params]
 

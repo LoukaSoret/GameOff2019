@@ -10,23 +10,23 @@
 shader_type spatial;
 render_mode skip_vertex_transform, unshaded, depth_draw_always;
 
-uniform vec3 _BoundsMin = vec3(-200,-50,-200);
-uniform vec3 _BoundsMax = vec3(200,50,200);
-uniform vec3 _CloudScale = vec3(5);
+uniform vec3 _BoundsMin = vec3(-100,-100,-100);
+uniform vec3 _BoundsMax = vec3(100,10,100);
+uniform vec3 _CloudScale = vec3(8);
 
-uniform float _Coverage : hint_range(0,1) = 0.35;
+uniform float _Coverage : hint_range(0,1) = 0.3;
 uniform float _Margin = 10.0;
-uniform float _Density = 2.0;
+uniform float _Density = 3;
 
-uniform int _Steps : hint_range(0,256) = 64;
+uniform int _Steps : hint_range(0,256) = 128;
 //uniform float _Precision : hint_range(0,1);
 uniform int _StepsLight : hint_range(0,20) = 0;
 
-uniform float _LightIntensity = 50.0;
-uniform float _Absorption = 100.0;
+uniform float _LightIntensity = 30.0;
+uniform float _Absorption = 80.0;
 
 uniform vec4 _CloudColor : hint_color = vec4(vec3(1),1);
-uniform vec4 _LightColor : hint_color = vec4(0.8);
+uniform vec4 _LightColor : hint_color = vec4(1);
 
 uniform float _Speed = 0.5;
 
