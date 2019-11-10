@@ -17,11 +17,13 @@ uniform vec3 _CloudScale = vec3(5);
 uniform float _Coverage : hint_range(0,1) = 0.35;
 uniform float _Margin = 10.0;
 uniform float _Density = 2.0;
+
 uniform int _Steps : hint_range(0,256) = 64;
 //uniform float _Precision : hint_range(0,1);
 uniform int _StepsLight : hint_range(0,20) = 0;
 
 uniform float _LightIntensity = 50.0;
+uniform float _Absorption = 100.0;
 
 uniform vec4 _CloudColor : hint_color = vec4(vec3(1),1);
 uniform vec4 _LightColor : hint_color = vec4(0.8);
@@ -52,9 +54,10 @@ void vertex() {
 	CAMERA = CAMERA_MATRIX;
 }
 
-float get_density(vec3 p,float iTime){
+float get_density(vec3 p, float iTime){
 	vec3 uvw = p * _CloudScale * 0.001;
 	vec4 shape = texture(_Noise3D, uvw+vec3(0,0,iTime*0.2));
+	
 	float densityThreshold = (1.0-_Coverage);
 	float density = max(0,shape.r-densityThreshold)*_Density;
 	
@@ -65,7 +68,7 @@ float get_density(vec3 p,float iTime){
 	float dstFromEdgeY = min(containerEdgeFadeDst, min(p.y - _BoundsMin.y, _BoundsMax.y - p.y));
 	float edgeWeight = min(dstFromEdgeY,min(dstFromEdgeZ,dstFromEdgeX))/containerEdgeFadeDst;
 	
-	return density*edgeWeight;
+	return clamp(density*edgeWeight,0,1);
 }
 
 void fragment(){
@@ -96,8 +99,6 @@ void fragment(){
 	float dstTravelled = 0.0;
 	float stepSize = dstInsideBox / float(_Steps) /* (1.1-_Precision)*/;
 	float dstLimit = min(depth-dstToBox, dstInsideBox);
-
-	float absorption = 100.0;
 	
 	float T = 1.0;
 	vec4 color = vec4(0.0);
@@ -109,7 +110,7 @@ void fragment(){
 		if(density>0.0){
 			float tmp = density / float(_Steps);
 			
-			T *= 1.0 - (tmp * absorption);
+			T *= 1.0 - (tmp * _Absorption);
 			
 			if (T <= 0.01)
 			{
@@ -126,7 +127,7 @@ void fragment(){
                 if (densityLight > 0.0)
                 {
                     float tmpl = densityLight / float(_Steps);
-                    Tl *= 1.0 - (tmpl * absorption);
+                    Tl *= 1.0 - (tmpl * _Absorption);
                 }
                 if (Tl <= 0.01)
                 {
@@ -135,7 +136,7 @@ void fragment(){
                 lp += vec3(10,100,10) * 0.5;//(20.0/float(_StepsLight));//TODO sun dir, zstep
             }
 
-			float opacity = 100.0;
+			float opacity = 50.0;
             float k = opacity * tmp * T;
             vec4 col1 = _CloudColor * k;
 			
@@ -150,8 +151,8 @@ void fragment(){
 	}
 
 	vec3 bg = texture(SCREEN_TEXTURE,SCREEN_UV).rgb;
-	vec3 col = bg + color.rgb;
-	col = mix(bg,color.rgb*1.0,1.0-T);
+	vec3 col = bg*T + color.rgb;
+	//col = mix(color.rgb,bg,T);
 	ALPHA = 1.0;
 	ALBEDO = col;
 	
