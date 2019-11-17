@@ -1,0 +1,6 @@
+[gd_resource type="AnimationNodeBlendTree" format=2]
+
+[resource]
+resource_local_to_scene = true
+graph_offset = Vector2( -257.117, -48.3 )
+nodes/output/position = Vector2( 860, 80 )

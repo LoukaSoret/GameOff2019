@@ -8,7 +8,7 @@
 */
 
 shader_type spatial;
-render_mode skip_vertex_transform, unshaded, depth_draw_always;
+render_mode skip_vertex_transform, unshaded, depth_draw_alpha_prepass;
 
 uniform vec3 _BoundsMin = vec3(-100,-100,-100);
 uniform vec3 _BoundsMax = vec3(100,10,100);

@@ -4,7 +4,7 @@
 resource_name = "Idle"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Body/Head:translation")
+tracks/0/path = NodePath("Mesh/Head:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -16,7 +16,7 @@ tracks/0/keys = {
 "values": [ Vector3( -0.187844, 3.04491, -0.484063 ), Vector3( -0.187844, 2.88209, -0.484063 ), Vector3( -0.187844, 3.04491, -0.484063 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Body/Head:rotation_degrees")
+tracks/1/path = NodePath("Mesh/Head:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -28,7 +28,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, -10.2441 ), Vector3( 0, 0, -10.2441 ), Vector3( 0, 0, -10.2441 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Body/Body:translation")
+tracks/2/path = NodePath("Mesh/Body:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -40,7 +40,7 @@ tracks/2/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.110477, 0 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Body/Body:rotation_degrees")
+tracks/3/path = NodePath("Mesh/Body:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -52,7 +52,7 @@ tracks/3/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Body/ArmLeft/ShoulderLeft:translation")
+tracks/4/path = NodePath("Mesh/ArmLeft/ShoulderLeft:translation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -64,7 +64,7 @@ tracks/4/keys = {
 "values": [ Vector3( -2.07633, 1.74186, 0 ), Vector3( -2.07633, 2.01649, 0 ), Vector3( -2.07633, 1.74186, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Body/ArmLeft/ShoulderLeft:rotation_degrees")
+tracks/5/path = NodePath("Mesh/ArmLeft/ShoulderLeft:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -76,7 +76,7 @@ tracks/5/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 3.50358 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Body/ArmLeft/ArmLeft:translation")
+tracks/6/path = NodePath("Mesh/ArmLeft/ArmLeft:translation")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -88,7 +88,7 @@ tracks/6/keys = {
 "values": [ Vector3( -2.57313, -0.316972, -0.525329 ), Vector3( -2.57313, -0.23137, -0.525329 ), Vector3( -2.57313, -0.316972, -0.525329 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Body/ArmLeft/ArmLeft:rotation_degrees")
+tracks/7/path = NodePath("Mesh/ArmLeft/ArmLeft:rotation_degrees")
 tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -100,7 +100,7 @@ tracks/7/keys = {
 "values": [ Vector3( 0, 0, -13.5447 ), Vector3( -9.177, 0, -13.5447 ), Vector3( 0, 0, -13.5447 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Body/ArmRight/ShoulderRight:translation")
+tracks/8/path = NodePath("Mesh/ArmRight/ShoulderRight:translation")
 tracks/8/interp = 2
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -112,7 +112,7 @@ tracks/8/keys = {
 "values": [ Vector3( 2.18542, 1.88954, 0 ), Vector3( 2.18542, 2.18211, 0 ), Vector3( 2.18542, 1.88954, 0 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Body/ArmRight/ShoulderRight:rotation_degrees")
+tracks/9/path = NodePath("Mesh/ArmRight/ShoulderRight:rotation_degrees")
 tracks/9/interp = 2
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -124,7 +124,7 @@ tracks/9/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -7.58307 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Body/ArmRight/ArmRight:translation")
+tracks/10/path = NodePath("Mesh/ArmRight/ArmRight:translation")
 tracks/10/interp = 2
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -136,7 +136,7 @@ tracks/10/keys = {
 "values": [ Vector3( 3.02703, 0.000439197, -0.887685 ), Vector3( 3.02703, 0.000439197, -0.887685 ), Vector3( 3.02703, 0.000439197, -0.887685 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Body/ArmRight/ArmRight:rotation_degrees")
+tracks/11/path = NodePath("Mesh/ArmRight/ArmRight:rotation_degrees")
 tracks/11/interp = 2
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -148,74 +148,50 @@ tracks/11/keys = {
 "values": [ Vector3( 0, 11.8924, 0 ), Vector3( -7.64065, 12.0005, -1.6189 ), Vector3( 0, 11.8924, 0 ) ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("Body/Feets/FeetBig:translation")
-tracks/12/interp = 2
+tracks/12/path = NodePath("Mesh/ArmLeft:rotation_degrees")
+tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( -0.257122, -2.95226, 0 ), Vector3( -0.257122, -2.9863, 0 ), Vector3( -0.257122, -2.95226, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("Body/Feets/FeetBig:rotation_degrees")
-tracks/13/interp = 2
+tracks/13/path = NodePath("Mesh/ArmLeft:translation")
+tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("Body/Feets/FeetMedium:translation")
-tracks/14/interp = 2
+tracks/14/path = NodePath("Mesh/ArmRight:rotation_degrees")
+tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0.175125, -4.43648, 0 ), Vector3( 0.175125, -4.68295, 0 ), Vector3( 0.175125, -4.43648, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("Body/Feets/FeetMedium:rotation_degrees")
-tracks/15/interp = 2
+tracks/15/path = NodePath("Mesh/ArmRight:translation")
+tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
-}
-tracks/16/type = "value"
-tracks/16/path = NodePath("Body/Feets/RotationHelperSmallFeet/FeetSmall:translation")
-tracks/16/interp = 2
-tracks/16/loop_wrap = true
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( -0.700497, -3.99867, 0 ), Vector3( -0.700497, -3.96375, 0 ), Vector3( -0.700497, -3.99867, 0 ) ]
-}
-tracks/17/type = "value"
-tracks/17/path = NodePath("Body/Feets/RotationHelperSmallFeet/FeetSmall:rotation_degrees")
-tracks/17/interp = 2
-tracks/17/loop_wrap = true
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }

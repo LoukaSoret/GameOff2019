@@ -1,16 +1,21 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://RotationCenter.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/RotationCenter.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/clouds/Clouds.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Ressources/clouds/CloudsMaterial.tres" type="Material" id=3]
 [ext_resource path="res://Ressources/rock/rock_material.tres" type="Material" id=4]
-[ext_resource path="res://Ressources/half_icosphere_mesh.tres" type="ArrayMesh" id=5]
-[ext_resource path="res://Rock.gd" type="Script" id=6]
-[ext_resource path="res://Ressources/cone_mesh.tres" type="ArrayMesh" id=7]
+[ext_resource path="res://Ressources/rock/half_icosphere_mesh.tres" type="ArrayMesh" id=5]
+[ext_resource path="res://Scripts/Rock.gd" type="Script" id=6]
+[ext_resource path="res://Ressources/rock/cone_mesh.tres" type="ArrayMesh" id=7]
 [ext_resource path="res://Ressources/tree/Tree.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Ressources/characters/player/Elemental.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Elemental.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Ressources/characters/player/player_material.tres" type="Material" id=10]
 [ext_resource path="res://Ressources/characters/player/player_fly_mesh.tres" type="ArrayMesh" id=11]
+
+
+
+
+
 
 [sub_resource type="SphereShape" id=1]
 radius = 0.131874

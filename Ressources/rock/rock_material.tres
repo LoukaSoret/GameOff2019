@@ -4,6 +4,7 @@
 [ext_resource path="res://Ressources/rock/2d-cnoise-2x2.png" type="Texture" id=2]
 
 [sub_resource type="Shader" id=1]
+resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 
@@ -119,6 +120,7 @@ colors = PoolColorArray( 1, 1, 1, 1, 0.195313, 0.195313, 0.195313, 1 )
 gradient = SubResource( 4 )
 
 [resource]
+resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/moss_albedo = Color( 0.270588, 0.411765, 0.258824, 1 )
 shader_param/moss_scale = 11.0

@@ -4,7 +4,7 @@
 [ext_resource path="res://Ressources/clouds/cloudsTest.png" type="Texture3D" id=2]
 
 [sub_resource type="ShaderMaterial" id=1]
-render_priority = 127
+render_priority = -1
 shader = ExtResource( 1 )
 shader_param/_BoundsMin = Vector3( -100, -30, -100 )
 shader_param/_BoundsMax = Vector3( 100, 1, 100 )
@@ -25,7 +25,7 @@ shader_param/_Noise3D = ExtResource( 2 )
 size = Vector2( 2, 2 )
 
 [node name="Clouds" type="MeshInstance"]
-transform = Transform( 1, 7.10543e-015, -1.42109e-014, 1.77636e-015, 1, -5.96046e-008, 0, 5.96046e-008, 1, 0, 0, 0 )
+transform = Transform( 1, -1.77636e-015, 0, 1.77636e-015, 1, -5.96046e-008, 1.05879e-022, 5.96046e-008, 1, 0, 0, -1 )
 material_override = SubResource( 1 )
 mesh = SubResource( 2 )
 material/0 = null
