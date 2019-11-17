@@ -11,10 +11,10 @@
 [ext_resource path="res://Ressources/rock/2d-cnoise-2x2.png" type="Texture" id=9]
 [ext_resource path="res://Ressources/tree/Tree.tscn" type="PackedScene" id=10]
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 4 )
 
-[sub_resource type="Shader" id=12]
+[sub_resource type="Shader" id=2]
 resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
@@ -118,21 +118,21 @@ void fragment() {
 }
 "
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=3]
 colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=5]
 colors = PoolColorArray( 1, 1, 1, 1, 0.195313, 0.195313, 0.195313, 1 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="ShaderMaterial" id=13]
+[sub_resource type="ShaderMaterial" id=7]
 resource_local_to_scene = true
-shader = SubResource( 12 )
+shader = SubResource( 2 )
 shader_param/moss_albedo = Color( 0.270588, 0.411765, 0.258824, 1 )
 shader_param/moss_scale = 11.0
 shader_param/moss_perlin_threshold = 0.0
@@ -160,11 +160,11 @@ shader_param/uv1_offset = Vector3( 0, 0, 0 )
 shader_param/uv2_scale = Vector3( 1, 1, 1 )
 shader_param/uv2_offset = Vector3( 0, 0, 0 )
 shader_param/moss_noise = ExtResource( 9 )
-shader_param/moss_threshold_gradient = SubResource( 3 )
+shader_param/moss_threshold_gradient = SubResource( 4 )
 shader_param/cracks_noise = ExtResource( 8 )
-shader_param/threshold_gradient = SubResource( 5 )
+shader_param/threshold_gradient = SubResource( 6 )
 
-[sub_resource type="ArrayMesh" id=14]
+[sub_resource type="ArrayMesh" id=8]
 resource_local_to_scene = true
 resource_name = "Icosphere"
 surfaces/0 = {
@@ -179,7 +179,7 @@ surfaces/0 = {
 "vertex_count": 1236
 }
 
-[sub_resource type="ArrayMesh" id=15]
+[sub_resource type="ArrayMesh" id=9]
 resource_local_to_scene = true
 resource_name = "Icosphere"
 surfaces/0 = {
@@ -194,12 +194,12 @@ surfaces/0 = {
 "vertex_count": 1236
 }
 
-[sub_resource type="SphereShape" id=1]
+[sub_resource type="SphereShape" id=10]
 radius = 0.131874
 
-[sub_resource type="SphereMesh" id=10]
+[sub_resource type="SphereMesh" id=11]
 
-[sub_resource type="SpatialMaterial" id=11]
+[sub_resource type="SpatialMaterial" id=12]
 albedo_color = Color( 0.203922, 0.843137, 0.27451, 1 )
 
 [node name="Game" type="Spatial"]
@@ -226,7 +226,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 [node name="Rock" type="MeshInstance" parent="."]
 transform = Transform( 2.924, 0, 0, 0, 2.924, 0, 0, 0, 2.924, 3.70634, 1.78711, 6.77519 )
 visible = false
-material_override = SubResource( 4 )
+material_override = SubResource( 1 )
 mesh = ExtResource( 5 )
 material/0 = null
 script = ExtResource( 6 )
@@ -239,36 +239,36 @@ frequency = 30.0
 persistence = 0.4
 
 [node name="Rock2" parent="." instance=ExtResource( 7 )]
-material_override = SubResource( 13 )
-mesh = SubResource( 14 )
+material_override = SubResource( 7 )
+mesh = SubResource( 8 )
 
 [node name="Rock7" parent="." instance=ExtResource( 7 )]
 transform = Transform( 3.27711, 0, 0, 0, 3.27711, 0, 0, 0, 3.27711, -4.63388, -10.6785, 18.3962 )
-material_override = SubResource( 13 )
-mesh = SubResource( 14 )
+material_override = SubResource( 7 )
+mesh = SubResource( 8 )
 deformationSeed = 15
 
 [node name="Rock5" parent="." instance=ExtResource( 7 )]
 transform = Transform( 2.33892, 0, 0, 0, 2.33892, 0, 0, 0, 2.33892, -3.74334, -2.14052, 4.49861 )
-material_override = SubResource( 13 )
-mesh = SubResource( 14 )
+material_override = SubResource( 7 )
+mesh = SubResource( 8 )
 
 [node name="Rock3" parent="." instance=ExtResource( 7 )]
 transform = Transform( -1.09282, 0, -0.0218725, 0, 1.09304, 0, 0.0218725, 0, -1.09282, -1.30838, -1.33486, 8.78349 )
-material_override = SubResource( 13 )
-mesh = SubResource( 15 )
+material_override = SubResource( 7 )
+mesh = SubResource( 9 )
 deformationSeed = 10
 
 [node name="Rock4" parent="." instance=ExtResource( 7 )]
 transform = Transform( 3.27711, 0, 0, 0, 3.27711, 0, 0, 0, 3.27711, 3.62213, -5.01556, 14.5207 )
-material_override = SubResource( 13 )
-mesh = SubResource( 15 )
+material_override = SubResource( 7 )
+mesh = SubResource( 9 )
 deformationSeed = 10
 
 [node name="Rock6" parent="." instance=ExtResource( 7 )]
 transform = Transform( 3.49261, 0, 0, 0, 3.49261, 0, 0, 0, 3.49261, 2.63852, -1.92643, 5.43547 )
-material_override = SubResource( 13 )
-mesh = SubResource( 15 )
+material_override = SubResource( 7 )
+mesh = SubResource( 9 )
 deformationSeed = 6
 
 [node name="LaBoule" type="RigidBody" parent="."]
@@ -277,12 +277,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08181, 0 )
 visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="LaBoule"]
-shape = SubResource( 1 )
+shape = SubResource( 10 )
 
 [node name="MeshInstance" type="MeshInstance" parent="LaBoule"]
 transform = Transform( 0.13302, 0, 0, 0, 0.13302, 0, 0, 0, 0.13302, 0, 0, 0 )
-mesh = SubResource( 10 )
-material/0 = SubResource( 11 )
+mesh = SubResource( 11 )
+material/0 = SubResource( 12 )
 
 [node name="Tree" parent="." instance=ExtResource( 10 )]
 transform = Transform( 0.317833, 0, 0, 0, 0.317833, 0, 0, 0, 0.317833, -0.395113, -0.176035, 2.97261 )

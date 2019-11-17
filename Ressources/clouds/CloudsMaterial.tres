@@ -4,7 +4,7 @@
 [ext_resource path="res://Ressources/clouds/cloudsTest.png" type="Texture3D" id=2]
 
 [resource]
-render_priority = 127
+render_priority = -1
 shader = ExtResource( 1 )
 shader_param/_BoundsMin = Vector3( -100, -100, -100 )
 shader_param/_BoundsMax = Vector3( 100, 10, 100 )

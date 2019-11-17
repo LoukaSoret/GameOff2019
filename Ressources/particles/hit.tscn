@@ -5,8 +5,6 @@
 [ext_resource path="res://Ressources/particles/materials/flash2_mat.tres" type="Material" id=3]
 [ext_resource path="res://Ressources/hit.gd" type="Script" id=4]
 
-
-
 [sub_resource type="ParticlesMaterial" id=1]
 gravity = Vector3( 0, 0, 0 )
 angular_velocity = 1.0
