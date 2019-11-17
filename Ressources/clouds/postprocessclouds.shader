@@ -56,7 +56,7 @@ void vertex() {
 
 float get_density(vec3 p, float iTime){
 	vec3 uvw = p * _CloudScale * 0.001;
-	vec4 shape = texture(_Noise3D, uvw+vec3(0,0,iTime*0.2));
+	vec4 shape = texture(_Noise3D, uvw+vec3(0.5,0.5,iTime*0.2));
 	
 	float densityThreshold = (1.0-_Coverage);
 	float density = max(0,shape.r-densityThreshold)*_Density;
@@ -155,5 +155,5 @@ void fragment(){
 	//col = mix(color.rgb,bg,T);
 	ALPHA = 1.0;
 	ALBEDO = col;
-	
+
 }

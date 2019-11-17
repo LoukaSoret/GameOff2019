@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Ressources/characters/egg/EggKB.gd" type="Script" id=1]
+[ext_resource path="res://Ressources/characters/egg/Egg.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Ressources/particles/textures/dust.png" type="Texture" id=3]
+
+
+
+[sub_resource type="CapsuleShape" id=1]
+height = 1.41937
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.601824, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+spread = 0.0
+gravity = Vector3( 0, -2, 0 )
+initial_velocity = 1.0
+angle = 31.3
+angle_random = 1.0
+scale = 0.1
+scale_random = 0.4
+color_ramp = SubResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=5]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_depth_draw_mode = 3
+params_billboard_mode = 3
+params_use_alpha_scissor = true
+params_alpha_scissor_threshold = 0.5
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 3 )
+
+[sub_resource type="QuadMesh" id=6]
+material = SubResource( 5 )
+
+[node name="EnemyEgg" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80572, 0 )
+collision/safe_margin = 0.1
+script = ExtResource( 1 )
+move_speed = 20
+
+[node name="Egg" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 1.81178, 0 )
+shape = SubResource( 1 )
+
+[node name="dustTrail" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0.730017, 0 )
+amount = 10
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 6 )
