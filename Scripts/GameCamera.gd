@@ -45,6 +45,7 @@ func _physics_process(delta):
 					last_mode = View_mode.HACK_N_SLASH
 					next_angle = anchor_rotation
 					next_pos = anchor
+					hack_rotation = Vector3(0,target.rotation.y,0)
 			View_mode.SHOULDER:
 				#self.rotation = self.rotation.linear_interpolate(target.rotation, delta*smoothing)
 				if last_mode == View_mode.HACK_N_SLASH:
@@ -56,10 +57,18 @@ func _physics_process(delta):
 	$Camera.transform.origin = $Camera.transform.origin.linear_interpolate(next_pos, delta*smoothing)
 	
 	if mode == View_mode.SHOULDER:
-		self.rotation = self.rotation.linear_interpolate(target.rotation, delta*smoothing)
+		var lookDir = target.transform.origin + target.transform.basis.z
+		var angle = transform.basis.z.angle_to(target.transform.basis.z)
+		var rotTransform = transform.looking_at(lookDir,Vector3(0,1,0))
+		var thisRotation = Quat(transform.basis.orthonormalized()).slerp(rotTransform.basis.orthonormalized(),delta*smoothing*2)
+		set_transform(Transform(thisRotation,transform.origin))
 	else:
 		self.rotation = self.rotation.linear_interpolate(hack_rotation, delta*smoothing)
 	$Camera.rotation = $Camera.rotation.linear_interpolate(next_angle, delta*smoothing)
+	
+	var tmp = scale
+	transform.basis = transform.basis.orthonormalized()
+	transform.basis = transform.basis.scaled(tmp)
 
 """
 func _input(event):
