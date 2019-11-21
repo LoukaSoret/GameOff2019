@@ -1,10 +1,11 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PlayerPunchHitBox.gd" type="Script" id=2]
 [ext_resource path="res://Ressources/characters/player/player_material.tres" type="Material" id=3]
-[ext_resource path="res://Ressources/characters/player/Animations/Anim_Idle.tres" type="Animation" id=4]
-[ext_resource path="res://Ressources/characters/player/Animations/Elemental_Idle.tres" type="AnimationNodeBlendTree" id=5]
+[ext_resource path="res://Ressources/MotionTrail/MotionTrail.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Ressources/characters/player/Animations/Anim_Idle.tres" type="Animation" id=5]
+[ext_resource path="res://Ressources/characters/player/Animations/Elemental_Idle.tres" type="AnimationNodeBlendTree" id=6]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.41082
@@ -950,7 +951,7 @@ tracks/18/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( -70, 0, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( -75, 0, 0 ) ]
 }
 tracks/19/type = "value"
 tracks/19/path = NodePath("Mesh/Feets/RotationHelperSmallFeet:translation")
@@ -975,6 +976,30 @@ tracks/20/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( -48.7733, -65.0872, -121.697 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("MotionTrail:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("MotionTrail2:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -1205,7 +1230,7 @@ tracks/18/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( -70, 0, 0 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( -75, 0, 0 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/19/type = "value"
 tracks/19/path = NodePath("Mesh/Feets/RotationHelperSmallFeet:translation")
@@ -1230,6 +1255,30 @@ tracks/20/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( -48.7733, -65.0872, -121.697 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("MotionTrail2:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("MotionTrail:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="AnimationNodeBlendTree" id=19]
@@ -1299,7 +1348,7 @@ auto_advance = true
 states/Flying/node = SubResource( 19 )
 states/Flying/position = Vector2( 656.043, 118 )
 states/Idle/node = SubResource( 20 )
-states/Idle/position = Vector2( 248, 123 )
+states/Idle/position = Vector2( 249, 123 )
 states/PunchBig/node = SubResource( 21 )
 states/PunchBig/position = Vector2( 64, 123 )
 states/PunchLeft/node = SubResource( 22 )
@@ -1312,7 +1361,7 @@ states/TransformOut/node = SubResource( 25 )
 states/TransformOut/position = Vector2( 441, 233 )
 transitions = [ "Idle", "TransformIn", SubResource( 26 ), "TransformOut", "Idle", SubResource( 27 ), "Idle", "PunchRight", SubResource( 28 ), "PunchLeft", "Idle", SubResource( 29 ), "PunchRight", "Idle", SubResource( 30 ), "Idle", "PunchLeft", SubResource( 31 ), "Idle", "PunchBig", SubResource( 32 ), "PunchBig", "Idle", SubResource( 33 ), "PunchRight", "PunchBig", SubResource( 34 ), "PunchBig", "PunchRight", SubResource( 35 ), "PunchBig", "PunchLeft", SubResource( 36 ), "PunchLeft", "PunchBig", SubResource( 37 ), "TransformIn", "Flying", SubResource( 38 ), "Flying", "TransformOut", SubResource( 39 ) ]
 start_node = "Idle"
-graph_offset = Vector2( 20.0428, 6.99999 )
+graph_offset = Vector2( 19.0428, -50 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=41]
 
@@ -1347,13 +1396,13 @@ material/0 = null
 [node name="Mesh" type="Spatial" parent="."]
 
 [node name="Head" type="MeshInstance" parent="Mesh"]
-transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.89635, -0.484063 )
+transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.88515, -0.484063 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 5 )
 material/0 = null
 
 [node name="Body" type="MeshInstance" parent="Mesh"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100804, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.108401, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 6 )
 material/0 = null
@@ -1361,13 +1410,13 @@ material/0 = null
 [node name="ArmLeft" type="Spatial" parent="Mesh"]
 
 [node name="ShoulderLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
-transform = Transform( 0.998445, -0.0557663, 0, 0.0557663, 0.998445, 0, 0, 0, 1, -2.07633, 1.99245, 0 )
+transform = Transform( 0.998202, -0.0599641, 0, 0.0599641, 0.998202, 0, 0, 0, 1, -2.07633, 2.01133, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 7 )
 material/0 = null
 
 [node name="ArmLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
-transform = Transform( 0.97219, 0.234205, 0, -0.231314, 0.960196, 0.156614, 0.0366795, -0.152258, 0.987662, -2.57313, -0.232924, -0.525329 )
+transform = Transform( 0.97219, 0.234205, 0, -0.231212, 0.959771, 0.159347, 0.0373198, -0.154916, 0.987225, -2.57313, -0.231445, -0.525329 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 8 )
 material/0 = null
@@ -1375,18 +1424,19 @@ material/0 = null
 [node name="ArmRight" type="Spatial" parent="Mesh"]
 
 [node name="ShoulderRight" type="MeshInstance" parent="Mesh/ArmRight"]
-transform = Transform( 0.991568, 0.129581, 0, -0.129581, 0.991568, 0, 0, 0, 1, 2.18542, 2.1768, 0 )
+transform = Transform( 0.991269, 0.131849, 0, -0.131849, 0.991269, 0, 0, 0, 1, 2.18542, 2.18185, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 9 )
 material/0 = null
 
 [node name="ArmRight" type="MeshInstance" parent="Mesh/ArmRight"]
-transform = Transform( 0.978528, 1.42119e-006, 0.206107, -0.0275011, 0.991056, 0.130559, -0.204264, -0.133424, 0.969779, 3.02703, 0.000439197, -0.887685 )
+transform = Transform( 0.978535, 8.00935e-008, 0.206076, -0.0279765, 0.990739, 0.132844, -0.204168, -0.135758, 0.969475, 3.02703, 0.000439197, -0.887685 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 10 )
 material/0 = null
 
 [node name="Feets" type="Spatial" parent="Mesh"]
+editor/display_folded = true
 
 [node name="FeetBig" type="MeshInstance" parent="Mesh/Feets"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257122, -2.95226, 0 )
@@ -1408,9 +1458,19 @@ material_override = ExtResource( 3 )
 mesh = SubResource( 13 )
 material/0 = null
 
+[node name="MotionTrail" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.906308, -0.422618, 0, 0.422618, 0.906308, 0, 0, 0, 1, -6.40044, -1.61918, 1.42399 )
+visible = false
+lifespan = 0.5
+
+[node name="MotionTrail2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0, 0, 1, 6.78882, -1.77425, 1.29058 )
+visible = false
+lifespan = 0.5
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.5
-anims/Idle = ExtResource( 4 )
+anims/Idle = ExtResource( 5 )
 anims/PunchBig = SubResource( 14 )
 anims/PunchLeft = SubResource( 15 )
 anims/PunchRight = SubResource( 16 )
@@ -1418,7 +1478,7 @@ anims/TransformIn = SubResource( 17 )
 anims/TransformOut = SubResource( 18 )
 
 [node name="AnimationTreeIdle" type="AnimationTree" parent="."]
-tree_root = ExtResource( 5 )
+tree_root = ExtResource( 6 )
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
