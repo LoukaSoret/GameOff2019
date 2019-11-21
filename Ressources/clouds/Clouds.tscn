@@ -18,7 +18,7 @@ shader_param/_LightIntensity = 30.0
 shader_param/_Absorption = 80.0
 shader_param/_CloudColor = Color( 1, 1, 1, 1 )
 shader_param/_LightColor = Color( 1, 1, 1, 1 )
-shader_param/_Speed = 0.5
+shader_param/_Speed = 0.0
 shader_param/_Noise3D = ExtResource( 2 )
 
 [sub_resource type="QuadMesh" id=2]

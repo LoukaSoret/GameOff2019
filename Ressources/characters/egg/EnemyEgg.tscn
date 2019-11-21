@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Ressources/characters/egg/EggKB.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/characters/egg/Egg.tscn" type="PackedScene" id=2]
@@ -18,7 +18,6 @@ gradient = SubResource( 2 )
 spread = 0.0
 gravity = Vector3( 0, -2, 0 )
 initial_velocity = 1.0
-angular_velocity = 0.0
 angle = 31.3
 angle_random = 1.0
 scale = 0.1
@@ -39,6 +38,10 @@ albedo_texture = ExtResource( 3 )
 [sub_resource type="QuadMesh" id=6]
 material = SubResource( 5 )
 
+[sub_resource type="CapsuleShape" id=7]
+radius = 1.40896
+height = 0.866335
+
 [node name="EnemyEgg" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80572, 0 )
 collision/safe_margin = 0.1
@@ -58,3 +61,11 @@ lifetime = 0.5
 local_coords = false
 process_material = SubResource( 4 )
 draw_pass_1 = SubResource( 6 )
+
+[node name="hitbox" type="Area" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="hitbox"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 1.94, 0 )
+shape = SubResource( 7 )

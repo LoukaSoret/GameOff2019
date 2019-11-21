@@ -1,22 +1,35 @@
 extends KinematicBody
 
+
 onready var game = get_node("/root/Game")
 onready var camera = game.find_node("Camera")
 onready var game_camera = game.find_node("GameCamera")
 onready var animationStateMachine = $AnimationTree.get("parameters/playback")
 
-export var max_speed : float = 100 # unit/second
-export var acceleration : float = 200 # unit/second²
-export var deceleration : float = 200 # unit/second²
+# Hack'n'slash movement vars
+export var max_speed : float = 200 # unit/second
+export var acceleration : float = 400 # unit/second²
+export var deceleration : float = 400 # unit/second²
 export var gravity_acceleration : float = 980 # unit/second²
-
-var velocity : Vector3 = Vector3() # unit/second
 var gravity : float # unit/second
 
+# Flight movement vars
+export var flight_max_speed : float = 300 # unit/second
+
+# General movement var
+var velocity : Vector3 = Vector3() # unit/second
+
+# Initial positions of the feets, for animation.
 var bigFeetPosition : Vector3
 var mediumFeetPosition : Vector3
 var smallFeetPosition : Vector3
 
+# Attack vars
+var punch_timer : float = 2
+var punch_delay : Dictionary = {"Punch" : 0.5, "PunchBig": 2}
+var punch_monitor_threshold : Dictionary = {"Punch" : 0.14, "PunchBig": 0.4}
+var punch_unmonitor_threshold : Dictionary = {"Punch" : 0.3, "PunchBig": 1.3}
+var current_punch : String = "Punch"
 var puncharm : int = 0
 
 func _ready():
@@ -26,65 +39,64 @@ func _ready():
 	smallFeetPosition = $Mesh/Feets/RotationHelperSmallFeet.transform.origin
 
 func _physics_process(delta):
-	var angle = Vector3()
-	var movement : float = 0
 	var tmp
 	var acceleration_direction : Vector3 = Vector3.ZERO # unit/second²
 	
-	############
-	# MOVEMENT #
-	############
-	if Input.is_action_pressed("move_left"):
-		if game_camera.mode == GameCamera.View_mode.HACK_N_SLASH:
-			acceleration_direction -= camera.get_global_transform().basis.x
-		movement = 1
-	elif Input.is_action_pressed("move_right"):
-		if game_camera.mode == GameCamera.View_mode.HACK_N_SLASH:
-			acceleration_direction += camera.get_global_transform().basis.x
-		movement = 1
-	if Input.is_action_pressed("move_up"):
-		if game_camera.mode == GameCamera.View_mode.HACK_N_SLASH:
-			acceleration_direction -= camera.get_global_transform().basis.z
-		movement = 1
-	elif Input.is_action_pressed("move_down"):
-		if game_camera.mode == GameCamera.View_mode.HACK_N_SLASH:
-			acceleration_direction += camera.get_global_transform().basis.z
-			movement = 1
-		elif game_camera.mode == GameCamera.View_mode.SHOULDER:
-			movement = -1
-	acceleration_direction.y = 0
-	acceleration_direction = acceleration_direction.normalized()
-	# Deccelerate
-	if velocity.length() > 0: # deccelerate only if velocity is not null
-		var vel_before_decel : Vector3 = velocity
-		# We don't want to deccelerate on the direction we're accelerating
-		velocity -= deceleration*(velocity.normalized()-acceleration_direction).normalized()*delta
-		if sign(vel_before_decel.x) != sign(velocity.x):
-			velocity.x = 0
-		if sign(vel_before_decel.z) != sign(velocity.z):
-			velocity.z = 0
-	# Accelerate
-	velocity += acceleration*acceleration_direction*delta
-	# Clamp to max_speed
-	velocity = velocity if velocity.length() <= max_speed else velocity.normalized()*max_speed
-	# Apply gravity
-	gravity = 0 if is_on_floor() else gravity-gravity_acceleration*delta
-	velocity.y = gravity
-	move_and_slide(velocity*delta,Vector3.UP,false,4,deg2rad(90))
-
+	#########################
+	# HACK'N'SLASH MOVEMENT #
+	#########################
+	if game_camera.mode == GameCamera.View_mode.HACK_N_SLASH:
+		if Input.is_action_pressed("move_left"):
+				acceleration_direction -= camera.get_global_transform().basis.x
+		elif Input.is_action_pressed("move_right"):
+				acceleration_direction += camera.get_global_transform().basis.x
+		if Input.is_action_pressed("move_up"):
+				acceleration_direction -= camera.get_global_transform().basis.z
+		elif Input.is_action_pressed("move_down"):
+				acceleration_direction += camera.get_global_transform().basis.z
+		acceleration_direction.y = 0
+		acceleration_direction = acceleration_direction.normalized()
+		# Deccelerate
+		if velocity.length() > 0: # deccelerate only if velocity is not null
+			var vel_before_decel : Vector3 = velocity
+			# We don't want to deccelerate on the direction we're accelerating
+			velocity -= deceleration*(velocity.normalized()-acceleration_direction).normalized()*delta
+			# Clamp to 0
+			velocity.x = 0 if sign(vel_before_decel.x) != sign(velocity.x) else velocity.x
+			velocity.z = 0 if sign(vel_before_decel.z) != sign(velocity.z) else velocity.z
+		# Accelerate
+		velocity += acceleration*acceleration_direction*delta
+		# Clamp to max_speed
+		velocity = velocity if velocity.length() <= max_speed else velocity.normalized()*max_speed
+		# Apply gravity
+		gravity = 0 if is_on_floor() else gravity-gravity_acceleration*delta
+		velocity.y = gravity
+		move_and_slide(velocity*delta,Vector3.UP,false,4,deg2rad(90))
+	
+	###################
+	# FLIGHT MOVEMENT #
+	###################
+	elif game_camera.mode == GameCamera.View_mode.SHOULDER:
+		velocity = -transform.basis.z.normalized() * flight_max_speed
+		move_and_slide(velocity*delta,Vector3.UP,false,4,deg2rad(90))
+		
+	#############
+	# ANIMATION #
+	#############
 	#Les pieds de ses morts
-	var dir : Vector3
-	var velocity2D : Vector3 = Vector3(velocity.normalized().x,0,velocity.normalized().z)
-	if(transform.basis.z.angle_to(Vector3.LEFT) > transform.basis.z.angle_to(Vector3.RIGHT)):
-		dir = velocity2D.rotated(Vector3.UP,Vector3.FORWARD.angle_to(transform.basis.z))
-	else:
-		dir = velocity2D.rotated(Vector3.UP,-Vector3.FORWARD.angle_to(transform.basis.z))
-	$Mesh/Feets/FeetBig.transform.origin = lerp(bigFeetPosition,bigFeetPosition + dir*0.5,velocity.length()/max_speed)
-	$Mesh/Feets/FeetMedium.transform.origin = lerp(mediumFeetPosition,mediumFeetPosition + dir*1.5,velocity.length()/max_speed)
-	$Mesh/Feets/RotationHelperSmallFeet.transform.origin = lerp(smallFeetPosition,smallFeetPosition + dir*1.25,velocity.length()/max_speed)
-	$Mesh/Feets/FeetBig.rotate(transform.basis.y.normalized(),deg2rad(180)*delta/2)
-	$Mesh/Feets/FeetMedium.rotate(transform.basis.y.normalized(),deg2rad(180)*delta)
-	$Mesh/Feets/RotationHelperSmallFeet.rotate(transform.basis.y.normalized(),-deg2rad(180)*delta)
+	if game_camera.mode == GameCamera.View_mode.HACK_N_SLASH:
+		var dir : Vector3
+		var velocity2D : Vector3 = Vector3(velocity.normalized().x,0,velocity.normalized().z)
+		if(transform.basis.z.angle_to(Vector3.LEFT) > transform.basis.z.angle_to(Vector3.RIGHT)):
+			dir = velocity2D.rotated(Vector3.UP,Vector3.FORWARD.angle_to(transform.basis.z))
+		else:
+			dir = velocity2D.rotated(Vector3.UP,-Vector3.FORWARD.angle_to(transform.basis.z))
+		$Mesh/Feets/FeetBig.transform.origin = lerp(bigFeetPosition,bigFeetPosition + dir*0.5,velocity.length()/max_speed)
+		$Mesh/Feets/FeetMedium.transform.origin = lerp(mediumFeetPosition,mediumFeetPosition + dir*1.5,velocity.length()/max_speed)
+		$Mesh/Feets/RotationHelperSmallFeet.transform.origin = lerp(smallFeetPosition,smallFeetPosition + dir*1.25,velocity.length()/max_speed)
+		$Mesh/Feets/FeetBig.rotate_object_local(Vector3.UP.normalized(),deg2rad(180)*delta/2)
+		$Mesh/Feets/FeetMedium.rotate_object_local(Vector3.UP.normalized(),deg2rad(180)*delta)
+		$Mesh/Feets/RotationHelperSmallFeet.rotate_object_local(Vector3.UP.normalized(),-deg2rad(180)*delta)
 	
 	###############
 	# ORIENTATION #
@@ -100,26 +112,52 @@ func _physics_process(delta):
 		var to = Plane(transform.origin,transform.origin+transform.basis.x,transform.origin+transform.basis.z).intersects_ray(from,normal)
 		if to != null:
 			tmp = scale
-			var rot = transform.basis.z.angle_to(to - transform.origin) + deg2rad(180)
-			if((to - transform.origin).angle_to(transform.basis.x) > (to - transform.origin).angle_to(-transform.basis.x)):
-				rotate(transform.basis.y.normalized(),-rot)
-			else :
-				rotate(transform.basis.y.normalized(),rot)
+			look_at(to,Vector3.UP)
+			transform.basis.y = Vector3.UP
 			scale = tmp
-		
+	elif game_camera.mode == GameCamera.View_mode.SHOULDER :
+		var from : Vector3 = camera.project_ray_origin(get_viewport().get_mouse_position())
+		var normal : Vector3 = camera.project_ray_normal(get_viewport().get_mouse_position())
+		var to : Vector3 = from + normal * 99999
+		tmp = scale
+		look_at(to,Vector3.UP)
+		scale = tmp
+
+	##########
+	# COMBAT #
+	##########
+	if punch_timer < punch_delay[current_punch]:
+		punch_timer += delta
+	if punch_timer >= punch_unmonitor_threshold[current_punch]:
+		$PunchHitBox.monitoring = false
+		$PunchHitBox.visible = false
+	elif punch_timer >= punch_monitor_threshold[current_punch]:
+		$PunchHitBox.monitoring = true
+		$PunchHitBox.visible = true
 	
-func _input(event):
-	if Input.is_action_just_released("ui_accept"):
+	if game_camera.mode == GameCamera.View_mode.HACK_N_SLASH:
+		if punch_timer >= punch_delay[current_punch]:
+			if Input.is_action_pressed("attack"):
+				var animation : String = "PunchLeft" if puncharm == 0 else "PunchRight"
+				$PunchHitBox.punch_big = false
+				animationStateMachine.travel(animation)
+				puncharm = (puncharm+1)%2
+				current_punch = "Punch"
+				punch_timer = 0
+			elif Input.is_action_pressed("bigattack"):
+					$PunchHitBox.punch_big = true
+					animationStateMachine.travel("PunchBig")
+					current_punch = "PunchBig"
+					punch_timer = 0
+	
+	tmp = scale
+	transform.basis = transform.basis.orthonormalized()
+	transform.basis = transform.basis.scaled(tmp)
+
+func _unhandled_input(event):
+	# Change view mode
+	if event.is_action_pressed("ui_accept"):
 		if game_camera.mode == GameCamera.View_mode.HACK_N_SLASH:
 			animationStateMachine.travel("TransformIn")
 		else:
-			animationStateMachine.travel("Idle")
-	elif Input.is_action_pressed("attack") and game_camera.mode == GameCamera.View_mode.HACK_N_SLASH:
-		if puncharm == 0:
-			animationStateMachine.travel("PunchLeft")
-			puncharm = (puncharm+1)%2
-		else:
-			animationStateMachine.travel("PunchRight")
-			puncharm = (puncharm+1)%2
-	else:
-		animationStateMachine.travel("Idle")
+			animationStateMachine.travel("TransformOut")

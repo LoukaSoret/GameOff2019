@@ -90,7 +90,6 @@ func pnoise(p:Vector2,amp : float,freq : float,pers : float, nboct : float) -> f
 	return n;
 
 func displace():
-	print("displace")
 	var mdt = MeshDataTool.new()
 	var new_mesh : Mesh = mesh.duplicate()
 	var vertex
@@ -177,13 +176,11 @@ func setSeed(v):
 		if(base_mesh==null):
 			base_mesh = load("res://Ressources/rock/cone_mesh.tres")
 		mesh = base_mesh
-		print(v)
 		displace()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(base_mesh)
 	#displace()
 	if not Engine.editor_hint:
 		create_trimesh_collision()

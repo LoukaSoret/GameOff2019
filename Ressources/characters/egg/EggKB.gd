@@ -67,9 +67,6 @@ func _physics_process(delta):
 		movement.z = velocity.z
 		movement.y = 0
 		
-	if (Input.is_action_just_pressed("ui_select")):
-		movement.y = 100
-		
 	if isKnockbacked:
 		movement += knockback.linear_interpolate(Vector3(),t_knockback/TIME_knockback)
 		if t_knockback<TIME_knockback:
@@ -94,18 +91,18 @@ func move_to(target):
 
 var pdv = maxPdv
 
-func hurt():#TODO: vector direction en parametre
+func hit():#TODO: vector direction en parametre
 	pdv -= 1
-	if pdv<=0:
-		project()
-	else:
-		$Egg/AnimationTree.set("parameters/hurt/active",true)
-		var p : Particles = particle.instance()
-		add_child(p)
-		p.set_translation(Vector3(0,2,0))
-		setKnockback(-get_global_transform().basis.z.normalized()*knockbackForce)
+	"""if pdv<=0:
+		throw()
+	else:"""
+	$Egg/AnimationTree.set("parameters/hurt/active",true)
+	var p : Particles = particle.instance()
+	add_child(p)
+	p.set_translation(Vector3(0,2,0))
+	setKnockback(-get_global_transform().basis.z.normalized()*knockbackForce)
 	
-func project():#TODO: vector direction en parametre
+func throw():#TODO: vector direction en parametre
 	var d = dust.instance()
 	d.scale = scale
 	get_parent().add_child(d)

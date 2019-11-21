@@ -28,7 +28,7 @@ uniform float _Absorption = 80.0;
 uniform vec4 _CloudColor : hint_color = vec4(vec3(1),1);
 uniform vec4 _LightColor : hint_color = vec4(1);
 
-uniform float _Speed = 0.5;
+uniform float _Speed = 0;
 
 uniform sampler3D _Noise3D;
 
