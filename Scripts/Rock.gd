@@ -1,11 +1,11 @@
 extends MeshInstance
-
+tool
 # Grass Generator Parameters
 export var grass_spacing : float = 0.0025
 export var grass_density : int = 32
 
 # Rock Deformation Parameter
-export var deformationSeed : int = 0
+export var deformationSeed : int = 0 setget setSeed
 export(float,0,1) var deformation
 
 # Perlin Parameters
@@ -16,6 +16,7 @@ export(float,0,1) var persistence = 0.2;
 export var nboctaves : int = 4;
 
 onready var grass_material_ressource = load("res://Ressources/grass/grass_material.tres").duplicate()
+onready var cone_mesh_ressource = load("res://Ressources/rock/cone_mesh.tres")
 
 func fract(n:float) -> float:
 	return n-floor(n)
@@ -89,6 +90,7 @@ func pnoise(p:Vector2,amp : float,freq : float,pers : float, nboct : float) -> f
 	return n;
 
 func displace():
+	print("displace")
 	var mdt = MeshDataTool.new()
 	var new_mesh : Mesh = mesh.duplicate()
 	var vertex
@@ -98,7 +100,7 @@ func displace():
 		vertex = mdt.get_vertex(i)
 		displacement = (noise(vertex+Vector3.ONE*float(deformationSeed)) * 2.0 - 1.0)*deformation
 		if(mdt.get_vertex_normal(i).angle_to(Vector3.DOWN) < deg2rad(90) ):
-			vertex.y += pnoise(Vector2(vertex.x,vertex.y)+Vector2.ONE*float(deformationSeed),amplitude,frequency,persistence, nboctaves)*perlin_scale
+			vertex.y *= 1+pnoise(Vector2(vertex.x,vertex.y)+Vector2.ONE*float(deformationSeed),amplitude,frequency,persistence, nboctaves)*perlin_scale
 		vertex += Vector3.ONE*displacement
 		mdt.set_vertex(i, vertex)
     # Calculate vertex normals, face-by-face.
@@ -167,8 +169,22 @@ func generate_grass_mesh():
 	mesh_instance.set_surface_material(0,material)
 	add_child(mesh_instance)
 
+var base_mesh = null
+
+func setSeed(v):
+	deformationSeed = v
+	if Engine.editor_hint:
+		if(base_mesh==null):
+			base_mesh = load("res://Ressources/rock/cone_mesh.tres")
+		mesh = base_mesh
+		print(v)
+		displace()
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	displace()
-	create_trimesh_collision()
-	generate_grass_mesh()
+	print(base_mesh)
+	#displace()
+	if not Engine.editor_hint:
+		create_trimesh_collision()
+		generate_grass_mesh()

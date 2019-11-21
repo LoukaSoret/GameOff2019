@@ -45,7 +45,7 @@ func _physics_process(delta):
 			isRunning = true
 			$Egg/AnimationTree.set("parameters/idle_run/blend_amount",1)
 		var move_vec : Vector3 = (path[path_id]-global_transform.origin)
-		if move_vec.length() < move_speed*delta*5:
+		if move_vec.length() < move_speed*delta*10:
 			path_id += 1
 		else:
 			var angle = atan2(move_vec.x,move_vec.z)
@@ -60,13 +60,11 @@ func _physics_process(delta):
 			$Egg/AnimationTree.set("parameters/idle_run/blend_amount",0)
 			
 	
-	if is_on_floor():
-		movement.x = velocity.x
-		movement.z = velocity.z
-	
 	if !is_on_floor():
 		movement.y += gravity
 	else:
+		movement.x = velocity.x
+		movement.z = velocity.z
 		movement.y = 0
 		
 	if (Input.is_action_just_pressed("ui_select")):
