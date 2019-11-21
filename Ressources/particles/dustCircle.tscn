@@ -13,12 +13,12 @@ gradient = SubResource( 1 )
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 7.0
+initial_velocity = 20.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = 31.3
 angle_random = 1.0
-scale = 2.5
+scale = 5.0
 color_ramp = SubResource( 2 )
 
 [sub_resource type="StreamTexture" id=4]

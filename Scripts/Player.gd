@@ -129,11 +129,13 @@ func _physics_process(delta):
 	if punch_timer < punch_delay[current_punch]:
 		punch_timer += delta
 	if punch_timer >= punch_unmonitor_threshold[current_punch]:
-		$PunchHitBox.monitoring = false
-		$PunchHitBox.visible = false
+		#$PunchHitBox.monitoring = false
+		#$PunchHitBox.visible = false
+		$PunchHitBox.scale = Vector3(0,0,0)
 	elif punch_timer >= punch_monitor_threshold[current_punch]:
-		$PunchHitBox.monitoring = true
-		$PunchHitBox.visible = true
+		#$PunchHitBox.monitoring = true
+		#$PunchHitBox.visible = true
+		$PunchHitBox.scale = Vector3(1,1,1)
 	
 	if game_camera.mode == GameCamera.View_mode.HACK_N_SLASH:
 		if punch_timer >= punch_delay[current_punch]:

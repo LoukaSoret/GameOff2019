@@ -18,6 +18,7 @@ gradient = SubResource( 2 )
 spread = 0.0
 gravity = Vector3( 0, -2, 0 )
 initial_velocity = 1.0
+angular_velocity = 1.0
 angle = 31.3
 angle_random = 1.0
 scale = 0.1
@@ -37,6 +38,7 @@ albedo_texture = ExtResource( 3 )
 
 [sub_resource type="QuadMesh" id=6]
 material = SubResource( 5 )
+size = Vector2( 2, 2 )
 
 [sub_resource type="CapsuleShape" id=7]
 radius = 1.40896

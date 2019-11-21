@@ -78,7 +78,7 @@ func _physics_process(delta):
 	move_and_slide(movement,Vector3(0,1,0))
 
 
-func setKnockback(v,d=0.5):
+func setKnockback(v:Vector3,d=0.5):
 	isKnockbacked = true
 	TIME_knockback = d
 	knockback = v
@@ -91,7 +91,7 @@ func move_to(target):
 
 var pdv = maxPdv
 
-func hit():#TODO: vector direction en parametre
+func hit(dir : Vector2 = Vector2(0,0)):#TODO: vector direction en parametre
 	pdv -= 1
 	"""if pdv<=0:
 		throw()
@@ -100,9 +100,10 @@ func hit():#TODO: vector direction en parametre
 	var p : Particles = particle.instance()
 	add_child(p)
 	p.set_translation(Vector3(0,2,0))
-	setKnockback(-get_global_transform().basis.z.normalized()*knockbackForce)
+	#setKnockback(-get_global_transform().basis.z.normalized()*knockbackForce)
+	setKnockback(Vector3(dir.x,1,dir.y).normalized()*knockbackForce)
 	
-func throw():#TODO: vector direction en parametre
+func throw(dir : Vector2 = Vector2(0,0)):#TODO: vector direction en parametre
 	var d = dust.instance()
 	d.scale = scale
 	get_parent().add_child(d)
@@ -111,7 +112,7 @@ func throw():#TODO: vector direction en parametre
 	p.scale = scale
 	get_parent().add_child(p)
 	p.set_translation(get_parent().to_local(to_global(Vector3(0,2,0))))
-	var v : Vector3 = -get_global_transform().basis.z.normalized()
-	v.y = 2
-	setKnockback(v*projectionForce,1)
+	"""var v : Vector3 = -get_global_transform().basis.z.normalized()
+	v.y = 2"""
+	setKnockback(Vector3(dir.x,2,dir.y).normalized()*projectionForce,1)
 	isFlying = true

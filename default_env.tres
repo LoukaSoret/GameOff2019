@@ -8,5 +8,6 @@ ground_horizon_color = Color( 1, 1, 1, 1 )
 [resource]
 background_mode = 2
 background_sky = SubResource( 1 )
+dof_blur_far_distance = 30.0
 glow_intensity = 1.0
 glow_blend_mode = 1
