@@ -173,7 +173,7 @@ var base_mesh = null
 func setSeed(v):
 	deformationSeed = v
 	if Engine.editor_hint:
-		if(base_mesh==null):
+		if base_mesh==null:
 			base_mesh = load("res://Ressources/rock/cone_mesh.tres")
 		mesh = base_mesh
 		displace()
@@ -181,6 +181,11 @@ func setSeed(v):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if Engine.editor_hint:
+		if base_mesh==null:
+			base_mesh = load("res://Ressources/rock/cone_mesh.tres")
+		mesh = base_mesh
+		displace()
 	#displace()
 	if not Engine.editor_hint:
 		create_trimesh_collision()
