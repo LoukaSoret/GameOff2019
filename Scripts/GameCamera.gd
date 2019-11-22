@@ -7,9 +7,7 @@ enum View_mode {
 	HACK_N_SLASH
 }
 
-onready var game = get_node("/root/Game")
-
-export var target_node : String
+export(NodePath) var target_node
 export (View_mode) var mode = View_mode.HACK_N_SLASH
 export var smoothing : float = 1.0
 export var anchor_shoulder_position : Vector3
@@ -18,7 +16,7 @@ export var anchor_shoulder_rotation : Vector3
 var target : Spatial
 var anchor : Vector3 = Vector3()
 var anchor_rotation : Vector3 = Vector3()
-var mouse_sens = 0.3
+#var mouse_sens = 0.3
 var last_mode
 var next_pos : Vector3 = Vector3()
 var next_angle : Vector3 = Vector3()
@@ -26,9 +24,10 @@ var next_angle : Vector3 = Vector3()
 var hack_rotation : Vector3 = Vector3()
 
 func _ready():
-	target = game.find_node(target_node)
+	target = get_node(target_node)
 	#anchor = to_global($Camera.transform.origin) - to_global(target.transform.origin)
-	anchor = to_global($Camera.transform.origin) - target.to_global(Vector3(0,0,0))
+	global_transform.origin = target.global_transform.origin
+	anchor = $Camera.global_transform.origin - target.global_transform.origin
 	anchor_rotation = $Camera.rotation
 	last_mode = mode
 	next_pos = anchor
@@ -59,7 +58,6 @@ func _physics_process(delta):
 	
 	if mode == View_mode.SHOULDER:
 		var lookDir = target.transform.origin + target.transform.basis.z
-		var angle = transform.basis.z.angle_to(target.transform.basis.z)
 		var rotTransform = transform.looking_at(lookDir,Vector3(0,1,0))
 		var thisRotation = Quat(transform.basis.orthonormalized()).slerp(rotTransform.basis.orthonormalized(),delta*smoothing*2)
 		set_transform(Transform(thisRotation,transform.origin))

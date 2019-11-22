@@ -13,7 +13,7 @@ export var startColor = Color(1.0, 1.0, 1.0, 1.0)
 export var endColor = Color(1.0, 1.0, 1.0, 0.0)
 
 var oldPos
-var fadeCounter
+#var fadeCounter
 
 func _ready():
 	oldPos = get_global_transform().origin
@@ -42,7 +42,7 @@ func _process(delta):
 		return
 	
 	begin(Mesh.PRIMITIVE_TRIANGLE_STRIP)
-	var uvOffset = 0
+	#var uvOffset = 0
 	for i in range(points.size()):
 		var t = float(i + 1) / points.size()
 		var currColor = startColor.linear_interpolate(endColor, 1 - t)

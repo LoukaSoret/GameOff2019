@@ -100,7 +100,7 @@ func displace():
 		displacement = (noise(vertex+Vector3.ONE*float(deformationSeed)) * 2.0 - 1.0)*deformation
 		if(mdt.get_vertex_normal(i).angle_to(Vector3.DOWN) < deg2rad(90) ):
 			vertex.y *= 1+pnoise(Vector2(vertex.x,vertex.y)+Vector2.ONE*float(deformationSeed),amplitude,frequency,persistence, nboctaves)*perlin_scale
-		vertex += Vector3.ONE*displacement
+		vertex += Vector3.ONE*abs(displacement)
 		mdt.set_vertex(i, vertex)
     # Calculate vertex normals, face-by-face.
 	for i in range(mdt.get_face_count()):
@@ -133,7 +133,6 @@ func generate_grass_mesh():
 	var st = SurfaceTool.new()
 	var new_mesh : ArrayMesh = ArrayMesh.new()
 	new_mesh.resource_local_to_scene = true
-	var vertex
 	mdt.create_from_surface(mesh, 0)
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
 	for j in range(grass_density):

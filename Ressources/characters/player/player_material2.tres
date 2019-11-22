@@ -1,8 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=8 format=2]
+[gd_resource type="ShaderMaterial" load_steps=9 format=2]
 
 [ext_resource path="res://Ressources/characters/player/player_shader.shader" type="Shader" id=1]
 [ext_resource path="res://Ressources/rock/3d-cnoise.png" type="Texture" id=2]
 [ext_resource path="res://Ressources/rock/2d-cnoise-2x2.png" type="Texture" id=3]
+[ext_resource path="res://Ressources/characters/player/Material.001 Base Color.png" type="Texture" id=4]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
@@ -19,23 +20,23 @@ gradient = SubResource( 3 )
 [resource]
 resource_local_to_scene = true
 shader = ExtResource( 1 )
-shader_param/eyes_albedo = Color( 0, 0.705882, 0.819608, 1 )
-shader_param/moss_albedo = Color( 0.203922, 0.423529, 0.188235, 1 )
+shader_param/eyes_albedo = Color( 0.160784, 0.870588, 0.870588, 1 )
+shader_param/moss_albedo = Color( 0.556863, 0.835294, 0.0627451, 1 )
 shader_param/moss_scale = 11.0
 shader_param/moss_perlin_threshold = 0.0
-shader_param/moss_amplitude = 2.778
-shader_param/moss_frequency = 6.1
-shader_param/moss_persistence = 0.8
-shader_param/moss_nboctaves = 6
-shader_param/cracks_albedo = Color( 0, 0.521569, 0.72549, 1 )
+shader_param/moss_amplitude = 2.0
+shader_param/moss_frequency = 4.0
+shader_param/moss_persistence = 0.2
+shader_param/moss_nboctaves = 4
+shader_param/cracks_albedo = Color( 0.278431, 0.219608, 0.0392157, 1 )
 shader_param/threshold = 0.3
-shader_param/scale = 9.0
+shader_param/scale = 5.846
 shader_param/perlin_threshold = 0.0
 shader_param/amplitude = 10.0
-shader_param/frequency = 27.0
-shader_param/persistence = 0.415
+shader_param/frequency = 29.0
+shader_param/persistence = 0.2
 shader_param/nboctaves = 4
-shader_param/albedo = Color( 0.0431373, 0.211765, 0.47451, 1 )
+shader_param/albedo = Color( 0.454902, 0.313726, 0.0627451, 1 )
 shader_param/specular = 0.5
 shader_param/metallic = 0.0
 shader_param/roughness = 1.0
@@ -50,3 +51,4 @@ shader_param/moss_noise = ExtResource( 3 )
 shader_param/moss_threshold_gradient = SubResource( 2 )
 shader_param/cracks_noise = ExtResource( 2 )
 shader_param/threshold_gradient = SubResource( 4 )
+shader_param/texture_albedo = ExtResource( 4 )

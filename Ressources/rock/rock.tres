@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Ressources/rock/rock_P1.shader" type="Shader" id=1]
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=1]
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=2]
 code = "shader_type spatial;
 //render_mode diffuse_toon,specular_disabled	;
 render_mode diffuse_toon;
@@ -120,17 +120,17 @@ void light(){
 
 }"
 
-[sub_resource type="StreamTexture" id=4]
+[sub_resource type="StreamTexture" id=3]
 flags = 7
 load_path = "res://.import/PerlinNoise.png-f62808af774100c54cddfe33e64dc99d.s3tc.stex"
 
-[sub_resource type="StreamTexture" id=5]
+[sub_resource type="StreamTexture" id=4]
 flags = 7
 load_path = "res://.import/hatching.png-1a96cfa29e638c4b49729a55e9d0edc5.s3tc.stex"
 
-[sub_resource type="ShaderMaterial" id=1]
-next_pass = SubResource( 3 )
-shader = SubResource( 6 )
+[sub_resource type="ShaderMaterial" id=5]
+next_pass = SubResource( 1 )
+shader = SubResource( 2 )
 shader_param/_DeformationSeed = 4
 shader_param/_Deformation = 0.236
 shader_param/_Color = Color( 0.619608, 0.533333, 0.45098, 1 )
@@ -141,11 +141,11 @@ shader_param/_HatchingThreshold2 = 0.85
 shader_param/_HatchingFrequency = 9.93
 shader_param/_MossColor = Color( 0.619608, 0.533333, 0.45098, 1 )
 shader_param/_MossThreshold = 0.5
-shader_param/_HatchingTexture = SubResource( 5 )
-shader_param/_HatchingNoiseTexture = SubResource( 4 )
+shader_param/_HatchingTexture = SubResource( 4 )
+shader_param/_HatchingNoiseTexture = SubResource( 3 )
 
 [resource]
-next_pass = SubResource( 1 )
+next_pass = SubResource( 5 )
 shader = ExtResource( 1 )
 shader_param/_DeformationSeed = 40
 shader_param/_Deformation = 0.5
