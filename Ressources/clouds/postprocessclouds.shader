@@ -30,6 +30,8 @@ uniform vec4 _LightColor : hint_color = vec4(1);
 
 uniform float _Speed = 0;
 
+uniform float YLimit = -10;
+
 uniform sampler3D _Noise3D;
 
 vec2 rayBoxDst(vec3 bMin, vec3 bMax, vec3 ro, vec3 rd){
@@ -58,7 +60,11 @@ float get_density(vec3 p, float iTime){
 	vec3 uvw = p * _CloudScale * 0.001;
 	vec4 shape = texture(_Noise3D, uvw+vec3(0.5,0.5,iTime*0.2));
 	
-	float densityThreshold = (1.0-_Coverage);
+	float ncoverage = _Coverage;
+	if (p.y<YLimit)
+		ncoverage = mix(ncoverage,1.0,(p.y-YLimit)/YLimit);
+	
+	float densityThreshold = (1.0-ncoverage);
 	float density = max(0,shape.r-densityThreshold)*_Density;
 	
 	//marge

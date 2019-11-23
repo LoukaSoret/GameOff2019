@@ -13,7 +13,7 @@ export var projectionForce = 10.0
 export var maxPdv = 3
 export var radiusPlayerDetection = 10.0
 
-export var yKill = 0 #TODO!
+export var yKill = -30 #TODO!
 
 onready var particle = preload("res://Ressources/particles/hit.tscn")
 onready var dust = preload("res://Ressources/particles/dustCircle.tscn")
@@ -121,6 +121,10 @@ func _physics_process(delta):
 				tAttack = 0
 				triggered = false
 	tAttack += delta
+	
+	#Y kill
+	if transform.origin.y < yKill:
+		queue_free()
 	
 	move_and_slide(movement,Vector3(0,1,0),false,4,deg2rad(90))
 

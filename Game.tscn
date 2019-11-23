@@ -13,7 +13,7 @@
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 4 )
 
-[sub_resource type="ArrayMesh" id=20]
+[sub_resource type="ArrayMesh" id=2]
 resource_name = "Icosphere"
 surfaces/0 = {
 "aabb": AABB( -0.866723, -1.33112, -0.851932, 2.05295, 1.75545, 2.08418 ),
@@ -177,7 +177,7 @@ shader_param/moss_threshold_gradient = SubResource( 5 )
 shader_param/cracks_noise = ExtResource( 7 )
 shader_param/threshold_gradient = SubResource( 7 )
 
-[sub_resource type="ArrayMesh" id=21]
+[sub_resource type="ArrayMesh" id=9]
 resource_name = "Icosphere"
 surfaces/0 = {
 "aabb": AABB( -0.942893, -1.14051, -0.918005, 1.94055, 1.59142, 1.94681 ),
@@ -191,7 +191,7 @@ surfaces/0 = {
 "vertex_count": 1236
 }
 
-[sub_resource type="ArrayMesh" id=22]
+[sub_resource type="ArrayMesh" id=10]
 resource_name = "Icosphere"
 surfaces/0 = {
 "aabb": AABB( -0.836393, -1.25856, -0.832928, 2.03057, 1.6876, 2.02908 ),
@@ -205,7 +205,7 @@ surfaces/0 = {
 "vertex_count": 1236
 }
 
-[sub_resource type="ArrayMesh" id=23]
+[sub_resource type="ArrayMesh" id=11]
 resource_name = "Icosphere"
 surfaces/0 = {
 "aabb": AABB( -0.917857, -1.34608, -0.824032, 2.03877, 1.72812, 1.94081 ),
@@ -219,7 +219,7 @@ surfaces/0 = {
 "vertex_count": 1236
 }
 
-[sub_resource type="ArrayMesh" id=24]
+[sub_resource type="ArrayMesh" id=12]
 resource_name = "Icosphere"
 surfaces/0 = {
 "aabb": AABB( -0.923866, -1.29528, -0.710698, 1.92621, 1.75939, 1.93042 ),
@@ -233,7 +233,7 @@ surfaces/0 = {
 "vertex_count": 1236
 }
 
-[sub_resource type="ArrayMesh" id=25]
+[sub_resource type="ArrayMesh" id=13]
 resource_name = "Icosphere"
 surfaces/0 = {
 "aabb": AABB( -0.902938, -1.46861, -0.889124, 2.07929, 1.95447, 2.16134 ),
@@ -247,7 +247,7 @@ surfaces/0 = {
 "vertex_count": 1236
 }
 
-[sub_resource type="ArrayMesh" id=26]
+[sub_resource type="ArrayMesh" id=14]
 resource_name = "Icosphere"
 surfaces/0 = {
 "aabb": AABB( -0.772438, -1.31533, -0.767146, 1.88101, 1.7363, 1.91904 ),
@@ -261,7 +261,7 @@ surfaces/0 = {
 "vertex_count": 1236
 }
 
-[sub_resource type="ArrayMesh" id=27]
+[sub_resource type="ArrayMesh" id=15]
 resource_name = "Icosphere"
 surfaces/0 = {
 "aabb": AABB( -0.866723, -1.26453, -0.851932, 2.05295, 1.68886, 2.08418 ),
@@ -275,7 +275,7 @@ surfaces/0 = {
 "vertex_count": 1236
 }
 
-[sub_resource type="ArrayMesh" id=28]
+[sub_resource type="ArrayMesh" id=16]
 resource_name = "Icosphere"
 surfaces/0 = {
 "aabb": AABB( -0.891977, -1.34979, -0.841226, 1.93564, 1.75697, 1.97518 ),
@@ -322,7 +322,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 transform = Transform( 2.924, 0, 0, 0, 2.924, 0, 0, 0, 2.924, 3.70634, 1.78711, 6.77519 )
 visible = false
 material_override = SubResource( 1 )
-mesh = SubResource( 20 )
+mesh = SubResource( 2 )
 material/0 = null
 script = ExtResource( 5 )
 grass_density = 16
@@ -335,48 +335,48 @@ persistence = 0.4
 
 [node name="Rock2" parent="." instance=ExtResource( 6 )]
 material_override = SubResource( 8 )
-mesh = SubResource( 21 )
+mesh = SubResource( 9 )
 
 [node name="Rock3" parent="." instance=ExtResource( 6 )]
 transform = Transform( 5.90211, 0, 0, 0, 5.90211, 0, 0, 0, 5.90211, 0, -4.07424, 21.6896 )
 material_override = SubResource( 8 )
-mesh = SubResource( 22 )
+mesh = SubResource( 10 )
 deformationSeed = 1
 
 [node name="Rock4" parent="." instance=ExtResource( 6 )]
 transform = Transform( -2.41277, 0, 4.65554, 0, 5.24362, 0, -4.65554, 0, -2.41277, 26.6333, -18.47, 15.718 )
 material_override = SubResource( 8 )
-mesh = SubResource( 23 )
+mesh = SubResource( 11 )
 deformationSeed = 2
 
 [node name="Rock5" parent="." instance=ExtResource( 6 )]
 transform = Transform( 4.58527, 0, 0, 0, 4.58527, 0, 0, 0, 4.58527, -13.0944, -9.10409, 0 )
 material_override = SubResource( 8 )
-mesh = SubResource( 24 )
+mesh = SubResource( 12 )
 deformationSeed = 3
 
 [node name="Rock6" parent="." instance=ExtResource( 6 )]
 transform = Transform( 2.57268, 0, -5.3119, 0, 5.90211, 0, 5.3119, 0, 2.57268, 15.903, -12.6909, -41.7298 )
 material_override = SubResource( 8 )
-mesh = SubResource( 25 )
+mesh = SubResource( 13 )
 deformationSeed = 4
 
 [node name="Rock7" parent="." instance=ExtResource( 6 )]
 transform = Transform( 3.27711, 0, 0, 0, 3.27711, 0, 0, 0, 3.27711, -25.6889, -11.1733, -25.1277 )
 material_override = SubResource( 8 )
-mesh = SubResource( 26 )
+mesh = SubResource( 14 )
 deformationSeed = 5
 
 [node name="Rock8" parent="." instance=ExtResource( 6 )]
 transform = Transform( 4.58527, 0, 0, 0, 4.58527, 0, 0, 0, 4.58527, -28.1475, -17.7384, 23.4333 )
 material_override = SubResource( 8 )
-mesh = SubResource( 27 )
+mesh = SubResource( 15 )
 deformationSeed = 6
 
 [node name="Rock9" parent="." instance=ExtResource( 6 )]
 transform = Transform( -2.41277, 0, 4.65554, 0, 5.24362, 0, -4.65554, 0, -2.41277, 28.8539, -4.09205, 0.431403 )
 material_override = SubResource( 8 )
-mesh = SubResource( 28 )
+mesh = SubResource( 16 )
 deformationSeed = 7
 
 [node name="Tree" parent="." instance=ExtResource( 9 )]
