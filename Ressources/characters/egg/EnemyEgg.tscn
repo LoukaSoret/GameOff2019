@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Ressources/characters/egg/EggKB.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/characters/egg/Egg.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Ressources/particles/textures/dust.png" type="Texture" id=3]
+[ext_resource path="res://Ressources/characters/egg/EggAttackBox.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 1.41937
@@ -18,7 +19,6 @@ gradient = SubResource( 2 )
 spread = 0.0
 gravity = Vector3( 0, -2, 0 )
 initial_velocity = 1.0
-angular_velocity = 1.0
 angle = 31.3
 angle_random = 1.0
 scale = 0.1
@@ -43,6 +43,14 @@ size = Vector2( 2, 2 )
 [sub_resource type="CapsuleShape" id=7]
 radius = 1.40896
 height = 0.866335
+
+[sub_resource type="BoxShape" id=8]
+
+[sub_resource type="SpatialMaterial" id=9]
+flags_transparent = true
+albedo_color = Color( 1, 0, 0, 0.745098 )
+
+[sub_resource type="CubeMesh" id=10]
 
 [node name="EnemyEgg" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80572, 0 )
@@ -71,3 +79,18 @@ collision_mask = 4
 [node name="CollisionShape" type="CollisionShape" parent="hitbox"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 1.94, 0 )
 shape = SubResource( 7 )
+
+[node name="attackbox" type="Area" parent="."]
+monitorable = false
+collision_layer = 0
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="attackbox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72626, 1.54744 )
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="attackbox/CollisionShape"]
+visible = false
+material_override = SubResource( 9 )
+mesh = SubResource( 10 )
+material/0 = null

@@ -11,22 +11,37 @@ export var gravity = -5
 export var knockbackForce = 10.0
 export var projectionForce = 10.0
 export var maxPdv = 3
+export var radiusPlayerDetection = 10.0
 
 export var yKill = 0 #TODO!
 
 onready var particle = preload("res://Ressources/particles/hit.tscn")
 onready var dust = preload("res://Ressources/particles/dustCircle.tscn")
+onready var player = get_tree().get_root().find_node("Elemental",true,false)
 
 func _ready():
 	add_to_group("enemies")
 	nav= get_tree().get_root().find_node("Navigation",true,false)
 	if nav == null:
 		push_error("Il faut un noeud nommé 'Navigation' de type Navigation dans l'arbre!")
+	$attackbox/CollisionShape.scale = Vector3(0,0,0)
 
 var isKnockbacked = false
 var knockback = Vector3()
 var TIME_knockback = 0.5
 var t_knockback = 0
+
+var target = null
+var delaySearchingPath = 0.2
+var tSearchingPath = 0
+
+var isAttacking = false
+var tAttack = 0
+var delayAttack = 0.5
+var delayPreHitboxAttack = 0.3
+var delayPostHitboxAttack = 1.0
+
+
 
 var movement = Vector3()
 func _physics_process(delta):
@@ -40,6 +55,7 @@ func _physics_process(delta):
 	if isFlying and is_on_floor() and movement.y<-10: #TODO: améliorer
 		isFlying = false
 	
+	#path finding
 	if path_id < path.size():
 		if(!isRunning):
 			isRunning = true
@@ -60,6 +76,7 @@ func _physics_process(delta):
 			$Egg/AnimationTree.set("parameters/idle_run/blend_amount",0)
 			
 	
+	#on floor test
 	if !is_on_floor():
 		movement.y += gravity
 	else:
@@ -67,6 +84,7 @@ func _physics_process(delta):
 		movement.z = velocity.z
 		movement.y = 0
 		
+	#knockback
 	if isKnockbacked:
 		movement += knockback.linear_interpolate(Vector3(),t_knockback/TIME_knockback)
 		if t_knockback<TIME_knockback:
@@ -74,9 +92,37 @@ func _physics_process(delta):
 		else:
 			t_knockback += delta
 		
+		
+	#search path if player is close
+	if !isAttacking and tSearchingPath>delaySearchingPath and player != null and transform.origin.distance_to(player.transform.origin)< radiusPlayerDetection:
+		target = player.transform.origin
+		move_to(nav.get_closest_point(target))
+		tSearchingPath = 0
+	else:
+		tSearchingPath += delta
 	
-	move_and_slide(movement,Vector3(0,1,0))
-
+	#attack if player is close
+	if target!=null and transform.origin.distance_to(player.transform.origin)<2 and !isAttacking:
+		path_id = path.size()
+		isAttacking = true
+		tAttack = 0
+		$Egg/AnimationTree.set("parameters/attack/active",true)
+	
+	#end attack
+	var triggered = false
+	if isAttacking and tAttack>delayPreHitboxAttack:
+		if !triggered:
+			$attackbox/CollisionShape.scale = Vector3(1,1,1)
+			triggered = true
+		if tAttack>delayAttack:
+			$attackbox/CollisionShape.scale = Vector3(0,0,0)
+			if tAttack>delayPostHitboxAttack:
+				isAttacking = false
+				tAttack = 0
+				triggered = false
+	tAttack += delta
+	
+	move_and_slide(movement,Vector3(0,1,0),false,4,deg2rad(90))
 
 func setKnockback(v:Vector3,d=0.5):
 	isKnockbacked = true
@@ -93,9 +139,6 @@ var pdv = maxPdv
 
 func hit(dir : Vector2 = Vector2(0,0)):#TODO: vector direction en parametre
 	pdv -= 1
-	"""if pdv<=0:
-		throw()
-	else:"""
 	$Egg/AnimationTree.set("parameters/hurt/active",true)
 	var p : Particles = particle.instance()
 	add_child(p)
@@ -112,7 +155,5 @@ func throw(dir : Vector2 = Vector2(0,0)):#TODO: vector direction en parametre
 	p.scale = scale
 	get_parent().add_child(p)
 	p.set_translation(get_parent().to_local(to_global(Vector3(0,2,0))))
-	"""var v : Vector3 = -get_global_transform().basis.z.normalized()
-	v.y = 2"""
 	setKnockback(Vector3(dir.x,2,dir.y).normalized()*projectionForce,1)
 	isFlying = true
