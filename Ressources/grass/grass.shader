@@ -18,6 +18,8 @@ uniform vec3 _NoiseScale = vec3(1,1,1);
 
 uniform float _Wind = 0.002;
 
+uniform sampler2D grasTexture;
+
 varying vec2 vertex_position;
 varying float height;
 
@@ -62,6 +64,7 @@ void fragment(){
 	scrollUV.x += _Wind/100.0*cos( TIME*1.0)*height;
 	scrollUV.y += _Wind/100.0*cos( TIME*3.0)*height;
 	vec4 col = mix(colorBottom,colorTop,height);
+	col *= texture(grasTexture,UV*5.0);
 	//float noise = pnoise(scrollUV*_NoiseScale,amplitude,frequency,persistence,nboctaves);
 	float noise = texture(_NoiseTexture,scrollUV*_NoiseScale.xy).r*(1./_NoiseScale.z);
 	
