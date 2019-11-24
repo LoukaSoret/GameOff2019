@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PlayerPunchHitBox.gd" type="Script" id=2]
@@ -7,8 +7,11 @@
 [ext_resource path="res://Ressources/MotionTrail/MotionTrail.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Ressources/characters/player/Animations/Anim_Idle.tres" type="Animation" id=6]
 [ext_resource path="res://Ressources/characters/player/Animations/Elemental_Idle.tres" type="AnimationNodeBlendTree" id=7]
-[ext_resource path="res://Ressources/white_square.png" type="Texture" id=8]
-[ext_resource path="res://Scripts/PlayerLifeBar.gd" type="Script" id=9]
+[ext_resource path="res://Ressources/life/coeur_bg.png" type="Texture" id=8]
+[ext_resource path="res://Ressources/life/coeur_fg.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/PlayerLifeBar.gd" type="Script" id=10]
+[ext_resource path="res://Ressources/life/coeur_sh.png" type="Texture" id=11]
+[ext_resource path="res://Ressources/font/riffic/riffic.otf" type="DynamicFontData" id=12]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.41082
@@ -1691,6 +1694,10 @@ graph_offset = Vector2( -175.957, -53 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=54]
 
+[sub_resource type="DynamicFont" id=55]
+size = 32
+font_data = ExtResource( 12 )
+
 [node name="Elemental" type="KinematicBody"]
 collision_mask = 2
 script = ExtResource( 1 )
@@ -1730,7 +1737,7 @@ shape = SubResource( 5 )
 [node name="Mesh" type="Spatial" parent="."]
 
 [node name="Head" type="MeshInstance" parent="Mesh"]
-transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.88899, -0.484063 )
+transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.95774, -0.484063 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 6 )
 material/0 = null
@@ -1741,7 +1748,7 @@ mesh = SubResource( 7 )
 material/0 = null
 
 [node name="Body" type="MeshInstance" parent="Mesh"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.105798, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0591487, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 8 )
 material/0 = null
@@ -1754,7 +1761,7 @@ material/0 = null
 [node name="ArmLeft" type="Spatial" parent="Mesh"]
 
 [node name="ShoulderLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
-transform = Transform( 0.998286, -0.0585257, 0, 0.0585257, 0.998286, 0, 0, 0, 1, -2.07633, 2.00486, 0 )
+transform = Transform( 0.999464, -0.0327329, 0, 0.0327329, 0.999464, 0, 0, 0, 1, -2.07633, 1.8889, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 10 )
 material/0 = null
@@ -1765,7 +1772,7 @@ mesh = SubResource( 11 )
 material/0 = null
 
 [node name="ArmLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
-transform = Transform( 0.97219, 0.234205, 0, -0.231233, 0.959858, 0.158794, 0.0371902, -0.154378, 0.987314, -2.57313, -0.231744, -0.525329 )
+transform = Transform( 0.97219, 0.234205, 0, -0.233085, 0.967545, 0.0976732, 0.0228755, -0.094957, 0.995221, -2.57313, -0.264687, -0.525329 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 12 )
 material/0 = null
@@ -1778,7 +1785,7 @@ material/0 = null
 [node name="ArmRight" type="Spatial" parent="Mesh"]
 
 [node name="ShoulderRight" type="MeshInstance" parent="Mesh/ArmRight"]
-transform = Transform( 0.99133, 0.13139, 0, -0.13139, 0.99133, 0, 0, 0, 1, 2.18542, 2.18083, 0 )
+transform = Transform( 0.996734, 0.0807492, 0, -0.0807492, 0.996734, 0, 0, 0, 1, 2.18542, 2.06824, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 14 )
 material/0 = null
@@ -1789,7 +1796,7 @@ mesh = SubResource( 15 )
 material/0 = null
 
 [node name="ArmRight" type="MeshInstance" parent="Mesh/ArmRight"]
-transform = Transform( 0.978533, 3.46451e-007, 0.206082, -0.0278803, 0.990804, 0.132382, -0.204187, -0.135286, 0.969538, 3.02703, 0.000439197, -0.887685 )
+transform = Transform( 0.978442, 2.68276e-005, 0.206515, -0.0171998, 0.996534, 0.081361, -0.205797, -0.083159, 0.975054, 3.02703, 0.000439197, -0.887685 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 16 )
 material/0 = null
@@ -1866,29 +1873,47 @@ active = true
 parameters/playback = SubResource( 54 )
 
 [node name="HUD" type="Control" parent="."]
-editor/display_folded = true
-margin_right = 1024.0
-margin_bottom = 600.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_right = -512.0
 
 [node name="TextureProgress" type="TextureProgress" parent="HUD"]
-margin_left = 18.0
-margin_top = 25.0
-margin_right = 250.0
-margin_bottom = 76.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -57.7022
+margin_top = 18.7723
+margin_right = 41.2978
+margin_bottom = 104.772
 max_value = 3.0
 value = 1.0
 rounded = true
 texture_under = ExtResource( 8 )
+texture_over = ExtResource( 9 )
 texture_progress = ExtResource( 8 )
-tint_under = Color( 0.145098, 0.145098, 0.145098, 1 )
+fill_mode = 5
+tint_under = Color( 0.482353, 0.172549, 0.172549, 1 )
 tint_progress = Color( 1, 0, 0, 1 )
 nine_patch_stretch = true
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 target_path = NodePath("../..")
 
+[node name="TextureRect" type="TextureRect" parent="HUD/TextureProgress"]
+modulate = Color( 0, 0, 0, 0.588235 )
+show_behind_parent = true
+margin_left = 5.77701
+margin_top = 0.114258
+margin_right = 109.777
+margin_bottom = 96.1143
+texture = ExtResource( 11 )
+
 [node name="Label" type="Label" parent="HUD/TextureProgress"]
-margin_right = 232.0
-margin_bottom = 52.0
+margin_left = 12.3118
+margin_top = 13.953
+margin_right = 91.3118
+margin_bottom = 79.953
+custom_fonts/font = SubResource( 55 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.588235 )
+custom_constants/shadow_offset_x = 4
 text = "3/3"
 align = 1
 valign = 1

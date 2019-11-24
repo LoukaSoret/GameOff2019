@@ -86,7 +86,7 @@ func _physics_process(delta):
 		
 	#knockback
 	if isKnockbacked:
-		movement += knockback.linear_interpolate(Vector3(),t_knockback/TIME_knockback)
+		movement = knockback.linear_interpolate(Vector3(),t_knockback/TIME_knockback)
 		if t_knockback<TIME_knockback:
 			isKnockbacked = false
 		else:

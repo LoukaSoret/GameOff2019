@@ -19,6 +19,7 @@ gradient = SubResource( 2 )
 spread = 0.0
 gravity = Vector3( 0, -2, 0 )
 initial_velocity = 1.0
+angular_velocity = 1.0
 angle = 31.3
 angle_random = 1.0
 scale = 0.1
@@ -56,7 +57,9 @@ albedo_color = Color( 1, 0, 0, 0.745098 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80572, 0 )
 collision/safe_margin = 0.1
 script = ExtResource( 1 )
-move_speed = 20
+move_speed = 5
+gravity = -1
+projectionForce = 30.0
 
 [node name="Egg" parent="." instance=ExtResource( 2 )]
 
