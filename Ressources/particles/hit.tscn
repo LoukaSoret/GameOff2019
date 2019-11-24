@@ -1,35 +1,29 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Ressources/particles/materials/flash_mat.tres" type="Material" id=1]
-[ext_resource path="res://Ressources/particles/materials/smoke_mat.tres" type="Material" id=2]
-[ext_resource path="res://Ressources/particles/materials/flash2_mat.tres" type="Material" id=3]
-[ext_resource path="res://Ressources/hit.gd" type="Script" id=4]
+[ext_resource path="res://Ressources/particles/hit.material" type="Material" id=1]
+[ext_resource path="res://Ressources/particles/materials/flash_mat.tres" type="Material" id=2]
+[ext_resource path="res://Ressources/particles/materials/smoke_mat.tres" type="Material" id=3]
+[ext_resource path="res://Ressources/particles/materials/flash2_mat.tres" type="Material" id=4]
 
-[sub_resource type="ParticlesMaterial" id=1]
-gravity = Vector3( 0, 0, 0 )
-angular_velocity = 1.0
-scale = 4.0
-anim_speed = 1.7
-
-[sub_resource type="QuadMesh" id=2]
-material = ExtResource( 1 )
-size = Vector2( 2, 2 )
-
-[sub_resource type="QuadMesh" id=3]
+[sub_resource type="QuadMesh" id=1]
 material = ExtResource( 2 )
 size = Vector2( 2, 2 )
 
-[sub_resource type="QuadMesh" id=4]
+[sub_resource type="QuadMesh" id=2]
 material = ExtResource( 3 )
+size = Vector2( 2, 2 )
+
+[sub_resource type="QuadMesh" id=3]
+material = ExtResource( 4 )
 size = Vector2( 2, 2 )
 
 [node name="hit" type="Particles"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6749, 7.20395, 15.0353 )
 amount = 1
 visibility_aabb = AABB( -4, -4, -4.95598, 8, 8, 9.91196 )
-process_material = SubResource( 1 )
+local_coords = false
+process_material = ExtResource( 1 )
 draw_passes = 3
-draw_pass_1 = SubResource( 2 )
-draw_pass_2 = SubResource( 3 )
-draw_pass_3 = SubResource( 4 )
-script = ExtResource( 4 )
+draw_pass_1 = SubResource( 1 )
+draw_pass_2 = SubResource( 2 )
+draw_pass_3 = SubResource( 3 )

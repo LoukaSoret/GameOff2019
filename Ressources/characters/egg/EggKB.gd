@@ -16,8 +16,10 @@ export var radiusPlayerDetection = 10.0
 export var yKill = -30 #TODO!
 
 onready var particle = preload("res://Ressources/particles/hit.tscn")
-onready var dust = preload("res://Ressources/particles/dustCircle.tscn")
 onready var player = get_tree().get_root().find_node("Elemental",true,false)
+
+var hits : Array = []
+var iHit = 0
 
 func _ready():
 	add_to_group("enemies")
@@ -25,6 +27,10 @@ func _ready():
 	if nav == null:
 		push_error("Il faut un noeud nommé 'Navigation' de type Navigation dans l'arbre!")
 	$attackbox/CollisionShape.scale = Vector3(0,0,0)
+	hits.push_back($hits/hit)
+	hits.push_back($hits/hit2)
+	hits.push_back($hits/hit3)
+	hits.push_back($hits/hit4)
 
 var isKnockbacked = false
 var knockback = Vector3()
@@ -40,7 +46,6 @@ var tAttack = 0
 var delayAttack = 0.5
 var delayPreHitboxAttack = 0.3
 var delayPostHitboxAttack = 1.0
-
 
 
 var movement = Vector3()
@@ -144,20 +149,26 @@ var pdv = maxPdv
 func hit(dir : Vector2 = Vector2(0,0)):#TODO: vector direction en parametre
 	pdv -= 1
 	$Egg/AnimationTree.set("parameters/hurt/active",true)
-	var p : Particles = particle.instance()
+	hits[iHit%4].emitting = true
+	hits[iHit%4].set_translation(get_parent().to_global(Vector3(0,2,0)))
+	iHit += 1
+	"""var p : Particles = particle.instance()
 	add_child(p)
 	p.set_translation(Vector3(0,2,0))
+	p.activate()"""
 	#setKnockback(-get_global_transform().basis.z.normalized()*knockbackForce)
 	setKnockback(Vector3(dir.x,1,dir.y).normalized()*knockbackForce)
 	
 func throw(dir : Vector2 = Vector2(0,0)):#TODO: vector direction en parametre
-	var d = dust.instance()
-	d.scale = scale
-	get_parent().add_child(d)
-	d.set_translation(get_parent().to_local(to_global(Vector3(0,0.5,0))))
-	var p : Particles = particle.instance()
-	p.scale = scale
+	var d = $dustCircle
+	d.emitting = true
+	d.set_translation(get_parent().to_global(Vector3(0,0.5,0)))
+	#var p : Particles = $hit
+	hits[iHit%4].emitting = true
+	hits[iHit%4].set_translation(get_parent().to_global(Vector3(0,2,0)))
+	iHit += 1
+	"""p.scale = scale
 	get_parent().add_child(p)
-	p.set_translation(get_parent().to_local(to_global(Vector3(0,2,0))))
+	p.set_translation(get_parent().to_local(to_global(Vector3(0,2,0))))"""
 	setKnockback(Vector3(dir.x,2,dir.y).normalized()*projectionForce,1)
 	isFlying = true

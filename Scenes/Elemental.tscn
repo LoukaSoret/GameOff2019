@@ -1707,7 +1707,6 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, -0
 shape = SubResource( 1 )
 
 [node name="PunchHitBox" type="Area" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.614, -4.269 )
 gravity_vec = Vector3( 0, 0, 0 )
 gravity = 0.0
@@ -1737,7 +1736,7 @@ shape = SubResource( 5 )
 [node name="Mesh" type="Spatial" parent="."]
 
 [node name="Head" type="MeshInstance" parent="Mesh"]
-transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.95774, -0.484063 )
+transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 3.03036, -0.484063 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 6 )
 material/0 = null
@@ -1748,7 +1747,7 @@ mesh = SubResource( 7 )
 material/0 = null
 
 [node name="Body" type="MeshInstance" parent="Mesh"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0591487, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0098699, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 8 )
 material/0 = null
@@ -1761,7 +1760,7 @@ material/0 = null
 [node name="ArmLeft" type="Spatial" parent="Mesh"]
 
 [node name="ShoulderLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
-transform = Transform( 0.999464, -0.0327329, 0, 0.0327329, 0.999464, 0, 0, 0, 1, -2.07633, 1.8889, 0 )
+transform = Transform( 0.999985, -0.00546296, 0, 0.00546296, 0.999985, 0, 0, 0, 1, -2.07633, 1.7664, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 10 )
 material/0 = null
@@ -1772,7 +1771,7 @@ mesh = SubResource( 11 )
 material/0 = null
 
 [node name="ArmLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
-transform = Transform( 0.97219, 0.234205, 0, -0.233085, 0.967545, 0.0976732, 0.0228755, -0.094957, 0.995221, -2.57313, -0.264687, -0.525329 )
+transform = Transform( 0.97219, 0.234205, 0, -0.234194, 0.972149, 0.00953999, 0.0022343, -0.00927469, 0.999957, -2.57313, -0.311873, -0.525329 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 12 )
 material/0 = null
@@ -1785,7 +1784,7 @@ material/0 = null
 [node name="ArmRight" type="Spatial" parent="Mesh"]
 
 [node name="ShoulderRight" type="MeshInstance" parent="Mesh/ArmRight"]
-transform = Transform( 0.996734, 0.0807492, 0, -0.0807492, 0.996734, 0, 0, 0, 1, 2.18542, 2.06824, 0 )
+transform = Transform( 0.999969, 0.00788302, 0, -0.00788302, 0.999969, 0, 0, 0, 1, 2.18542, 1.90697, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 14 )
 material/0 = null
@@ -1796,7 +1795,7 @@ mesh = SubResource( 15 )
 material/0 = null
 
 [node name="ArmRight" type="MeshInstance" parent="Mesh/ArmRight"]
-transform = Transform( 0.978442, 2.68276e-005, 0.206515, -0.0171998, 0.996534, 0.081361, -0.205797, -0.083159, 0.975054, 3.02703, 0.000439197, -0.887685 )
+transform = Transform( 0.978513, 9.09702e-006, 0.206178, -0.0016829, 0.999965, 0.00794288, -0.206171, -0.00811919, 0.978481, 3.02703, 0.000439197, -0.887685 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 16 )
 material/0 = null
