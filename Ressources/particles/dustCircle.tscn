@@ -1,43 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Ressources/hit.gd" type="Script" id=1]
+[ext_resource path="res://Ressources/particles/dustCircle.material" type="Material" id=1]
+[ext_resource path="res://Ressources/characters/egg/enemyTrail.material" type="Material" id=2]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.601824, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-
-[sub_resource type="ParticlesMaterial" id=3]
-flag_disable_z = true
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 20.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-angle = 31.3
-angle_random = 1.0
-scale = 5.0
-color_ramp = SubResource( 2 )
-
-[sub_resource type="StreamTexture" id=4]
-flags = 23
-load_path = "res://.import/dust.png-3e633cf1f56dbd5d2e712a231f6031c4.s3tc.stex"
-
-[sub_resource type="SpatialMaterial" id=5]
-flags_unshaded = true
-vertex_color_use_as_albedo = true
-params_billboard_mode = 3
-params_use_alpha_scissor = true
-params_alpha_scissor_threshold = 0.25
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-albedo_texture = SubResource( 4 )
-
-[sub_resource type="QuadMesh" id=6]
-material = SubResource( 5 )
+[sub_resource type="QuadMesh" id=1]
+material = ExtResource( 2 )
 
 [node name="dustCircle" type="Particles"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0.6, 0 )
@@ -46,6 +13,6 @@ amount = 15
 lifetime = 0.7
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 3 )
-draw_pass_1 = SubResource( 6 )
-script = ExtResource( 1 )
+local_coords = false
+process_material = ExtResource( 1 )
+draw_pass_1 = SubResource( 1 )
