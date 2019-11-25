@@ -1,6 +1,7 @@
 extends KinematicBody
 
 signal life_update()
+signal player_die()
 
 onready var game = get_node("/root/Game")
 onready var camera = game.find_node("Camera")
@@ -12,7 +13,7 @@ export var max_speed : float = 200 # unit/second
 export var acceleration : float = 400 # unit/second²
 export var deceleration : float = 400 # unit/second²
 export var gravity_acceleration : float = 980 # unit/second²
-export var knockback_speed : float = 300 # unit/second²
+export var knockback_speed : float = 700 # unit/second²
 var gravity : float # unit/second
 
 # Flight movement vars
@@ -39,6 +40,11 @@ var current_punch : String = "Punch"
 var puncharm : int = 0
 var hold_input_timer : float = 0.6
 var hold_input_delay : float = 0.6
+var bigPunchVar : int = 0
+export var bigPunchThreshold : int = 5
+
+#State var
+var state : String = ""
 
 func _ready():
 	animationStateMachine.start("Idle")
@@ -69,7 +75,7 @@ func _physics_process(delta):
 			acceleration_direction.y = 0
 			acceleration_direction = acceleration_direction.normalized()
 		# Deccelerate
-		if velocity.length() > 0: # deccelerate only if velocity is not null
+		if velocity.length() > 0 or hold_input_timer >= hold_input_delay: # deccelerate only if velocity is not null
 			var vel_before_decel : Vector3 = velocity
 			# We don't want to deccelerate on the direction we're accelerating
 			velocity -= deceleration*(velocity.normalized()-acceleration_direction).normalized()*delta
@@ -79,7 +85,8 @@ func _physics_process(delta):
 		# Accelerate
 		velocity += acceleration*acceleration_direction*delta
 		# Clamp to max_speed
-		velocity = velocity if velocity.length() <= max_speed else velocity.normalized()*max_speed
+		if hold_input_timer >= hold_input_delay:
+			velocity = velocity if velocity.length() <= max_speed else velocity.normalized()*max_speed
 		# Apply gravity
 		gravity = 0 if is_on_floor() else gravity-gravity_acceleration*delta
 		velocity.y = gravity
@@ -127,8 +134,6 @@ func _physics_process(delta):
 			look_at(to,Vector3.UP)
 			transform.basis.y = Vector3.UP
 			scale = tmp
-			if Input.is_action_pressed("ui_cancel"):
-				take_damage(1,to.direction_to(transform.origin))
 	elif game_camera.mode == GameCamera.View_mode.SHOULDER :
 		var from : Vector3 = camera.project_ray_origin(get_viewport().get_mouse_position())
 		var normal : Vector3 = camera.project_ray_normal(get_viewport().get_mouse_position())
@@ -151,17 +156,37 @@ func _physics_process(delta):
 		#$PunchHitBox.visible = true
 		$PunchHitBox.scale = Vector3(1,1,1)
 	
-	if game_camera.mode == GameCamera.View_mode.HACK_N_SLASH and not Input.is_action_pressed("ui_accept"):
+	if animationStateMachine.get_current_node() == "Idle":
+		state = ""
+	elif animationStateMachine.get_current_node() == "PunchBig" or animationStateMachine.get_current_node() == "PunchLeft" or animationStateMachine.get_current_node() == "PunchRight":
+		state = "Punching"
+	
+	# Change view mode
+	if Input.is_action_pressed("ui_accept") and state != "Hurt" and state != "Punching":
+		if game_camera.mode == GameCamera.View_mode.HACK_N_SLASH:
+			state = "Flying"
+			$PunchBar.hide()
+			animationStateMachine.travel("TransformIn")
+		else:
+			state = ""
+			$PunchBar.show()
+			animationStateMachine.travel("TransformOut")
+	
+	if game_camera.mode == GameCamera.View_mode.HACK_N_SLASH and state != "Flying":
 		if punch_timer >= punch_delay[current_punch]:
 			if Input.is_action_pressed("attack"):
 				var animation : String = "PunchLeft" if puncharm == 0 else "PunchRight"
 				$PunchHitBox.punch_big = false
+				state = "Punching"
 				animationStateMachine.travel(animation)
 				puncharm = (puncharm+1)%2
 				current_punch = "Punch"
 				punch_timer = 0
-			elif Input.is_action_pressed("bigattack"):
+			elif Input.is_action_pressed("bigattack") and  bigPunchVar >= bigPunchThreshold:
 					$PunchHitBox.punch_big = true
+					bigPunchVar = 0
+					$PunchBarRender/PunchBar.value = bigPunchVar
+					state = "Punching"
 					animationStateMachine.travel("PunchBig")
 					current_punch = "PunchBig"
 					punch_timer = 0
@@ -170,20 +195,16 @@ func _physics_process(delta):
 	transform.basis = transform.basis.orthonormalized()
 	transform.basis = transform.basis.scaled(tmp)
 
-func _unhandled_input(event):
-	# Change view mode
-	if event.is_action_pressed("ui_accept"):
-		if game_camera.mode == GameCamera.View_mode.HACK_N_SLASH:
-			animationStateMachine.travel("TransformIn")
-		else:
-			animationStateMachine.travel("TransformOut")
-
 func take_damage(damage : int, collision_normal : Vector3):
 	if hold_input_timer >= hold_input_delay:
-		if animationStateMachine.get_current_node() != "TransformIn" and animationStateMachine.get_current_node() != "TransformOut" and animationStateMachine.get_current_node() != "Flying":
+		if state != "Flying":
+			state = "Hurt"
 			current_life -= damage
 			clamp(current_life,0,max_life)
 			emit_signal("life_update")
 			animationStateMachine.start("Hurt")
-			velocity = knockback_speed*collision_normal
+			velocity = knockback_speed*collision_normal.normalized()
 			hold_input_timer = 0
+			if current_life <= 0:
+				yield(get_tree().create_timer(0.6),"timeout")
+				emit_signal("player_die")

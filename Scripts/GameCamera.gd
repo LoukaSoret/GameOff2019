@@ -35,7 +35,7 @@ func _ready():
 	hack_rotation = self.rotation
 
 func _physics_process(delta):
-	if Input.is_action_just_released("ui_accept"):
+	if Input.is_action_just_released("ui_accept") and get_node("/root/Game").find_node("Elemental").state != "Hurt" and get_node("/root/Game").find_node("Elemental").state != "Punching":
 		mode = (mode + 1) % 2
 		match mode:
 			View_mode.HACK_N_SLASH:
@@ -68,10 +68,3 @@ func _physics_process(delta):
 	var tmp = scale
 	transform.basis = transform.basis.orthonormalized()
 	transform.basis = transform.basis.scaled(tmp)
-
-"""
-func _input(event):
-	if mode == View_mode.SHOULDER:
-		if event is InputEventMouseMotion:
-			self.rotate_y(deg2rad(-event.relative.x*mouse_sens))
-"""
