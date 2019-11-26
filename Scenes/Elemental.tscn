@@ -1315,6 +1315,30 @@ tracks/22/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/23/type = "value"
+tracks/23/path = NodePath("BoundingBox:translation")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.271001, -0.955575 ) ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("BoundingBox:rotation_degrees")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -167.496, 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=27]
 length = 0.5
@@ -1594,6 +1618,30 @@ tracks/22/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/23/type = "value"
+tracks/23/path = NodePath("BoundingBox:translation")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.689, 0 ) ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("BoundingBox:rotation_degrees")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -90, 0, 0 ) ]
+}
 
 [sub_resource type="AnimationNodeBlendTree" id=28]
 nodes/output/position = Vector2( 400, 100 )
@@ -1680,19 +1728,19 @@ graph_offset = Vector2( -208.957, -17 )
 size = 32
 font_data = ExtResource( 11 )
 
-[sub_resource type="ViewportTexture" id=52]
+[sub_resource type="ViewportTexture" id=50]
 viewport_path = NodePath("PunchBarRender")
 
-[sub_resource type="SpatialMaterial" id=50]
+[sub_resource type="SpatialMaterial" id=51]
 resource_local_to_scene = true
 flags_transparent = true
 flags_unshaded = true
 params_depth_draw_mode = 3
 params_billboard_mode = 1
 params_billboard_keep_scale = true
-albedo_texture = SubResource( 52 )
+albedo_texture = SubResource( 50 )
 
-[sub_resource type="QuadMesh" id=51]
+[sub_resource type="QuadMesh" id=52]
 size = Vector2( 7, 7 )
 
 [node name="Elemental" type="KinematicBody"]
@@ -1725,10 +1773,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.115863, 0 )
 shape = SubResource( 3 )
 
 [node name="Mesh" type="Spatial" parent="."]
-editor/display_folded = true
 
 [node name="Head" type="MeshInstance" parent="Mesh"]
-transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.98517, -0.484063 )
+editor/display_folded = true
+transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.9783, -0.484063 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 4 )
 material/0 = null
@@ -1739,7 +1787,8 @@ mesh = SubResource( 5 )
 material/0 = null
 
 [node name="Body" type="MeshInstance" parent="Mesh"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0405317, 0 )
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0451996, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 6 )
 material/0 = null
@@ -1750,9 +1799,11 @@ mesh = SubResource( 7 )
 material/0 = null
 
 [node name="ArmLeft" type="Spatial" parent="Mesh"]
+editor/display_folded = true
 
 [node name="ShoulderLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
-transform = Transform( 0.999748, -0.0224324, 0, 0.0224324, 0.999748, 0, 0, 0, 1, -2.07633, 1.84262, 0 )
+editor/display_folded = true
+transform = Transform( 0.999688, -0.0250154, 0, 0.0250154, 0.999688, 0, 0, 0, 1, -2.07633, 1.85422, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 8 )
 material/0 = null
@@ -1763,7 +1814,8 @@ mesh = SubResource( 9 )
 material/0 = null
 
 [node name="ArmLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
-transform = Transform( 0.97219, 0.234205, 0, -0.233774, 0.970407, 0.0605976, 0.0141922, -0.0589125, 0.998164, -2.57313, -0.284566, -0.525329 )
+editor/display_folded = true
+transform = Transform( 0.97219, 0.234205, 0, -0.233632, 0.969817, 0.0698755, 0.0163651, -0.0679324, 0.997556, -2.57313, -0.279597, -0.525329 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 10 )
 material/0 = null
@@ -1774,9 +1826,11 @@ mesh = SubResource( 11 )
 material/0 = null
 
 [node name="ArmRight" type="Spatial" parent="Mesh"]
+editor/display_folded = true
 
 [node name="ShoulderRight" type="MeshInstance" parent="Mesh/ArmRight"]
-transform = Transform( 0.998744, 0.0500822, 0, -0.0500822, 0.998744, 0, 0, 0, 1, 2.18542, 2.0003, 0 )
+editor/display_folded = true
+transform = Transform( 0.99833, 0.0577538, 0, -0.0577538, 0.99833, 0, 0, 0, 1, 2.18542, 2.01728, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 12 )
 material/0 = null
@@ -1787,7 +1841,8 @@ mesh = SubResource( 13 )
 material/0 = null
 
 [node name="ArmRight" type="MeshInstance" parent="Mesh/ArmRight"]
-transform = Transform( 0.978444, 3.14684e-005, 0.20651, -0.0106826, 0.998666, 0.0504621, -0.206233, -0.0515804, 0.977141, 3.02703, 0.000439197, -0.887685 )
+editor/display_folded = true
+transform = Transform( 0.97844, 3.16183e-005, 0.20653, -0.0123154, 0.998227, 0.0581918, -0.206162, -0.0594807, 0.976707, 3.02703, 0.000439197, -0.887685 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 14 )
 material/0 = null
@@ -1798,8 +1853,10 @@ mesh = SubResource( 15 )
 material/0 = null
 
 [node name="Feets" type="Spatial" parent="Mesh"]
+editor/display_folded = true
 
 [node name="FeetBig" type="MeshInstance" parent="Mesh/Feets"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257122, -2.95226, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 16 )
@@ -1811,6 +1868,7 @@ mesh = SubResource( 17 )
 material/0 = null
 
 [node name="FeetMedium" type="MeshInstance" parent="Mesh/Feets"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175125, -4.43648, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 18 )
@@ -1822,8 +1880,10 @@ mesh = SubResource( 19 )
 material/0 = null
 
 [node name="RotationHelperSmallFeet" type="Spatial" parent="Mesh/Feets"]
+editor/display_folded = true
 
 [node name="FeetSmall" type="MeshInstance" parent="Mesh/Feets/RotationHelperSmallFeet"]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.700497, -3.99867, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 20 )
@@ -1908,9 +1968,9 @@ valign = 1
 
 [node name="PunchBar" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11212, 3.20204, 0 )
-material_override = SubResource( 50 )
+material_override = SubResource( 51 )
 cast_shadow = 0
-mesh = SubResource( 51 )
+mesh = SubResource( 52 )
 material/0 = null
 
 [node name="PunchBarRender" type="Viewport" parent="."]
@@ -1928,3 +1988,11 @@ rounded = true
 texture_progress = ExtResource( 12 )
 tint_under = Color( 0, 0, 0, 0 )
 tint_progress = Color( 0.866667, 0.847059, 0.321569, 1 )
+
+[node name="PunchBar2" type="TextureProgress" parent="PunchBarRender"]
+margin_right = 256.0
+margin_bottom = 256.0
+max_value = 5.0
+rounded = true
+texture_progress = ExtResource( 12 )
+tint_under = Color( 1, 1, 1, 0 )
