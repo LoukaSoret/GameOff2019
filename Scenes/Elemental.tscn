@@ -1731,7 +1731,7 @@ graph_offset = Vector2( -208.957, -17 )
 size = 32
 font_data = ExtResource( 11 )
 
-[sub_resource type="SpriteFrames" id=53]
+[sub_resource type="SpriteFrames" id=50]
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -1744,19 +1744,19 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="ViewportTexture" id=50]
+[sub_resource type="ViewportTexture" id=51]
 viewport_path = NodePath("PunchBarRender")
 
-[sub_resource type="SpatialMaterial" id=51]
+[sub_resource type="SpatialMaterial" id=52]
 resource_local_to_scene = true
 flags_transparent = true
 flags_unshaded = true
 params_depth_draw_mode = 3
 params_billboard_mode = 1
 params_billboard_keep_scale = true
-albedo_texture = SubResource( 50 )
+albedo_texture = SubResource( 51 )
 
-[sub_resource type="QuadMesh" id=52]
+[sub_resource type="QuadMesh" id=53]
 size = Vector2( 7, 7 )
 
 [node name="Elemental" type="KinematicBody"]
@@ -1792,7 +1792,7 @@ shape = SubResource( 3 )
 
 [node name="Head" type="MeshInstance" parent="Mesh"]
 editor/display_folded = true
-transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.98797, -0.484063 )
+transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.88868, -0.484063 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 4 )
 material/0 = null
@@ -1804,7 +1804,7 @@ material/0 = null
 
 [node name="Body" type="MeshInstance" parent="Mesh"]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0386317, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106005, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 6 )
 material/0 = null
@@ -1819,7 +1819,7 @@ editor/display_folded = true
 
 [node name="ShoulderLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
 editor/display_folded = true
-transform = Transform( 0.999772, -0.0213811, 0, 0.0213811, 0.999772, 0, 0, 0, 1, -2.07633, 1.83789, 0 )
+transform = Transform( 0.99828, -0.0586402, 0, 0.0586402, 0.99828, 0, 0, 0, 1, -2.07633, 2.00537, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 8 )
 material/0 = null
@@ -1831,7 +1831,7 @@ material/0 = null
 
 [node name="ArmLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
 editor/display_folded = true
-transform = Transform( 0.97219, 0.234205, 0, -0.233825, 0.97062, 0.0568705, 0.0133193, -0.0552891, 0.998382, -2.57313, -0.286561, -0.525329 )
+transform = Transform( 0.97219, 0.234205, 0, -0.231231, 0.959849, 0.158853, 0.0372041, -0.154436, 0.987303, -2.57313, -0.231712, -0.525329 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 10 )
 material/0 = null
@@ -1846,7 +1846,7 @@ editor/display_folded = true
 
 [node name="ShoulderRight" type="MeshInstance" parent="Mesh/ArmRight"]
 editor/display_folded = true
-transform = Transform( 0.998894, 0.0470008, 0, -0.0470008, 0.998894, 0, 0, 0, 1, 2.18542, 1.99348, 0 )
+transform = Transform( 0.991323, 0.131439, 0, -0.131439, 0.991323, 0, 0, 0, 1, 2.18542, 2.18094, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 12 )
 material/0 = null
@@ -1858,7 +1858,7 @@ material/0 = null
 
 [node name="ArmRight" type="MeshInstance" parent="Mesh/ArmRight"]
 editor/display_folded = true
-transform = Transform( 0.978447, 3.11191e-005, 0.206498, -0.0100264, 0.998825, 0.0473574, -0.206255, -0.0484071, 0.977299, 3.02703, 0.000439197, -0.887685 )
+transform = Transform( 0.978535, 3.16649e-007, 0.206081, -0.0278907, 0.990797, 0.132431, -0.204186, -0.135336, 0.969531, 3.02703, 0.000439197, -0.887685 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 14 )
 material/0 = null
@@ -1986,16 +1986,16 @@ valign = 1
 visible = false
 position = Vector2( 453.546, 519.836 )
 scale = Vector2( 0.215998, 0.215998 )
-frames = SubResource( 53 )
+frames = SubResource( 50 )
 animation = "Idle"
 frame = 1
 playing = true
 
 [node name="PunchBar" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11212, 3.20204, 0 )
-material_override = SubResource( 51 )
+material_override = SubResource( 52 )
 cast_shadow = 0
-mesh = SubResource( 52 )
+mesh = SubResource( 53 )
 material/0 = null
 
 [node name="PunchBarRender" type="Viewport" parent="."]
@@ -2013,3 +2013,11 @@ rounded = true
 texture_progress = ExtResource( 14 )
 tint_under = Color( 0, 0, 0, 0 )
 script = ExtResource( 15 )
+
+[node name="PunchBar2" type="TextureProgress" parent="PunchBarRender"]
+margin_right = 256.0
+margin_bottom = 256.0
+max_value = 5.0
+rounded = true
+texture_progress = ExtResource( 14 )
+tint_under = Color( 1, 1, 1, 0 )
