@@ -1792,7 +1792,7 @@ shape = SubResource( 3 )
 
 [node name="Head" type="MeshInstance" parent="Mesh"]
 editor/display_folded = true
-transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.98797, -0.484063 )
+transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 3.00744, -0.484063 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 4 )
 material/0 = null
@@ -1804,7 +1804,7 @@ material/0 = null
 
 [node name="Body" type="MeshInstance" parent="Mesh"]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0386317, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0254269, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 6 )
 material/0 = null
@@ -1819,7 +1819,7 @@ editor/display_folded = true
 
 [node name="ShoulderLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
 editor/display_folded = true
-transform = Transform( 0.999772, -0.0213811, 0, 0.0213811, 0.999772, 0, 0, 0, 1, -2.07633, 1.83789, 0 )
+transform = Transform( 0.999902, -0.0140733, 0, 0.0140733, 0.999902, 0, 0, 0, 1, -2.07633, 1.80507, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 8 )
 material/0 = null
@@ -1831,7 +1831,7 @@ material/0 = null
 
 [node name="ArmLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
 editor/display_folded = true
-transform = Transform( 0.97219, 0.234205, 0, -0.233825, 0.97062, 0.0568705, 0.0133193, -0.0552891, 0.998382, -2.57313, -0.286561, -0.525329 )
+transform = Transform( 0.97219, 0.234205, 0, -0.234081, 0.971681, 0.0324658, 0.00760364, -0.0315631, 0.999473, -2.57313, -0.299618, -0.525329 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 10 )
 material/0 = null
@@ -1846,7 +1846,7 @@ editor/display_folded = true
 
 [node name="ShoulderRight" type="MeshInstance" parent="Mesh/ArmRight"]
 editor/display_folded = true
-transform = Transform( 0.998894, 0.0470008, 0, -0.0470008, 0.998894, 0, 0, 0, 1, 2.18542, 1.99348, 0 )
+transform = Transform( 0.999639, 0.0268284, 0, -0.0268284, 0.999639, 0, 0, 0, 1, 2.18542, 1.94885, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 12 )
 material/0 = null
@@ -1858,7 +1858,7 @@ material/0 = null
 
 [node name="ArmRight" type="MeshInstance" parent="Mesh/ArmRight"]
 editor/display_folded = true
-transform = Transform( 0.978447, 3.11191e-005, 0.206498, -0.0100264, 0.998825, 0.0473574, -0.206255, -0.0484071, 0.977299, 3.02703, 0.000439197, -0.887685 )
+transform = Transform( 0.978473, 2.41724e-005, 0.206373, -0.00572613, 0.999616, 0.0270321, -0.206294, -0.0276318, 0.978099, 3.02703, 0.000439197, -0.887685 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 14 )
 material/0 = null
@@ -1984,11 +1984,10 @@ valign = 1
 
 [node name="Clic" type="AnimatedSprite" parent="HUD"]
 visible = false
-position = Vector2( 453.546, 519.836 )
+position = Vector2( 382.456, 482.746 )
 scale = Vector2( 0.215998, 0.215998 )
 frames = SubResource( 53 )
 animation = "Idle"
-frame = 1
 playing = true
 
 [node name="PunchBar" type="MeshInstance" parent="."]
