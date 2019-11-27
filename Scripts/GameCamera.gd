@@ -45,7 +45,7 @@ func _physics_process(delta):
 					last_mode = View_mode.HACK_N_SLASH
 					next_angle = anchor_rotation
 					next_pos = anchor
-					hack_rotation = Vector3(0,target.rotation.y,0)
+					hack_rotation = Vector3(0,rotation.y,0)
 			View_mode.SHOULDER:
 				#self.rotation = self.rotation.linear_interpolate(target.rotation, delta*smoothing)
 				if last_mode == View_mode.HACK_N_SLASH:
