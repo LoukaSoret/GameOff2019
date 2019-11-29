@@ -1789,10 +1789,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.115863, 0 )
 shape = SubResource( 3 )
 
 [node name="Mesh" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="Head" type="MeshInstance" parent="Mesh"]
 editor/display_folded = true
-transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.88868, -0.484063 )
+transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.89742, -0.484063 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 4 )
 material/0 = null
@@ -1804,7 +1805,7 @@ material/0 = null
 
 [node name="Body" type="MeshInstance" parent="Mesh"]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.106005, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100078, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 6 )
 material/0 = null
@@ -1819,7 +1820,7 @@ editor/display_folded = true
 
 [node name="ShoulderLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
 editor/display_folded = true
-transform = Transform( 0.99828, -0.0586402, 0, 0.0586402, 0.99828, 0, 0, 0, 1, -2.07633, 2.00537, 0 )
+transform = Transform( 0.998467, -0.0553646, 0, 0.0553646, 0.998467, 0, 0, 0, 1, -2.07633, 1.99064, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 8 )
 material/0 = null
@@ -1831,7 +1832,7 @@ material/0 = null
 
 [node name="ArmLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
 editor/display_folded = true
-transform = Transform( 0.97219, 0.234205, 0, -0.231231, 0.959849, 0.158853, 0.0372041, -0.154436, 0.987303, -2.57313, -0.231712, -0.525329 )
+transform = Transform( 0.97219, 0.234205, 0, -0.231331, 0.960263, 0.156179, 0.0365779, -0.151836, 0.987729, -2.57313, -0.233159, -0.525329 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 10 )
 material/0 = null
@@ -1846,7 +1847,7 @@ editor/display_folded = true
 
 [node name="ShoulderRight" type="MeshInstance" parent="Mesh/ArmRight"]
 editor/display_folded = true
-transform = Transform( 0.991323, 0.131439, 0, -0.131439, 0.991323, 0, 0, 0, 1, 2.18542, 2.18094, 0 )
+transform = Transform( 0.991615, 0.129221, 0, -0.129221, 0.991615, 0, 0, 0, 1, 2.18542, 2.176, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 12 )
 material/0 = null
@@ -1858,7 +1859,7 @@ material/0 = null
 
 [node name="ArmRight" type="MeshInstance" parent="Mesh/ArmRight"]
 editor/display_folded = true
-transform = Transform( 0.978535, 3.16649e-007, 0.206081, -0.0278907, 0.990797, 0.132431, -0.204186, -0.135336, 0.969531, 3.02703, 0.000439197, -0.887685 )
+transform = Transform( 0.978529, 1.63353e-006, 0.206112, -0.0274256, 0.991106, 0.130197, -0.20428, -0.133053, 0.969827, 3.02703, 0.000439197, -0.887685 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 14 )
 material/0 = null
@@ -1936,6 +1937,7 @@ active = true
 parameters/playback = SubResource( 48 )
 
 [node name="HUD" type="Control" parent="."]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_right = 0.5
 margin_right = -512.0

@@ -16,11 +16,12 @@ func _on_area_entered(ennemy : Area):
 		get_parent().bigPunchVar = get_parent().bigPunchVar+1 if get_parent().bigPunchVar < get_parent().bigPunchThreshold else get_parent().bigPunchVar
 		ennemy.get_parent().hit(Vector2(dir.x,dir.z).normalized())
 	get_parent().get_node("PunchBarRender/PunchBar").value = get_parent().bigPunchVar
-	if get_parent().bigPunchVar >= get_parent().bigPunchThreshold :
+	if get_parent().bigPunchVar >= get_parent().bigPunchThreshold and not punch_big:
 		get_parent().get_node("PunchBarRender/PunchBar").tint_progress = Color("e83030")
 		get_parent().get_node("PunchBarRender/PunchBar").set_shake(true)
 		get_parent().get_node("HUD/Clic").visible = true
-	else :
+	elif punch_big:
+		get_parent().bigPunchVar = 0
 		get_parent().get_node("PunchBarRender/PunchBar").tint_progress = Color("ffffff")
 		get_parent().get_node("PunchBarRender/PunchBar").set_shake(false)
 		get_parent().get_node("HUD/Clic").visible = false

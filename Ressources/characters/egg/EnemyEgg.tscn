@@ -11,7 +11,7 @@
 [sub_resource type="CapsuleShape" id=1]
 height = 1.41937
 
-[sub_resource type="QuadMesh" id=5]
+[sub_resource type="QuadMesh" id=2]
 material = ExtResource( 4 )
 size = Vector2( 2, 2 )
 
@@ -41,7 +41,7 @@ amount = 10
 lifetime = 0.5
 local_coords = false
 process_material = ExtResource( 3 )
-draw_pass_1 = SubResource( 5 )
+draw_pass_1 = SubResource( 2 )
 
 [node name="hitbox" type="Area" parent="."]
 collision_layer = 4

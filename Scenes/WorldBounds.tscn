@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 100, 30, 0 )
+
+[node name="WorldBounds" type="Spatial"]
+editor/display_folded = true
+
+[node name="UpperBound" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 6.31089e-030, 0, 6.31088e-030, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="UpperBound"]
+transform = Transform( 1, 6.31089e-030, 0, 6.31088e-030, 1, 0, 0, 0, 1, 0, 30, 0 )
+shape = SubResource( 3 )
+
+[node name="LowerBound" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 6.31089e-030, 0, 6.31088e-030, 1, 0, 0, 0, 1, 6.77626e-021, -26.3483, -1.19209e-007 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LowerBound"]
+transform = Transform( 1, 6.31089e-030, 0, 6.31088e-030, 1, 0, 0, 0, 1, 0, 30, 0 )
+shape = SubResource( 3 )
+
+[node name="LeftBound" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 6.31089e-030, 0, 6.31088e-030, 1, 0, 0, 0, 1, 6.77626e-021, -26.3483, -1.19209e-007 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LeftBound"]
+transform = Transform( 1, 6.31089e-030, 0, 6.31088e-030, 1, 0, 0, 0, 1, 92.9963, 30, 0 )
+shape = SubResource( 3 )
+
+[node name="RightBound" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 6.31089e-030, 0, 6.31088e-030, 1, 0, 0, 0, 1, 6.77626e-021, -26.3483, -1.19209e-007 )
+
+[node name="CollisionShape" type="CollisionShape" parent="RightBound"]
+transform = Transform( 1, 6.31089e-030, 0, 6.31088e-030, 1, 0, 0, 0, 1, -94.5906, 30, 0 )
+shape = SubResource( 3 )
+
+[node name="ForwardBound" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 6.31089e-030, 0, 6.31088e-030, 1, 0, 0, 0, 1, 6.77626e-021, -26.3483, -1.19209e-007 )
+
+[node name="CollisionShape" type="CollisionShape" parent="ForwardBound"]
+transform = Transform( 1, 6.31089e-030, 0, 6.31088e-030, 1, 0, 0, 0, 1, 4.54881e-023, 0, 96.4295 )
+shape = SubResource( 3 )
+
+[node name="BackBound" type="StaticBody" parent="."]
+editor/display_folded = true
+transform = Transform( 1, 6.31089e-030, 0, 6.31088e-030, 1, 0, 0, 0, 1, 6.77626e-021, -26.3483, -1.19209e-007 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BackBound"]
+transform = Transform( 1, 6.31089e-030, 0, 6.31088e-030, 1, 0, 0, 0, 1, 2.50679e-023, 0, -95.7632 )
+shape = SubResource( 3 )

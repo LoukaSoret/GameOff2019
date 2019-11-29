@@ -148,12 +148,8 @@ func _physics_process(delta):
 	if punch_timer < punch_delay[current_punch]:
 		punch_timer += delta
 	if punch_timer >= punch_unmonitor_threshold[current_punch]:
-		#$PunchHitBox.monitoring = false
-		#$PunchHitBox.visible = false
 		$PunchHitBox.scale = Vector3(0,0,0)
 	elif punch_timer >= punch_monitor_threshold[current_punch]:
-		#$PunchHitBox.monitoring = true
-		#$PunchHitBox.visible = true
 		$PunchHitBox.scale = Vector3(1,1,1)
 	
 	if animationStateMachine.get_current_node() == "Idle":
@@ -168,7 +164,7 @@ func _physics_process(delta):
 			$PunchBar.hide()
 			animationStateMachine.travel("TransformIn")
 		else:
-			state = ""
+			state = "Flying"
 			$PunchBar.show()
 			animationStateMachine.travel("TransformOut")
 	
@@ -182,7 +178,7 @@ func _physics_process(delta):
 				puncharm = (puncharm+1)%2
 				current_punch = "Punch"
 				punch_timer = 0
-			elif Input.is_action_pressed("bigattack") and  bigPunchVar >= bigPunchThreshold:
+			elif Input.is_action_pressed("bigattack") and bigPunchVar >= bigPunchThreshold:
 					$PunchHitBox.punch_big = true
 					bigPunchVar = 0
 					$PunchBarRender/PunchBar.value = bigPunchVar

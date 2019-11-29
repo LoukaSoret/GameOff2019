@@ -61,7 +61,7 @@ void fragment() {
 	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
 	ROUGHNESS = roughness_tex * roughness;
 	SPECULAR = specular;
-	//ALPHA_SCISSOR = 0.6;
+	ALPHA_SCISSOR = 0.5;
 	ALPHA = albedo.a * albedo_tex.a;
 }
 "
