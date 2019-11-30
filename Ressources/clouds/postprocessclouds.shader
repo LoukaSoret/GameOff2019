@@ -30,7 +30,8 @@ uniform vec4 _LightColor : hint_color = vec4(1);
 
 uniform float _Speed = 0;
 
-uniform float YLimit = -10;
+uniform float YLimit = -10;//cloud ground
+uniform float viewRadius = 30.0;//no clouds too close to the camera
 
 uniform sampler3D _Noise3D;
 
@@ -114,6 +115,10 @@ void fragment(){
 		float density = get_density(rp,iTime);
 
 		if(density>0.0){
+			/*if(dstTravelled<viewRadius){
+				float a = dstTravelled/viewRadius;
+				density = mix(0,density,(a*a)/(viewRadius*viewRadius));
+			}*/
 			float tmp = density / float(_Steps);
 			
 			T *= 1.0 - (tmp * _Absorption);
@@ -152,7 +157,7 @@ void fragment(){
 			
             color += col1 + col2;
 		}
-		
+
 		dstTravelled += stepSize;
 	}
 
