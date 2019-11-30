@@ -12,7 +12,7 @@ var zoom_target : Vector3 = Vector3()
 var last_position : Vector2 = Vector2()
 
 func _ready():
-	set_process(false)
+	set_process(true)
 
 func _input(event):
 	if event.is_action("camera_rotate"):
@@ -49,9 +49,13 @@ func _input(event):
 			pass
 
 func _process(delta):
+	
+	rotate_y(-0.1 * delta)
+	"""
 	var interpol = $RotationHelper/Camera.transform.origin.linear_interpolate(zoom_target,zoom_speed*delta)
 	if ($RotationHelper/Camera.transform.origin != zoom_target):
 		$RotationHelper/Camera.transform.origin=interpol
 	else:
 		zooming = false
 		set_process(false)
+	"""
