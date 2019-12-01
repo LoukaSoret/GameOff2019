@@ -1,8 +1,8 @@
 extends MeshInstance
 tool
 # Grass Generator Parameters
-export var grass_spacing : float = 0.0025
-export var grass_density : int = 32
+export var grass_spacing : float = 0.002
+export var grass_density : int = 24
 
 # Rock Deformation Parameter
 export var deformationSeed : int = 0 setget setSeed

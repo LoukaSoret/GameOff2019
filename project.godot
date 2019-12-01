@@ -30,6 +30,10 @@ config/name="GameOff2019"
 run/main_scene="res://Scenes/Menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+global="*res://Scripts/global.gd"
+
 [input]
 
 camera_move={

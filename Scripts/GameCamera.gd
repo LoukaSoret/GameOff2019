@@ -24,6 +24,10 @@ var next_angle : Vector3 = Vector3()
 var hack_rotation : Vector3 = Vector3()
 
 func _ready():
+	if global.full_screen == true:
+		OS.window_fullscreen = true
+	else :
+		OS.window_fullscreen = false
 	target = get_node(target_node)
 	#anchor = to_global($Camera.transform.origin) - to_global(target.transform.origin)
 	global_transform.origin = target.global_transform.origin
@@ -68,3 +72,12 @@ func _physics_process(delta):
 	var tmp = scale
 	transform.basis = transform.basis.orthonormalized()
 	transform.basis = transform.basis.scaled(tmp)
+	
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		if global.full_screen == false:
+			OS.window_fullscreen = true
+			global.full_screen = true
+		else :
+			OS.window_fullscreen = false
+			global.full_screen = false

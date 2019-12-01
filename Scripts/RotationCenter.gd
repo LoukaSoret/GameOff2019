@@ -12,6 +12,7 @@ var zoom_target : Vector3 = Vector3()
 var last_position : Vector2 = Vector2()
 
 func _ready():
+	OS.window_fullscreen = true
 	set_process(true)
 
 func _input(event):
@@ -47,10 +48,18 @@ func _input(event):
 				$RotationHelper.rotate_x(-delta.y * 0.01)
 		elif moving:
 			pass
+	if event.is_action_pressed("ui_cancel"):
+		if global.full_screen == false:
+			OS.window_fullscreen = true
+			global.full_screen = true
+		else :
+			OS.window_fullscreen = false
+			global.full_screen = false
 
 func _process(delta):
 	
 	rotate_y(-0.1 * delta)
+
 	"""
 	var interpol = $RotationHelper/Camera.transform.origin.linear_interpolate(zoom_target,zoom_speed*delta)
 	if ($RotationHelper/Camera.transform.origin != zoom_target):
