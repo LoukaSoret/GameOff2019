@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PlayerPunchHitBox.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Ressources/HUD/clic2.png" type="Texture" id=13]
 [ext_resource path="res://Ressources/HUD/punchbar.png" type="Texture" id=14]
 [ext_resource path="res://Scripts/PunchBar.gd" type="Script" id=15]
+[ext_resource path="res://Ressources/Sounds/go_player_hurt.wav" type="AudioStream" id=16]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.41082
@@ -1731,7 +1732,7 @@ graph_offset = Vector2( -208.957, -17 )
 size = 32
 font_data = ExtResource( 11 )
 
-[sub_resource type="Animation" id=53]
+[sub_resource type="Animation" id=50]
 resource_name = "idle"
 loop = true
 tracks/0/type = "value"
@@ -1759,19 +1760,19 @@ tracks/1/keys = {
 "values": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 12 ) ]
 }
 
-[sub_resource type="ViewportTexture" id=50]
+[sub_resource type="ViewportTexture" id=51]
 viewport_path = NodePath("PunchBarRender")
 
-[sub_resource type="SpatialMaterial" id=51]
+[sub_resource type="SpatialMaterial" id=52]
 resource_local_to_scene = true
 flags_transparent = true
 flags_unshaded = true
 params_depth_draw_mode = 3
 params_billboard_mode = 1
 params_billboard_keep_scale = true
-albedo_texture = SubResource( 50 )
+albedo_texture = SubResource( 51 )
 
-[sub_resource type="QuadMesh" id=52]
+[sub_resource type="QuadMesh" id=53]
 size = Vector2( 7, 7 )
 
 [node name="Elemental" type="KinematicBody"]
@@ -1808,7 +1809,7 @@ editor/display_folded = true
 
 [node name="Head" type="MeshInstance" parent="Mesh"]
 editor/display_folded = true
-transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 3.04104, -0.484063 )
+transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 3.03784, -0.484063 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 4 )
 material/0 = null
@@ -1820,7 +1821,7 @@ material/0 = null
 
 [node name="Body" type="MeshInstance" parent="Mesh"]
 editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00262804, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00479892, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 6 )
 material/0 = null
@@ -1835,7 +1836,7 @@ editor/display_folded = true
 
 [node name="ShoulderLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
 editor/display_folded = true
-transform = Transform( 1, -0.00145462, 0, 0.00145462, 1, 0, 0, 0, 1, -2.07633, 1.74839, 0 )
+transform = Transform( 0.999997, -0.0026562, 0, 0.0026562, 0.999997, 0, 0, 0, 1, -2.07633, 1.75379, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 8 )
 material/0 = null
@@ -1847,7 +1848,7 @@ material/0 = null
 
 [node name="ArmLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
 editor/display_folded = true
-transform = Transform( 0.97219, 0.234205, 0, -0.234204, 0.972191, 0.00208306, 0.000487861, -0.00202513, 0.999998, -2.57313, -0.315859, -0.525329 )
+transform = Transform( 0.97219, 0.234205, 0, -0.234203, 0.972185, 0.00406344, 0.000951676, -0.00395045, 0.999991, -2.57313, -0.3148, -0.525329 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 10 )
 material/0 = null
@@ -1862,7 +1863,7 @@ editor/display_folded = true
 
 [node name="ShoulderRight" type="MeshInstance" parent="Mesh/ArmRight"]
 editor/display_folded = true
-transform = Transform( 0.999997, 0.00172131, 0, -0.00172131, 0.999997, 0, 0, 0, 1, 2.18542, 1.89335, 0 )
+transform = Transform( 0.999994, 0.00335769, 0, -0.00335769, 0.999994, 0, 0, 0, 1, 2.18542, 1.89696, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 12 )
 material/0 = null
@@ -1874,7 +1875,7 @@ material/0 = null
 
 [node name="ArmRight" type="MeshInstance" parent="Mesh/ArmRight"]
 editor/display_folded = true
-transform = Transform( 0.978532, 2.13997e-006, 0.206098, -0.000367483, 0.999996, 0.00173438, -0.206098, -0.00177288, 0.978528, 3.02703, 0.000439197, -0.887685 )
+transform = Transform( 0.978527, 4.08384e-006, 0.206119, -0.000716824, 0.999991, 0.0033832, -0.206119, -0.0034583, 0.978518, 3.02703, 0.000439197, -0.887685 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 14 )
 material/0 = null
@@ -2032,14 +2033,7 @@ texture = ExtResource( 12 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Clic"]
 autoplay = "idle"
 playback_speed = 3.0
-anims/idle = SubResource( 53 )
-
-[node name="PunchBar" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11212, 3.20204, 0 )
-material_override = SubResource( 51 )
-cast_shadow = 0
-mesh = SubResource( 52 )
-material/0 = null
+anims/idle = SubResource( 50 )
 
 [node name="PunchBarRender" type="Viewport" parent="."]
 size = Vector2( 256, 256 )
@@ -2064,3 +2058,14 @@ max_value = 5.0
 rounded = true
 texture_progress = ExtResource( 14 )
 tint_under = Color( 1, 1, 1, 0 )
+
+[node name="PunchBar" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11212, 3.20204, 0 )
+material_override = SubResource( 52 )
+cast_shadow = 0
+mesh = SubResource( 53 )
+material/0 = null
+
+[node name="Sound_hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -5.0

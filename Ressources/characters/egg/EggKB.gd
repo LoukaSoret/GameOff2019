@@ -64,6 +64,10 @@ func _physics_process(delta):
 	if path_id < path.size():
 		if(!isRunning):
 			isRunning = true
+			if(!isFlying):
+				$Sounf_step.play()
+			else:
+				$Sounf_step.stop()
 			$Egg/AnimationTree.set("parameters/idle_run/blend_amount",1)
 		var move_vec : Vector3 = (path[path_id]-global_transform.origin)
 		if move_vec.length() < move_speed*delta*10:
@@ -79,6 +83,7 @@ func _physics_process(delta):
 		if isRunning:
 			isRunning = false
 			$Egg/AnimationTree.set("parameters/idle_run/blend_amount",0)
+			$Sounf_step.stop()
 			
 	
 	#on floor test
@@ -129,6 +134,7 @@ func _physics_process(delta):
 	
 	#Y kill
 	if transform.origin.y < yKill:
+		print("free")
 		queue_free()
 	
 	move_and_slide(movement,Vector3(0,1,0),false,4,deg2rad(90))
@@ -148,6 +154,7 @@ var pdv = maxPdv
 
 func hit(dir : Vector2 = Vector2(0,0)):#TODO: vector direction en parametre
 	pdv -= 1
+	$Sound_hurt.play()
 	$Egg/AnimationTree.set("parameters/hurt/active",true)
 	hits[iHit%4].emitting = true
 	hits[iHit%4].set_translation(get_parent().to_global(Vector3(0,2,0)))
@@ -171,4 +178,7 @@ func throw(dir : Vector2 = Vector2(0,0)):#TODO: vector direction en parametre
 	get_parent().add_child(p)
 	p.set_translation(get_parent().to_local(to_global(Vector3(0,2,0))))"""
 	setKnockback(Vector3(dir.x,2,dir.y).normalized()*projectionForce,1)
+	$Sound_hurt.play()
+	$Egg/AnimationTree.set("parameters/hurt/active",true)
+	$Sounf_step.stop()
 	isFlying = true

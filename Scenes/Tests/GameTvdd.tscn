@@ -471,6 +471,7 @@ deceleration = 600.0
 flight_max_speed = 400.0
 
 [node name="GameCamera" type="Spatial" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3959, 4.31989, -21.5648 )
 script = ExtResource( 2 )
 target_node = NodePath("../Elemental")
@@ -627,6 +628,7 @@ deformationSeed = 21
 deformation = 0.2
 
 [node name="WorldBounds" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="UpperBound" type="StaticBody" parent="WorldBounds"]
 editor/display_folded = true
@@ -677,6 +679,7 @@ transform = Transform( 1, 6.31089e-030, 0, 6.31088e-030, 1, 0, 0, 0, 1, 0, 0, 0 
 shape = SubResource( 27 )
 
 [node name="DirectionalLight2" parent="." instance=ExtResource( 9 )]
+light_color = Color( 1, 0.996078, 0.917647, 1 )
 
 [node name="Enemies" type="Spatial" parent="."]
 editor/display_folded = true
@@ -827,6 +830,7 @@ margin_bottom = 108.743
 texture = ExtResource( 14 )
 
 [node name="Control" type="Control" parent="."]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -863,6 +867,7 @@ custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "replay"
 
 [node name="Decorations" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="bush8" parent="Decorations" instance=ExtResource( 16 )]
 transform = Transform( 0.598517, 0, 0, 0, 0.598517, 0, 0, 0, 0.598517, 60.9827, -2.23886, -49.9744 )

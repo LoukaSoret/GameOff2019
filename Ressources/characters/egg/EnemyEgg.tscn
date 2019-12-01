@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Ressources/characters/egg/EggKB.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/characters/egg/Egg.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Ressources/characters/egg/EggAttackBox.gd" type="Script" id=5]
 [ext_resource path="res://Ressources/particles/dustCircle.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Ressources/particles/hit.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Ressources/Sounds/hurt.wav" type="AudioStream" id=8]
+[ext_resource path="res://Ressources/Sounds/go_enemies_step.wav" type="AudioStream" id=9]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 1.41937
@@ -28,6 +30,7 @@ script = ExtResource( 1 )
 move_speed = 5
 gravity = -1
 projectionForce = 30.0
+yKill = -15
 
 [node name="Egg" parent="." instance=ExtResource( 2 )]
 
@@ -64,6 +67,7 @@ shape = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="hits" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="hit" parent="hits" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
@@ -84,3 +88,11 @@ one_shot = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 emitting = false
 one_shot = true
+
+[node name="Sound_hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = 1.0
+
+[node name="Sounf_step" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -5.0

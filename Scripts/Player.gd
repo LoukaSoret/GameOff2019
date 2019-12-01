@@ -194,6 +194,7 @@ func _physics_process(delta):
 func take_damage(damage : int, collision_normal : Vector3):
 	if hold_input_timer >= hold_input_delay:
 		if state != "Flying":
+			$Sound_hurt.play()
 			state = "Hurt"
 			current_life -= damage
 			clamp(current_life,0,max_life)

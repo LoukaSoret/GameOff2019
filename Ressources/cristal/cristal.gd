@@ -29,6 +29,7 @@ func recolt(a):
 	var p = get_parent()
 	if p is Cristals:
 		p.addOne()
-	yield(get_tree().create_timer(.5), "timeout")
+	$AudioStreamPlayer.play()
+	yield(get_tree().create_timer(.95), "timeout")
 	queue_free()
 

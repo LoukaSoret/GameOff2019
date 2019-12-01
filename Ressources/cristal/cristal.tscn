@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Ressources/cristal/cristal.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/cristal/cristal_particules1.material" type="Material" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Ressources/cristal/cristal_mat.material" type="Material" id=6]
 [ext_resource path="res://Ressources/cristal/cristal.obj" type="ArrayMesh" id=7]
 [ext_resource path="res://Ressources/cristal/aura.png" type="Texture" id=8]
+[ext_resource path="res://Ressources/Sounds/go_cristal_recolt.wav" type="AudioStream" id=9]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 2.0
@@ -99,3 +100,6 @@ transform = Transform( 1, 0, 0, 0, 142.819, 0, 0, 0, 1, 0, 0, 0 )
 material_override = SubResource( 3 )
 mesh = SubResource( 4 )
 material/0 = null
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
