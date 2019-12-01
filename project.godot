@@ -34,6 +34,10 @@ config/icon="res://icon.png"
 
 global="*res://Scripts/global.gd"
 
+[display]
+
+mouse_cursor/custom_image="res://Ressources/cursor.png"
+
 [input]
 
 camera_move={

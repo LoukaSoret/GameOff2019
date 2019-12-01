@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scenes/bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Tree.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Scenes/DirectionalLight2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=15]
 [ext_resource path="res://Ressources/font/riffic/riffic.otf" type="DynamicFontData" id=16]
+[ext_resource path="res://Ressources/title.png" type="Texture" id=17]
 
 [sub_resource type="Shader" id=1]
 resource_local_to_scene = true
@@ -310,6 +311,7 @@ margin_bottom = -60.0
 script = ExtResource( 15 )
 
 [node name="Label" type="Label" parent="Menu"]
+visible = false
 margin_left = 28.7076
 margin_top = 24.6066
 margin_right = 788.708
@@ -325,10 +327,17 @@ margin_right = 1036.0
 margin_bottom = 612.0
 
 [node name="Label" type="Label" parent="Menu/TextureButton"]
-margin_left = 53.3142
-margin_top = 340.391
-margin_right = 378.314
-margin_bottom = 373.391
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 58.4564
+margin_top = 177.039
+margin_right = 383.456
+margin_bottom = 210.039
 custom_fonts/font = SubResource( 11 )
 text = "Clic anywhere to start"
 valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 17 )
