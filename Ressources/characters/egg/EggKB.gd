@@ -64,10 +64,6 @@ func _physics_process(delta):
 	if path_id < path.size():
 		if(!isRunning):
 			isRunning = true
-			if(!isFlying):
-				$Sounf_step.play()
-			else:
-				$Sounf_step.stop()
 			$Egg/AnimationTree.set("parameters/idle_run/blend_amount",1)
 		var move_vec : Vector3 = (path[path_id]-global_transform.origin)
 		if move_vec.length() < move_speed*delta*10:
@@ -180,5 +176,4 @@ func throw(dir : Vector2 = Vector2(0,0)):#TODO: vector direction en parametre
 	setKnockback(Vector3(dir.x,2,dir.y).normalized()*projectionForce,1)
 	$Sound_hurt.play()
 	$Egg/AnimationTree.set("parameters/hurt/active",true)
-	$Sounf_step.stop()
 	isFlying = true
