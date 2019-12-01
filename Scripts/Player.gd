@@ -14,6 +14,7 @@ export var acceleration : float = 400 # unit/second²
 export var deceleration : float = 400 # unit/second²
 export var gravity_acceleration : float = 980 # unit/second²
 export var knockback_speed : float = 700 # unit/second²
+export var deadly_gravity : float = -1300
 var gravity : float # unit/second
 
 # Flight movement vars
@@ -89,6 +90,9 @@ func _physics_process(delta):
 			velocity = velocity if velocity.length() <= max_speed else velocity.normalized()*max_speed
 		# Apply gravity
 		gravity = 0 if is_on_floor() else gravity-gravity_acceleration*delta
+		if gravity <= deadly_gravity:
+			current_life = 0
+			emit_signal("player_die")
 		velocity.y = gravity
 		move_and_slide(velocity*delta,Vector3.UP,false,4,deg2rad(90))
 	
@@ -163,10 +167,13 @@ func _physics_process(delta):
 			state = "Flying"
 			$PunchBar.hide()
 			animationStateMachine.travel("TransformIn")
+			$HUD/Clic.hide()
 		else:
 			state = "Flying"
 			$PunchBar.show()
 			animationStateMachine.travel("TransformOut")
+			if bigPunchVar >= bigPunchThreshold:
+				$HUD/Clic.show()
 	
 	if game_camera.mode == GameCamera.View_mode.HACK_N_SLASH and state != "Flying":
 		if punch_timer >= punch_delay[current_punch]:
@@ -182,6 +189,7 @@ func _physics_process(delta):
 					$PunchHitBox.punch_big = true
 					bigPunchVar = 0
 					$PunchBarRender/PunchBar.value = bigPunchVar
+					$HUD/Clic.hide()
 					state = "Punching"
 					animationStateMachine.travel("PunchBig")
 					current_punch = "PunchBig"

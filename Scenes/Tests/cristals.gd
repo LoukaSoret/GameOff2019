@@ -1,5 +1,7 @@
 extends Spatial
 
+signal victory()
+
 class_name Cristals
 
 var nbMaxCristaux = 0
@@ -17,6 +19,8 @@ func setnbCristaux(v):
 	
 func addOne():
 	setnbCristaux(nbCristaux+1)
+	if nbCristaux >= nbMaxCristaux:
+		emit_signal("victory")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
