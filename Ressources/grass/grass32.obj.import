@@ -15,4 +15,5 @@ dest_files=[ "res://.import/grass32.obj-12f77a634c78c21053cb687ee7391a4f.mesh", 
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
 optimize_mesh=true

@@ -2,9 +2,10 @@
 
 [ext_resource path="res://Ressources/tree/tree_trunk_mesh.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://Ressources/tree/tree_foliage_mesh.tres" type="ArrayMesh" id=2]
-[ext_resource path="res://Ressources/tree/foliage.png" type="Texture" id=3]
+[ext_resource path="res://Tools/UnusedResources/Tree/foliage.png" type="Texture" id=3]
 [ext_resource path="res://Ressources/tree/tree_leafs_mesh.tres" type="ArrayMesh" id=4]
-[ext_resource path="res://Ressources/tree/leaf.png" type="Texture" id=5]
+[ext_resource path="res://Tools/UnusedResources/Tree/leaf.png" type="Texture" id=5]
+
 
 [sub_resource type="StreamTexture" id=1]
 flags = 23

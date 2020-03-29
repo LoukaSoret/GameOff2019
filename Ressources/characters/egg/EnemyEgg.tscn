@@ -7,8 +7,8 @@
 [ext_resource path="res://Ressources/characters/egg/EggAttackBox.gd" type="Script" id=5]
 [ext_resource path="res://Ressources/particles/dustCircle.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Ressources/particles/hit.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Ressources/Sounds/hurt.wav" type="AudioStream" id=8]
-[ext_resource path="res://Ressources/Sounds/go_enemies_step.wav" type="AudioStream" id=9]
+[ext_resource path="res://Ressources/Sounds/Ogg/hurt.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Ressources/Sounds/Ogg/go_enemies_step.ogg" type="AudioStream" id=9]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 1.41937
@@ -35,11 +35,11 @@ yKill = -15
 [node name="Egg" parent="." instance=ExtResource( 2 )]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 1.81178, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.81178, 0 )
 shape = SubResource( 1 )
 
 [node name="dustTrail" type="Particles" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, 0, 0.730017, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.730017, 0 )
 amount = 10
 lifetime = 0.5
 local_coords = false
@@ -51,7 +51,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="hitbox"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 1.94, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.94, 0 )
 shape = SubResource( 3 )
 
 [node name="attackbox" type="Area" parent="."]
@@ -67,7 +67,6 @@ shape = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="hits" type="Spatial" parent="."]
-editor/display_folded = true
 
 [node name="hit" parent="hits" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )

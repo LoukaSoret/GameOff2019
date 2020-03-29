@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=2]
 
 [ext_resource path="res://Ressources/tree/Material.002 Base Color (2).png" type="Texture" id=1]
-[ext_resource path="res://Ressources/tree/NormalMap(1).png" type="Texture" id=2]
+[ext_resource path="res://Tools/UnusedResources/Tree/NormalMap(1).png" type="Texture" id=2]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type spatial;

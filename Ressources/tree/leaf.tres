@@ -11,6 +11,7 @@ uniform float specular;
 uniform float metallic;
 uniform float roughness : hint_range(0,1);
 uniform float point_size : hint_range(0,128);
+uniform float alpha_scisors : hint_range(0,1);
 uniform sampler2D texture_metallic : hint_white;
 uniform vec4 metallic_texture_channel;
 uniform sampler2D texture_roughness : hint_white;
@@ -61,7 +62,7 @@ void fragment() {
 	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
 	ROUGHNESS = roughness_tex * roughness;
 	SPECULAR = specular;
-	ALPHA_SCISSOR = 0.5;
+	ALPHA_SCISSOR = alpha_scisors;
 	ALPHA = albedo.a * albedo_tex.a;
 }
 "
@@ -73,6 +74,7 @@ shader_param/specular = 0.5
 shader_param/metallic = 0.0
 shader_param/roughness = 1.0
 shader_param/point_size = 1.0
+shader_param/alpha_scisors = 0.25
 shader_param/metallic_texture_channel = Plane( 1, 0, 0, 0 )
 shader_param/roughness_texture_channel = Plane( 1, 0, 0, 0 )
 shader_param/uv1_scale = Vector3( 1, 1, 1 )

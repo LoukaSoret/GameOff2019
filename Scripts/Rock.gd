@@ -15,8 +15,8 @@ export(float,0,100) var frequency  = 4;
 export(float,0,1) var persistence = 0.2;
 export var nboctaves : int = 4;
 
-onready var grass_material_ressource = load("res://Ressources/grass/grass_material.tres").duplicate()
-onready var cone_mesh_ressource = load("res://Ressources/rock/cone_mesh.tres")
+export var grass_material_ressource : String = "res://Ressources/grass/grass_material.tres"
+export var cone_mesh_ressource : Resource = load("res://Ressources/rock/cone_mesh.tres") 
 
 func fract(n:float) -> float:
 	return n-floor(n)
@@ -102,7 +102,7 @@ func displace():
 			vertex.y *= 1+pnoise(Vector2(vertex.x,vertex.y)+Vector2.ONE*float(deformationSeed),amplitude,frequency,persistence, nboctaves)*perlin_scale
 		vertex += Vector3.ONE*abs(displacement)
 		mdt.set_vertex(i, vertex)
-    # Calculate vertex normals, face-by-face.
+	# Calculate vertex normals, face-by-face.
 	for i in range(mdt.get_face_count()):
 		# Get the index in the vertex array.
 		var a = mdt.get_face_vertex(i, 0)
@@ -157,15 +157,14 @@ func generate_grass_mesh():
 				st.add_vertex(cp-Vector3(0,grass_spacing,0)*j)
 
 	st.commit(new_mesh)
-	var mesh_instance : MeshInstance = MeshInstance.new()
-	var material = grass_material_ressource
+	var mesh_instance : MeshInstance = $GrassMesh
+	var material = load(grass_material_ressource).duplicate()
 	var noise_scale = material.get("shader_param/_NoiseScale")
 	material.set("shader_param/_NoiseScale",noise_scale*scale)
 	material.set("shader_param/_NoiseScale",noise_scale*scale)
 	mesh_instance.mesh = new_mesh
 	mesh_instance.transform.origin.y = grass_spacing*grass_density
 	mesh_instance.set_surface_material(0,material)
-	add_child(mesh_instance)
 
 var base_mesh = null
 
@@ -176,6 +175,12 @@ func setSeed(v):
 			base_mesh = load("res://Ressources/rock/cone_mesh.tres")
 		mesh = base_mesh
 		displace()
+		for n in get_children():
+			if n.name != "GrassMesh":
+				remove_child(n)
+				n.queue_free()
+		create_trimesh_collision()
+		generate_grass_mesh()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -185,7 +190,9 @@ func _ready():
 			base_mesh = load("res://Ressources/rock/cone_mesh.tres")
 		mesh = base_mesh
 		displace()
-	#displace()
-	if not Engine.editor_hint:
+		for n in get_children():
+			if n.name != "GrassMesh":
+				remove_child(n)
+				n.queue_free()
 		create_trimesh_collision()
 		generate_grass_mesh()

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/go_player_hurt.wav-bc3c42b9bd767dd87142fb323491e6e8.sample"
+
+[deps]
+
+source_file="res://Tools/SoundsWav/go_player_hurt.wav"
+dest_files=[ "res://.import/go_player_hurt.wav-bc3c42b9bd767dd87142fb323491e6e8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

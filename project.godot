@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Cristals",
 "language": "GDScript",
-"path": "res://Scenes/Tests/cristals.gd"
+"path": "res://Scripts/cristals.gd"
 }, {
 "base": "Spatial",
 "class": "GameCamera",
@@ -36,6 +36,7 @@ global="*res://Scripts/global.gd"
 
 [display]
 
+window/size/fullscreen=true
 mouse_cursor/custom_image="res://Ressources/cursor.png"
 
 [input]

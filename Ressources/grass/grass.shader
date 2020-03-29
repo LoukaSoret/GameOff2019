@@ -24,6 +24,7 @@ varying vec2 vertex_position;
 varying float height;
 
 // Noise functions
+/*
 vec2 hash(vec2 p) {
 	p = vec2(dot(p,vec2(127.1,311.7)), dot(p,vec2(269.5,183.3)));
 	return -1.0 + 2.0*fract(sin(p)*43758.5453123);
@@ -50,6 +51,7 @@ float pnoise(vec2 p,float amp,float freq,float pers, int nboct) {
 	}
 	return n;
 }
+*/
 
 void vertex() {
 	vertex_position = VERTEX.xz / 2.0;

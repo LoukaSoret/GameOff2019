@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PlayerPunchHitBox.gd" type="Script" id=2]
-[ext_resource path="res://Ressources/characters/player/player_material.tres" type="Material" id=3]
+[ext_resource path="res://Ressources/characters/player/player_baked.material" type="Material" id=3]
 [ext_resource path="res://Ressources/characters/player/outline_material.tres" type="Material" id=4]
 [ext_resource path="res://Ressources/MotionTrail/MotionTrail.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Ressources/characters/player/Animations/Anim_Idle.tres" type="Animation" id=6]
@@ -15,7 +15,7 @@
 [ext_resource path="res://Ressources/HUD/clic2.png" type="Texture" id=13]
 [ext_resource path="res://Ressources/HUD/punchbar.png" type="Texture" id=14]
 [ext_resource path="res://Scripts/PunchBar.gd" type="Script" id=15]
-[ext_resource path="res://Ressources/Sounds/go_player_hurt.wav" type="AudioStream" id=16]
+[ext_resource path="res://Ressources/Sounds/Ogg/go_player_hurt.ogg" type="AudioStream" id=16]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.41082
@@ -285,7 +285,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, -10.2441 ), Vector3( -22.0966, -6.55493e-007, -10.2441 ), Vector3( 49.0057, -1.77455e-007, -10.2441 ), Vector3( 0, 0, -10.2441 ) ]
+"values": [ Vector3( 0, 0, -10.2441 ), Vector3( -22.0966, -6.55493e-07, -10.2441 ), Vector3( 49.0057, -1.77455e-07, -10.2441 ), Vector3( 0, 0, -10.2441 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Mesh/Body:translation")
@@ -612,7 +612,7 @@ tracks/12/keys = {
 "times": PoolRealArray( 0, 0.4, 1, 1.3, 1.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 2.18542, 1.88954, 0 ), Vector3( 2.18542, 1.61599, -2.98023e-007 ), Vector3( 3.23101, 1.10807, -0.0601182 ), Vector3( 3.23101, 1.10807, -0.0601182 ), Vector3( 2.18542, 1.88954, 0 ) ]
+"values": [ Vector3( 2.18542, 1.88954, 0 ), Vector3( 2.18542, 1.61599, -2.98023e-07 ), Vector3( 3.23101, 1.10807, -0.0601182 ), Vector3( 3.23101, 1.10807, -0.0601182 ), Vector3( 2.18542, 1.88954, 0 ) ]
 }
 tracks/13/type = "value"
 tracks/13/path = NodePath("Mesh/ArmRight/ShoulderRight:rotation_degrees")
@@ -624,7 +624,7 @@ tracks/13/keys = {
 "times": PoolRealArray( 0, 0.4, 1, 1.3, 1.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 2.82665e-007, 19.3341, -2.56132e-006 ), Vector3( 1.11163e-005, -14.8466, -3.4151e-006 ), Vector3( 1.11163e-005, -14.8466, -3.4151e-006 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 2.82665e-07, 19.3341, -2.56132e-06 ), Vector3( 1.11163e-05, -14.8466, -3.4151e-06 ), Vector3( 1.11163e-05, -14.8466, -3.4151e-06 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/14/type = "value"
 tracks/14/path = NodePath("Mesh/ArmRight/ArmRight:translation")
@@ -648,7 +648,7 @@ tracks/15/keys = {
 "times": PoolRealArray( 0, 0.4, 1, 1.3, 1.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 11.8924, 0 ), Vector3( -42.8743, 11.8924, -2.09702e-005 ), Vector3( -13.9299, -64.0344, 37.4959 ), Vector3( -13.9299, -64.0344, 37.4959 ), Vector3( 0, 11.8924, 0 ) ]
+"values": [ Vector3( 0, 11.8924, 0 ), Vector3( -42.8743, 11.8924, -2.09702e-05 ), Vector3( -13.9299, -64.0344, 37.4959 ), Vector3( -13.9299, -64.0344, 37.4959 ), Vector3( 0, 11.8924, 0 ) ]
 }
 
 [sub_resource type="Animation" id=24]
@@ -747,7 +747,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0, 0.140625, 0.28125, 0.421875 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( -23.6216, 1.70755e-006, 0 ), Vector3( 44.5306, -24.1879, 19.0073 ), Vector3( 0, 0, 0 ) ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( -23.6216, 1.70755e-06, 0 ), Vector3( 44.5306, -24.1879, 19.0073 ), Vector3( 0, 0, 0 ) ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Mesh/ArmLeft/ArmLeft:translation")
@@ -1780,11 +1780,10 @@ collision_mask = 2
 script = ExtResource( 1 )
 
 [node name="BoundingBox" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, -0.689, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.689, 0 )
 shape = SubResource( 1 )
 
 [node name="PunchHitBox" type="Area" parent="."]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.614, -4.269 )
 gravity_vec = Vector3( 0, 0, 0 )
 gravity = 0.0
@@ -1798,18 +1797,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.685934, 0.480369 )
 shape = SubResource( 2 )
 
 [node name="PlayerHitBox" type="Area" parent="."]
-editor/display_folded = true
 
 [node name="CollisionShape" type="CollisionShape" parent="PlayerHitBox"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.115863, 0 )
 shape = SubResource( 3 )
 
 [node name="Mesh" type="Spatial" parent="."]
-editor/display_folded = true
 
 [node name="Head" type="MeshInstance" parent="Mesh"]
-editor/display_folded = true
-transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.93689, -0.484063 )
+transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.95147, -0.484063 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 4 )
 material/0 = null
@@ -1820,8 +1816,7 @@ mesh = SubResource( 5 )
 material/0 = null
 
 [node name="Body" type="MeshInstance" parent="Mesh"]
-editor/display_folded = true
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0732973, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0634044, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 6 )
 material/0 = null
@@ -1832,11 +1827,9 @@ mesh = SubResource( 7 )
 material/0 = null
 
 [node name="ArmLeft" type="Spatial" parent="Mesh"]
-editor/display_folded = true
 
 [node name="ShoulderLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
-editor/display_folded = true
-transform = Transform( 0.999178, -0.040559, 0, 0.040559, 0.999178, 0, 0, 0, 1, -2.07633, 1.92407, 0 )
+transform = Transform( 0.999385, -0.0350871, 0, 0.0350871, 0.999385, 0, 0, 0, 1, -2.07633, 1.89947, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 8 )
 material/0 = null
@@ -1847,8 +1840,7 @@ mesh = SubResource( 9 )
 material/0 = null
 
 [node name="ArmLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
-editor/display_folded = true
-transform = Transform( 0.97219, 0.234205, 0, -0.232407, 0.964731, 0.123658, 0.0289613, -0.120219, 0.992324, -2.57313, -0.250714, -0.525329 )
+transform = Transform( 0.97219, 0.234205, 0, -0.232889, 0.966731, 0.105859, 0.0247926, -0.102915, 0.99438, -2.57313, -0.26029, -0.525329 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 10 )
 material/0 = null
@@ -1859,11 +1851,9 @@ mesh = SubResource( 11 )
 material/0 = null
 
 [node name="ArmRight" type="Spatial" parent="Mesh"]
-editor/display_folded = true
 
 [node name="ShoulderRight" type="MeshInstance" parent="Mesh/ArmRight"]
-editor/display_folded = true
-transform = Transform( 0.994757, 0.102263, 0, -0.102263, 0.994757, 0, 0, 0, 1, 2.18542, 2.116, 0 )
+transform = Transform( 0.996162, 0.0875245, 0, -0.0875245, 0.996162, 0, 0, 0, 1, 2.18542, 2.08327, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 12 )
 material/0 = null
@@ -1874,8 +1864,7 @@ mesh = SubResource( 13 )
 material/0 = null
 
 [node name="ArmRight" type="MeshInstance" parent="Mesh/ArmRight"]
-editor/display_folded = true
-transform = Transform( 0.978468, 1.71568e-005, 0.206398, -0.0217522, 0.994437, 0.103037, -0.205249, -0.105308, 0.973025, 3.02703, 0.000439197, -0.887685 )
+transform = Transform( 0.978448, 2.42106e-05, 0.206488, -0.0186355, 0.995926, 0.0881872, -0.205646, -0.0901347, 0.974464, 3.02703, 0.000439197, -0.887685 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 14 )
 material/0 = null
@@ -1886,10 +1875,8 @@ mesh = SubResource( 15 )
 material/0 = null
 
 [node name="Feets" type="Spatial" parent="Mesh"]
-editor/display_folded = true
 
 [node name="FeetBig" type="MeshInstance" parent="Mesh/Feets"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257122, -2.95226, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 16 )
@@ -1901,7 +1888,6 @@ mesh = SubResource( 17 )
 material/0 = null
 
 [node name="FeetMedium" type="MeshInstance" parent="Mesh/Feets"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175125, -4.43648, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 18 )
@@ -1913,10 +1899,8 @@ mesh = SubResource( 19 )
 material/0 = null
 
 [node name="RotationHelperSmallFeet" type="Spatial" parent="Mesh/Feets"]
-editor/display_folded = true
 
 [node name="FeetSmall" type="MeshInstance" parent="Mesh/Feets/RotationHelperSmallFeet"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.700497, -3.99867, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 20 )
@@ -1959,7 +1943,6 @@ margin_right = 1.0
 margin_bottom = 1.0
 
 [node name="LifeBar" type="TextureProgress" parent="HUD"]
-editor/display_folded = true
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -57.7022

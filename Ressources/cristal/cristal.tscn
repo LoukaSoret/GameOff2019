@@ -8,7 +8,7 @@
 [ext_resource path="res://Ressources/cristal/cristal_mat.material" type="Material" id=6]
 [ext_resource path="res://Ressources/cristal/cristal.obj" type="ArrayMesh" id=7]
 [ext_resource path="res://Ressources/cristal/aura.png" type="Texture" id=8]
-[ext_resource path="res://Ressources/Sounds/go_cristal_recolt.wav" type="AudioStream" id=9]
+[ext_resource path="res://Ressources/Sounds/Ogg/go_cristal_recolt.ogg" type="AudioStream" id=9]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 2.0
@@ -69,7 +69,7 @@ process_material = ExtResource( 2 )
 draw_pass_1 = ExtResource( 3 )
 
 [node name="Particles2" type="Particles" parent="."]
-transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0, 0, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
 emitting = false
 amount = 20
 lifetime = 0.3
@@ -82,7 +82,7 @@ draw_pass_1 = ExtResource( 5 )
 monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 1.3296, 0, 0, 0, -5.81186e-008, -1.3296, 0, 1.3296, -5.81186e-008, 0, -1, 0 )
+transform = Transform( 1.3296, 0, 0, 0, -5.81186e-08, -1.3296, 0, 1.3296, -5.81186e-08, 0, -1, 0 )
 shape = SubResource( 1 )
 
 [node name="cristal" type="MeshInstance" parent="."]

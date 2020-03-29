@@ -9,16 +9,16 @@ onready var game_camera = game.find_node("GameCamera")
 onready var animationStateMachine = $AnimationTree.get("parameters/playback")
 
 # Hack'n'slash movement vars
-export var max_speed : float = 200 # unit/second
-export var acceleration : float = 400 # unit/second²
-export var deceleration : float = 400 # unit/second²
+export var max_speed : float = 600 # unit/second
+export var acceleration : float = 1200 # unit/second²
+export var deceleration : float = 1200 # unit/second²
 export var gravity_acceleration : float = 980 # unit/second²
-export var knockback_speed : float = 700 # unit/second²
+export var knockback_speed : float = 1000 # unit/second²
 export var deadly_gravity : float = -1300
 var gravity : float # unit/second
 
 # Flight movement vars
-export var flight_max_speed : float = 300 # unit/second
+export var flight_max_speed : float = 600 # unit/second
 
 # General movement var
 var velocity : Vector3 = Vector3() # unit/second
