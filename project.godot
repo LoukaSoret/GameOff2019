@@ -36,8 +36,8 @@ global="*res://Scripts/global.gd"
 
 [display]
 
-window/size/fullscreen=true
 mouse_cursor/custom_image="res://Ressources/cursor.png"
+window/stretch/aspect="keep"
 
 [input]
 

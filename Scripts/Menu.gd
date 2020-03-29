@@ -5,5 +5,5 @@ func _ready():
 
 func _on_start_game():
 	$TextureButton/Label.text = "Loading..."
-	yield(get_tree().create_timer(0.5),"timeout")
+	$LoadingProgress.show()
 	global.load_game()
