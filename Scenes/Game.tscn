@@ -1286,34 +1286,6 @@ transform = Transform( 0.155403, 0.972265, -0.174788, 0.0116785, 0.175117, 0.984
 
 [node name="Tree" parent="Decorations" instance=ExtResource( 37 )]
 
-[node name="Tree46" type="MeshInstance" parent="Decorations"]
-transform = Transform( 1.55979, 0, 0, 0, 1.46998, -0.521639, 0, 0.521639, 1.46998, -39.5179, 7.33334, 73.4325 )
-material_override = SubResource( 23 )
-
-[node name="Trunk" type="MeshInstance" parent="Decorations/Tree46"]
-material_override = ExtResource( 2 )
-mesh = ExtResource( 15 )
-material/0 = null
-
-[node name="Foliage" type="MeshInstance" parent="Decorations/Tree46"]
-material_override = ExtResource( 3 )
-mesh = ExtResource( 16 )
-material/0 = null
-
-[node name="Leaf" type="MeshInstance" parent="Decorations/Tree46/Foliage"]
-material_override = ExtResource( 4 )
-mesh = ExtResource( 17 )
-material/0 = null
-
-[node name="Particles" type="Particles" parent="Decorations/Tree46/Foliage"]
-transform = Transform( 0.999997, 0, 0, 0, 0.999997, 0, 0, 0, 0.999997, 0, 4.30855, 0 )
-amount = 15
-speed_scale = 0.1
-randomness = 1.0
-visibility_aabb = AABB( -4, -7, -4, 8, 8, 8 )
-process_material = SubResource( 30 )
-draw_pass_1 = SubResource( 32 )
-
 [node name="Tree47" type="MeshInstance" parent="Decorations"]
 transform = Transform( -1.51415, -4.06747e-08, -0.37457, 0.0784771, 1.52517, -0.317233, 0.366257, -0.326795, -1.48054, -48.5669, 5.83393, 63.8324 )
 material_override = SubResource( 23 )
