@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/coquille.png-cc5b4f70184e27022c56160c2309f84c.s3tc.stex"
-path.etc2="res://.import/coquille.png-cc5b4f70184e27022c56160c2309f84c.etc2.stex"
+path.s3tc="res://.import/player_texture_high.png-e47cc9937b3380ed237ccc65ac9f2f41.s3tc.stex"
+path.etc2="res://.import/player_texture_high.png-e47cc9937b3380ed237ccc65ac9f2f41.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Ressources/characters/egg/coquille.png"
-dest_files=[ "res://.import/coquille.png-cc5b4f70184e27022c56160c2309f84c.s3tc.stex", "res://.import/coquille.png-cc5b4f70184e27022c56160c2309f84c.etc2.stex" ]
+source_file="res://Ressources/clouds/player/player_texture_high.png"
+dest_files=[ "res://.import/player_texture_high.png-e47cc9937b3380ed237ccc65ac9f2f41.s3tc.stex", "res://.import/player_texture_high.png-e47cc9937b3380ed237ccc65ac9f2f41.etc2.stex" ]
 
 [params]
 

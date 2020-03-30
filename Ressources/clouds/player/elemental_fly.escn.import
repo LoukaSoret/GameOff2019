@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/elemental_fly.escn-5b233ac8aea210ee07bbae6ce84a3413.scn"
+path="res://.import/elemental_fly.escn-78ebb629b2f6fbc6120bacf03b7126c9.scn"
 
 [deps]
 
-source_file="res://Ressources/characters/player/elemental_fly.escn"
-dest_files=[ "res://.import/elemental_fly.escn-5b233ac8aea210ee07bbae6ce84a3413.scn" ]
+source_file="res://Ressources/clouds/player/elemental_fly.escn"
+dest_files=[ "res://.import/elemental_fly.escn-78ebb629b2f6fbc6120bacf03b7126c9.scn" ]
 
 [params]
 

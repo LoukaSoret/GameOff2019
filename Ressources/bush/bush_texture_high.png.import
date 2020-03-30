@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/fence_albedo.png-cc65f07b4255e8e077b09662487a500b.s3tc.stex"
-path.etc2="res://.import/fence_albedo.png-cc65f07b4255e8e077b09662487a500b.etc2.stex"
+path.s3tc="res://.import/bush_texture_high.png-5a45c3cc0b5168218d1ebb6449201674.s3tc.stex"
+path.etc2="res://.import/bush_texture_high.png-5a45c3cc0b5168218d1ebb6449201674.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Ressources/fence/fence_albedo.png"
-dest_files=[ "res://.import/fence_albedo.png-cc65f07b4255e8e077b09662487a500b.s3tc.stex", "res://.import/fence_albedo.png-cc65f07b4255e8e077b09662487a500b.etc2.stex" ]
+source_file="res://Ressources/bush/bush_texture_high.png"
+dest_files=[ "res://.import/bush_texture_high.png-5a45c3cc0b5168218d1ebb6449201674.s3tc.stex", "res://.import/bush_texture_high.png-5a45c3cc0b5168218d1ebb6449201674.etc2.stex" ]
 
 [params]
 

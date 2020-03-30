@@ -2,10 +2,10 @@
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PlayerPunchHitBox.gd" type="Script" id=2]
-[ext_resource path="res://Ressources/characters/player/player_baked.material" type="Material" id=3]
-[ext_resource path="res://Ressources/characters/player/outline_material.tres" type="Material" id=4]
+[ext_resource path="res://Ressources/clouds/player/player_baked.material" type="Material" id=3]
+[ext_resource path="res://Ressources/clouds/player/outline_material.tres" type="Material" id=4]
 [ext_resource path="res://Ressources/MotionTrail/MotionTrail.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Ressources/characters/player/Animations/Anim_Idle.tres" type="Animation" id=6]
+[ext_resource path="res://Ressources/clouds/player/Animations/Anim_Idle.tres" type="Animation" id=6]
 [ext_resource path="res://Ressources/life/coeur_bg.png" type="Texture" id=7]
 [ext_resource path="res://Ressources/life/coeur_fg.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/PlayerLifeBar.gd" type="Script" id=9]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Ressources/HUD/punchbar.png" type="Texture" id=14]
 [ext_resource path="res://Scripts/PunchBar.gd" type="Script" id=15]
 [ext_resource path="res://Ressources/Sounds/Ogg/go_player_hurt.ogg" type="AudioStream" id=16]
+
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.41082

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/eyes2.png-977b6a292986f23623ceaf42f443f23c.s3tc.stex"
-path.etc2="res://.import/eyes2.png-977b6a292986f23623ceaf42f443f23c.etc2.stex"
+path.s3tc="res://.import/coquille_high.png-90fdebafee5193645f367dfcb075c428.s3tc.stex"
+path.etc2="res://.import/coquille_high.png-90fdebafee5193645f367dfcb075c428.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Ressources/characters/egg/eyes2.png"
-dest_files=[ "res://.import/eyes2.png-977b6a292986f23623ceaf42f443f23c.s3tc.stex", "res://.import/eyes2.png-977b6a292986f23623ceaf42f443f23c.etc2.stex" ]
+source_file="res://Ressources/characters/egg/coquille_high.png"
+dest_files=[ "res://.import/coquille_high.png-90fdebafee5193645f367dfcb075c428.s3tc.stex", "res://.import/coquille_high.png-90fdebafee5193645f367dfcb075c428.etc2.stex" ]
 
 [params]
 
@@ -21,9 +21,9 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=true
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=1
 process/fix_alpha_border=true

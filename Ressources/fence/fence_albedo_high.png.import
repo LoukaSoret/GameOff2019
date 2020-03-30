@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/player_texture.png-de74e811f97fa08adf9b38f105381d0d.s3tc.stex"
-path.etc2="res://.import/player_texture.png-de74e811f97fa08adf9b38f105381d0d.etc2.stex"
+path.s3tc="res://.import/fence_albedo_high.png-fe08078876511d15697cea243b9617e9.s3tc.stex"
+path.etc2="res://.import/fence_albedo_high.png-fe08078876511d15697cea243b9617e9.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Ressources/characters/player/player_texture.png"
-dest_files=[ "res://.import/player_texture.png-de74e811f97fa08adf9b38f105381d0d.s3tc.stex", "res://.import/player_texture.png-de74e811f97fa08adf9b38f105381d0d.etc2.stex" ]
+source_file="res://Ressources/fence/fence_albedo_high.png"
+dest_files=[ "res://.import/fence_albedo_high.png-fe08078876511d15697cea243b9617e9.s3tc.stex", "res://.import/fence_albedo_high.png-fe08078876511d15697cea243b9617e9.etc2.stex" ]
 
 [params]
 

@@ -36,7 +36,10 @@ global="*res://Scripts/global.gd"
 
 [display]
 
+window/size/width=1920
+window/size/height=1080
 mouse_cursor/custom_image="res://Ressources/cursor.png"
+window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
 [input]
@@ -106,5 +109,7 @@ bigattack={
 
 [rendering]
 
-quality/filters/msaa=2
+threads/thread_model=2
+quality/subsurface_scattering/quality=0
+quality/filters/msaa=1
 environment/default_environment="res://default_env.tres"

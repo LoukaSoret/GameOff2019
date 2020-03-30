@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/trail_albedo.png-da55f098c15f5e5544269c77dcb142a5.s3tc.stex"
-path.etc2="res://.import/trail_albedo.png-da55f098c15f5e5544269c77dcb142a5.etc2.stex"
+path.s3tc="res://.import/eyes2_high.png-205c4f7f32a9c4888b811862e79de9ed.s3tc.stex"
+path.etc2="res://.import/eyes2_high.png-205c4f7f32a9c4888b811862e79de9ed.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Ressources/characters/player/trail_albedo.png"
-dest_files=[ "res://.import/trail_albedo.png-da55f098c15f5e5544269c77dcb142a5.s3tc.stex", "res://.import/trail_albedo.png-da55f098c15f5e5544269c77dcb142a5.etc2.stex" ]
+source_file="res://Ressources/characters/egg/eyes2_high.png"
+dest_files=[ "res://.import/eyes2_high.png-205c4f7f32a9c4888b811862e79de9ed.s3tc.stex", "res://.import/eyes2_high.png-205c4f7f32a9c4888b811862e79de9ed.etc2.stex" ]
 
 [params]
 
@@ -21,9 +21,9 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=true
+flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=1
 process/fix_alpha_border=true

@@ -2,10 +2,9 @@
 
 [ext_resource path="res://Ressources/tree/tree_trunk_mesh.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://Ressources/tree/tree_foliage_mesh.tres" type="ArrayMesh" id=2]
-[ext_resource path="res://Tools/UnusedResources/Tree/foliage.png" type="Texture" id=3]
-[ext_resource path="res://Ressources/tree/tree_leafs_mesh.tres" type="ArrayMesh" id=4]
+[ext_resource path="res://Ressources/tree/tree_leafs_mesh.tres" type="ArrayMesh" id=3]
+[ext_resource path="res://Tools/UnusedResources/Tree/foliage.png" type="Texture" id=4]
 [ext_resource path="res://Tools/UnusedResources/Tree/leaf.png" type="Texture" id=5]
-
 
 [sub_resource type="StreamTexture" id=1]
 flags = 23
@@ -270,7 +269,7 @@ shader_param/detail = 5.0
 shader_param/distortion = null
 shader_param/direction = Vector2( 1, 0 )
 shader_param/heightOffset = 0.0
-shader_param/texture_albedo = ExtResource( 3 )
+shader_param/texture_albedo = ExtResource( 4 )
 
 [sub_resource type="Gradient" id=10]
 offsets = PoolRealArray( 0, 0.975219, 1 )
@@ -357,7 +356,7 @@ material/0 = null
 
 [node name="Leaf" type="MeshInstance" parent="Foliage"]
 material_override = SubResource( 9 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 3 )
 material/0 = null
 
 [node name="Particles" type="Particles" parent="Foliage"]

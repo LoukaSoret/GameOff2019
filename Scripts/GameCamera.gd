@@ -72,12 +72,3 @@ func _physics_process(delta):
 	var tmp = scale
 	transform.basis = transform.basis.orthonormalized()
 	transform.basis = transform.basis.scaled(tmp)
-	
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		if global.full_screen == false:
-			OS.window_fullscreen = true
-			global.full_screen = true
-		else :
-			OS.window_fullscreen = false
-			global.full_screen = false

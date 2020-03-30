@@ -2,21 +2,21 @@ extends MeshInstance
 tool
 # Grass Generator Parameters
 export var grass_spacing : float = 0.002
-export var grass_density : int = 24
+export var grass_density : int = 16
 
 # Rock Deformation Parameter
 export var deformationSeed : int = 0 setget setSeed
-export(float,0,1) var deformation
+export(float,0,1) var deformation = 0.3
 
 # Perlin Parameters
-export(float,0,1) var perlin_scale;
-export(float,0,10) var amplitude  = 2;
+export(float,0,1) var perlin_scale = 0.5
+export(float,0,10) var amplitude  = 1
 export(float,0,100) var frequency  = 4;
 export(float,0,1) var persistence = 0.2;
 export var nboctaves : int = 4;
 
 export var grass_material_ressource : String = "res://Ressources/grass/grass_material.tres"
-export var cone_mesh_ressource : Resource = load("res://Ressources/rock/cone_mesh.tres") 
+export var cone_mesh_ressource : Resource = load("res://Tools/UnusedResources/Rock/cone_mesh.tres") 
 
 func fract(n:float) -> float:
 	return n-floor(n)
@@ -132,35 +132,59 @@ func generate_grass_mesh():
 	var mdt = MeshDataTool.new()
 	var st = SurfaceTool.new()
 	var new_mesh : ArrayMesh = ArrayMesh.new()
+	var indices : Array = []
+	var current_index : int = 0
 	new_mesh.resource_local_to_scene = true
 	mdt.create_from_surface(mesh, 0)
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	for j in range(grass_density):
-		for i in range(mdt.get_face_count()):
+	for i in range(mdt.get_face_count()):
+		var ap = mdt.get_vertex(mdt.get_face_vertex(i,0))
+		var bp = mdt.get_vertex(mdt.get_face_vertex(i,1))
+		var cp = mdt.get_vertex(mdt.get_face_vertex(i,2))
+		for j in range(grass_density):
 			if(mdt.get_face_normal(i).angle_to(Vector3.UP) < deg2rad(45)):
 				# Get vertex position using vertex index.
-				var ap = mdt.get_vertex(mdt.get_face_vertex(i,0))
-				var bp = mdt.get_vertex(mdt.get_face_vertex(i,1))
-				var cp = mdt.get_vertex(mdt.get_face_vertex(i,2))
 				
-				st.add_normal(mdt.get_vertex_normal(mdt.get_face_vertex(i,0)))
-				st.add_uv(mdt.get_vertex_uv(mdt.get_face_vertex(i,0)))
-				st.add_color(Color(1-(1.0/grass_density)*j,1-(1.0/grass_density)*j,1-(1.0/grass_density)*j))
-				st.add_vertex(ap-Vector3(0,grass_spacing,0)*j)
-				st.add_normal(mdt.get_vertex_normal(mdt.get_face_vertex(i,1)))
-				st.add_uv(mdt.get_vertex_uv(mdt.get_face_vertex(i,1)))
-				st.add_color(Color(1-(1.0/grass_density)*j,1-(1.0/grass_density)*j,1-(1.0/grass_density)*j))
-				st.add_vertex(bp-Vector3(0,grass_spacing,0)*j)
-				st.add_normal(mdt.get_vertex_normal(mdt.get_face_vertex(i,2)))
-				st.add_uv(mdt.get_vertex_uv(mdt.get_face_vertex(i,2)))
-				st.add_color(Color(1-(1.0/grass_density)*j,1-(1.0/grass_density)*j,1-(1.0/grass_density)*j))
-				st.add_vertex(cp-Vector3(0,grass_spacing,0)*j)
-
+				var corrected_ap = ap-Vector3(0,grass_spacing,0)*j
+				var corrected_bp = bp-Vector3(0,grass_spacing,0)*j
+				var corrected_cp = cp-Vector3(0,grass_spacing,0)*j
+				
+				if corrected_ap in indices:
+					st.add_index(indices.find(corrected_ap))
+				else :
+					indices.append(corrected_ap)
+					st.add_index(current_index)
+					current_index += 1
+					st.add_normal(mdt.get_vertex_normal(mdt.get_face_vertex(i,0)))
+					st.add_uv(mdt.get_vertex_uv(mdt.get_face_vertex(i,0)))
+					st.add_color(Color(1-(1.0/grass_density)*j,1-(1.0/grass_density)*j,1-(1.0/grass_density)*j))
+					st.add_vertex(corrected_ap)
+				
+				if corrected_bp in indices:
+					st.add_index(indices.find(corrected_bp))
+				else :
+					indices.append(corrected_bp)
+					st.add_index(current_index)
+					current_index += 1
+					st.add_normal(mdt.get_vertex_normal(mdt.get_face_vertex(i,1)))
+					st.add_uv(mdt.get_vertex_uv(mdt.get_face_vertex(i,1)))
+					st.add_color(Color(1-(1.0/grass_density)*j,1-(1.0/grass_density)*j,1-(1.0/grass_density)*j))
+					st.add_vertex(corrected_bp)
+				
+				if corrected_cp in indices:
+					st.add_index(indices.find(corrected_cp))
+				else :
+					indices.append(corrected_cp)
+					st.add_index(current_index)
+					current_index += 1
+					st.add_normal(mdt.get_vertex_normal(mdt.get_face_vertex(i,2)))
+					st.add_uv(mdt.get_vertex_uv(mdt.get_face_vertex(i,2)))
+					st.add_color(Color(1-(1.0/grass_density)*j,1-(1.0/grass_density)*j,1-(1.0/grass_density)*j))
+					st.add_vertex(corrected_cp)
 	st.commit(new_mesh)
 	var mesh_instance : MeshInstance = $GrassMesh
 	var material = load(grass_material_ressource).duplicate()
 	var noise_scale = material.get("shader_param/_NoiseScale")
-	material.set("shader_param/_NoiseScale",noise_scale*scale)
 	material.set("shader_param/_NoiseScale",noise_scale*scale)
 	mesh_instance.mesh = new_mesh
 	mesh_instance.transform.origin.y = grass_spacing*grass_density
@@ -171,8 +195,9 @@ var base_mesh = null
 func setSeed(v):
 	deformationSeed = v
 	if Engine.editor_hint:
+		"""
 		if base_mesh==null:
-			base_mesh = load("res://Ressources/rock/cone_mesh.tres")
+			base_mesh = load("res://Tools/UnusedResources/Rock/cone_mesh.tres")
 		mesh = base_mesh
 		displace()
 		for n in get_children():
@@ -180,14 +205,16 @@ func setSeed(v):
 				remove_child(n)
 				n.queue_free()
 		create_trimesh_collision()
+		"""
 		generate_grass_mesh()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if Engine.editor_hint:
+		"""
 		if base_mesh==null:
-			base_mesh = load("res://Ressources/rock/cone_mesh.tres")
+			base_mesh = load("res://Tools/UnusedResources/Rock/cone_mesh.tres")
 		mesh = base_mesh
 		displace()
 		for n in get_children():
@@ -195,4 +222,5 @@ func _ready():
 				remove_child(n)
 				n.queue_free()
 		create_trimesh_collision()
+		"""
 		generate_grass_mesh()

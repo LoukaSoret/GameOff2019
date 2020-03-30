@@ -1,7 +1,5 @@
 extends TextureProgress
 
-onready var timer : Timer = $Timer
-
 export var amplitude : = 6.0
 export var shake : = false setget set_shake
 

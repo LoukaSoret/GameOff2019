@@ -48,13 +48,6 @@ func _input(event):
 				$RotationHelper.rotate_x(-delta.y * 0.01)
 		elif moving:
 			pass
-	if event.is_action_pressed("ui_cancel"):
-		if global.full_screen == false:
-			OS.window_fullscreen = true
-			global.full_screen = true
-		else :
-			OS.window_fullscreen = false
-			global.full_screen = false
 
 func _process(delta):
 	
