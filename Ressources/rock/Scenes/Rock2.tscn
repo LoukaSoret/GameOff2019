@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Ressources/rock/rock_baked.material" type="Material" id=1]
 [ext_resource path="res://Ressources/grass/grass_tex.png" type="Texture" id=2]
-[ext_resource path="res://Ressources/grass/grass_noise.png" type="Texture" id=3]
+[ext_resource path="res://Ressources/grass/grass_noise_low.png" type="Texture" id=3]
 [ext_resource path="res://Ressources/grass/grass.shader" type="Shader" id=4]
 
 [sub_resource type="ArrayMesh" id=1]

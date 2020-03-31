@@ -2,10 +2,10 @@
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PlayerPunchHitBox.gd" type="Script" id=2]
-[ext_resource path="res://Ressources/clouds/player/player_baked.material" type="Material" id=3]
-[ext_resource path="res://Ressources/clouds/player/outline_material.tres" type="Material" id=4]
-[ext_resource path="res://Ressources/MotionTrail/MotionTrail.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Ressources/clouds/player/Animations/Anim_Idle.tres" type="Animation" id=6]
+[ext_resource path="res://Ressources/characters/player/player_baked.material" type="Material" id=3]
+[ext_resource path="res://Ressources/characters/player/outline_material.tres" type="Material" id=4]
+[ext_resource path="res://Scenes/MotionTrail.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Ressources/characters/player/Animations/Anim_Idle.tres" type="Animation" id=6]
 [ext_resource path="res://Ressources/life/coeur_bg.png" type="Texture" id=7]
 [ext_resource path="res://Ressources/life/coeur_fg.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/PlayerLifeBar.gd" type="Script" id=9]
@@ -16,7 +16,6 @@
 [ext_resource path="res://Ressources/HUD/punchbar.png" type="Texture" id=14]
 [ext_resource path="res://Scripts/PunchBar.gd" type="Script" id=15]
 [ext_resource path="res://Ressources/Sounds/Ogg/go_player_hurt.ogg" type="AudioStream" id=16]
-
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 1.41082
@@ -1806,7 +1805,7 @@ shape = SubResource( 3 )
 [node name="Mesh" type="Spatial" parent="."]
 
 [node name="Head" type="MeshInstance" parent="Mesh"]
-transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.95147, -0.484063 )
+transform = Transform( 0.984059, 0.177842, 0, -0.177842, 0.984059, 0, 0, 0, 1, -0.187844, 2.99458, -0.484063 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 4 )
 material/0 = null
@@ -1817,7 +1816,7 @@ mesh = SubResource( 5 )
 material/0 = null
 
 [node name="Body" type="MeshInstance" parent="Mesh"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0634044, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0341487, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 6 )
 material/0 = null
@@ -1830,7 +1829,7 @@ material/0 = null
 [node name="ArmLeft" type="Spatial" parent="Mesh"]
 
 [node name="ShoulderLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
-transform = Transform( 0.999385, -0.0350871, 0, 0.0350871, 0.999385, 0, 0, 0, 1, -2.07633, 1.89947, 0 )
+transform = Transform( 0.999822, -0.0189002, 0, 0.0189002, 0.999822, 0, 0, 0, 1, -2.07633, 1.82675, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 8 )
 material/0 = null
@@ -1841,7 +1840,7 @@ mesh = SubResource( 9 )
 material/0 = null
 
 [node name="ArmLeft" type="MeshInstance" parent="Mesh/ArmLeft"]
-transform = Transform( 0.97219, 0.234205, 0, -0.232889, 0.966731, 0.105859, 0.0247926, -0.102915, 0.99438, -2.57313, -0.26029, -0.525329 )
+transform = Transform( 0.97219, 0.234205, 0, -0.233932, 0.971061, 0.0482465, 0.0112996, -0.046905, 0.998834, -2.57313, -0.291177, -0.525329 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 10 )
 material/0 = null
@@ -1854,7 +1853,7 @@ material/0 = null
 [node name="ArmRight" type="Spatial" parent="Mesh"]
 
 [node name="ShoulderRight" type="MeshInstance" parent="Mesh/ArmRight"]
-transform = Transform( 0.996162, 0.0875245, 0, -0.0875245, 0.996162, 0, 0, 0, 1, 2.18542, 2.08327, 0 )
+transform = Transform( 0.999204, 0.0398717, 0, -0.0398717, 0.999204, 0, 0, 0, 1, 2.18542, 1.9777, 0 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 12 )
 material/0 = null
@@ -1865,7 +1864,7 @@ mesh = SubResource( 13 )
 material/0 = null
 
 [node name="ArmRight" type="MeshInstance" parent="Mesh/ArmRight"]
-transform = Transform( 0.978448, 2.42106e-05, 0.206488, -0.0186355, 0.995926, 0.0881872, -0.205646, -0.0901347, 0.974464, 3.02703, 0.000439197, -0.887685 )
+transform = Transform( 0.978453, 2.96253e-05, 0.206463, -0.00850743, 0.999153, 0.0401742, -0.206288, -0.041065, 0.977626, 3.02703, 0.000439197, -0.887685 )
 material_override = ExtResource( 3 )
 mesh = SubResource( 14 )
 material/0 = null

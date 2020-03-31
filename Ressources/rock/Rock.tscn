@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://Ressources/grass/grass_noise_low.png" type="Texture" id=1]
 [ext_resource path="res://Ressources/grass/grass.shader" type="Shader" id=4]
 [ext_resource path="res://Ressources/grass/grass_tex.png" type="Texture" id=5]
-[ext_resource path="res://Ressources/grass/grass_noise.png" type="Texture" id=6]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Icosphere"
@@ -44,7 +44,7 @@ shader_param/colorBottom = Color( 0.407843, 0.65098, 0.054902, 1 )
 shader_param/_YSpacing = 1.0
 shader_param/_NoiseScale = Vector3( 0.983133, 0.983133, 0.229398 )
 shader_param/_Wind = 0.2
-shader_param/_NoiseTexture = ExtResource( 6 )
+shader_param/_NoiseTexture = ExtResource( 1 )
 shader_param/grasTexture = ExtResource( 5 )
 
 [node name="Rock" type="MeshInstance"]

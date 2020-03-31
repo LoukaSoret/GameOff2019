@@ -24,10 +24,6 @@ var next_angle : Vector3 = Vector3()
 var hack_rotation : Vector3 = Vector3()
 
 func _ready():
-	if global.full_screen == true:
-		OS.window_fullscreen = true
-	else :
-		OS.window_fullscreen = false
 	target = get_node(target_node)
 	#anchor = to_global($Camera.transform.origin) - to_global(target.transform.origin)
 	global_transform.origin = target.global_transform.origin

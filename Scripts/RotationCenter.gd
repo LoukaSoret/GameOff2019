@@ -12,7 +12,6 @@ var zoom_target : Vector3 = Vector3()
 var last_position : Vector2 = Vector2()
 
 func _ready():
-	OS.window_fullscreen = true
 	set_process(true)
 
 func _input(event):

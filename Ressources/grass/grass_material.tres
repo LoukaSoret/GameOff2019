@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=2]
 
 [ext_resource path="res://Ressources/grass/grass.shader" type="Shader" id=1]
-[ext_resource path="res://Ressources/grass/grass_noise.png" type="Texture" id=2]
+[ext_resource path="res://Ressources/grass/grass_noise_low.png" type="Texture" id=2]
 [ext_resource path="res://Ressources/grass/grass_tex.png" type="Texture" id=3]
 
 [resource]

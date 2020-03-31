@@ -7,7 +7,7 @@
 [ext_resource path="res://Ressources/tree/leaf.tres" type="Material" id=5]
 [ext_resource path="res://Ressources/tree/tree_leafs_mesh.tres" type="ArrayMesh" id=6]
 [ext_resource path="res://Ressources/tree/leaf2.png" type="Texture" id=7]
-[ext_resource path="res://Ressources/characters/egg/EnemyEgg.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/EnemyEgg.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Ressources/rock/Rock.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Tools/UnusedResources/Rock/rock_material2.tres" type="Material" id=10]
 [ext_resource path="res://Scenes/Elemental.tscn" type="PackedScene" id=11]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Ressources/cristal/cristal.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Ressources/font/riffic/riffic.otf" type="DynamicFontData" id=19]
 [ext_resource path="res://Ressources/cristal/cristal_hud.png" type="Texture" id=20]
+
 
 
 

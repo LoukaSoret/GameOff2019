@@ -2,7 +2,8 @@
 
 [ext_resource path="res://Tools/UnusedResources/Rock/rock_material2.tres" type="Material" id=1]
 [ext_resource path="res://Tools/UnusedResources/Player/player_material.tres" type="Material" id=2]
-[ext_resource path="res://Ressources/grass/PerlinNoise.png" type="Texture" id=3]
+[ext_resource path="res://Tools/UnusedResources/PerlinNoise.png" type="Texture" id=3]
+
 
 
 

@@ -1,6 +1,6 @@
 [gd_resource type="SpatialMaterial" load_steps=2 format=2]
 
-[ext_resource path="res://Ressources/fence/fence_albedo_high.png" type="Texture" id=1]
+[ext_resource path="res://Ressources/fence/fence_albedo.png" type="Texture" id=1]
 
 [resource]
 params_diffuse_mode = 4

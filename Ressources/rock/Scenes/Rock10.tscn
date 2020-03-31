@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Ressources/rock/rock_baked.material" type="Material" id=1]
 [ext_resource path="res://Ressources/grass/grass_tex.png" type="Texture" id=2]
-[ext_resource path="res://Ressources/grass/grass_noise.png" type="Texture" id=3]
+[ext_resource path="res://Ressources/grass/grass_noise_low.png" type="Texture" id=3]
 [ext_resource path="res://Ressources/grass/grass.shader" type="Shader" id=4]
 
 [sub_resource type="ArrayMesh" id=1]
@@ -43,7 +43,7 @@ shader_param/nboctaves = 4
 shader_param/colorTop = Color( 0.682353, 0.870588, 0.2, 1 )
 shader_param/colorBottom = Color( 0.407843, 0.65098, 0.054902, 1 )
 shader_param/_YSpacing = 1.0
-shader_param/_NoiseScale = Vector3( 5.92943, 5.92944, 1.38353 )
+shader_param/_NoiseScale = Vector3( 3.5, 3.5, 0.5 )
 shader_param/_Wind = 0.2
 shader_param/_NoiseTexture = ExtResource( 3 )
 shader_param/grasTexture = ExtResource( 2 )

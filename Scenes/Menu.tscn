@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://Scenes/bush.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Tree.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Ressources/rock/Scenes/RockMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Fence.tscn" type="PackedScene" id=6]
@@ -9,8 +9,6 @@
 [ext_resource path="res://Ressources/fence/fence_middle_mesh.tres" type="ArrayMesh" id=9]
 [ext_resource path="res://Scripts/RotationCenter.gd" type="Script" id=10]
 [ext_resource path="res://Ressources/clouds/Clouds.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Ressources/clouds/postprocessclouds.shader" type="Shader" id=12]
-[ext_resource path="res://Ressources/clouds/cloudsTest.png" type="Texture3D" id=13]
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=15]
 [ext_resource path="res://Ressources/font/riffic/riffic.otf" type="DynamicFontData" id=16]
 [ext_resource path="res://Ressources/title.png" type="Texture" id=17]
@@ -18,30 +16,20 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.37564, 1, 0.297039 )
 
-[sub_resource type="ShaderMaterial" id=2]
-render_priority = -1
-shader = ExtResource( 12 )
-shader_param/_BoundsMin = Vector3( -100, -30, -100 )
-shader_param/_BoundsMax = Vector3( 100, 1, 100 )
-shader_param/_CloudScale = Vector3( 10, 10, 10 )
-shader_param/_Coverage = 0.3
-shader_param/_Margin = 10.0
-shader_param/_Density = 3.0
-shader_param/_Steps = 128
-shader_param/_StepsLight = 0
-shader_param/_LightIntensity = 30.0
-shader_param/_Absorption = 80.0
-shader_param/_CloudColor = Color( 1, 1, 1, 1 )
-shader_param/_LightColor = Color( 1, 1, 1, 1 )
-shader_param/_Speed = 0.1
-shader_param/YLimit = -10.0
-shader_param/viewRadius = 30.0
-shader_param/_Noise3D = ExtResource( 13 )
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 16 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 30
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.215686, 0.411765, 0.207843, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.247059, 0.215686, 0.176471, 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+outline_size = 3
+outline_color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
 font_data = ExtResource( 16 )
 
 [node name="Spatial" type="Spatial"]
@@ -56,15 +44,15 @@ transform = Transform( -0.390512, -0.00251124, 0.0507996, 0, 0.39333, 0.019444, 
 transform = Transform( 0.276154, -0.0617584, -0.151895, 0.0902353, 0.305651, 0.0397802, 0.136908, -0.0768817, 0.280166, -1.02429, -6.81094, 2.82505 )
 
 [node name="Tree" parent="." instance=ExtResource( 2 )]
-transform = Transform( -0.678785, 0.315787, -0.930743, 0.00306418, 1.13181, 0.381772, 0.982851, 0.214563, -0.643988, 2.30541, -7.48378, 1.91182 )
+transform = Transform( -0.678785, 0.315787, -0.930743, 0.00306418, 1.13181, 0.381772, 0.982851, 0.214563, -0.643988, 2.18686, -7.38959, 1.82965 )
 
 [node name="RockMenu" parent="." instance=ExtResource( 3 )]
 
 [node name="Fence" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.488795, 0.139732, -0.40241, -0.0205832, 0.619524, 0.19012, 0.425482, -0.130554, 0.471487, 2.21766, -6.88654, -2.04124 )
+transform = Transform( 0.488795, 0.139732, -0.40241, -0.0205832, 0.619524, 0.19012, 0.425482, -0.130554, 0.471487, 2.21766, -6.88654, -1.76129 )
 
 [node name="Fence2" type="StaticBody" parent="."]
-transform = Transform( -0.605047, -0.0527761, 0.226963, -0.107339, 0.623651, -0.141129, -0.206823, -0.169274, -0.590719, 1.28624, -6.97105, -2.72257 )
+transform = Transform( -0.605047, -0.0527761, 0.226963, -0.107339, 0.623651, -0.141129, -0.206823, -0.169274, -0.590719, 1.28624, -6.97105, -2.44262 )
 
 [node name="Pole" type="MeshInstance" parent="Fence2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13655, 0.922802, 0 )
@@ -83,7 +71,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0277307, 0.92093, 0.0147889
 shape = SubResource( 1 )
 
 [node name="Fence3" type="StaticBody" parent="."]
-transform = Transform( -0.596192, -0.243667, 0.0745714, -0.253043, 0.588495, -0.100112, -0.0300613, -0.12116, -0.636236, 0.284317, -7.33926, -2.92269 )
+transform = Transform( -0.596192, -0.243667, 0.0745714, -0.253043, 0.588495, -0.100112, -0.0300613, -0.12116, -0.636236, 0.284317, -7.33926, -2.64274 )
 
 [node name="Pole" type="MeshInstance" parent="Fence3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13655, 0.922802, 0 )
@@ -109,12 +97,11 @@ script = ExtResource( 10 )
 transform = Transform( 1, 0, 0, 0, 0.929475, 0.368884, 0, -0.368884, 0.929475, -3.97411, 0, 0 )
 
 [node name="Camera" type="Camera" parent="RotationCenter/RotationHelper"]
-transform = Transform( 1, 0, 0, 0, 0.991306, -0.131577, 0, 0.131577, 0.991306, 0, -0.240689, 10.0378 )
+transform = Transform( 1, 0, 0, 0, 0.991306, -0.131577, 0, 0.131577, 0.991306, 0.0542455, -0.560109, 12.4443 )
 current = true
 
 [node name="Clouds" parent="RotationCenter/RotationHelper/Camera" instance=ExtResource( 11 )]
-transform = Transform( 1, -1.77636e-15, 0, 1.65108e-15, 0.929475, -0.368884, 6.55271e-16, 0.368884, 0.929475, 0, 0.368885, -15.9295 )
-material_override = SubResource( 2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.745122, -0.32104, 0.584575, 0.020622, 0.887189, 0.460945, -0.66661, -0.331405, 0.667684, 2.64145, 30.4314, 10.532 )
@@ -124,32 +111,39 @@ shadow_enabled = true
 [node name="Menu" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1024.0
-margin_bottom = -600.0
+margin_right = 0.00012207
 script = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureButton" type="TextureButton" parent="Menu"]
-anchor_right = 0.3
-margin_right = 1024.0
-margin_bottom = 600.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -0.00012207
+margin_bottom = 6.10352e-05
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Menu/TextureButton"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 152.838
-margin_top = 125.222
-margin_right = 477.838
-margin_bottom = 158.222
-custom_fonts/font = SubResource( 3 )
+margin_left = 73.2643
+margin_top = 104.081
+margin_right = 615.264
+margin_bottom = 157.082
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Clic anywhere to start"
+align = 1
 valign = 1
 
 [node name="TextureRect" type="TextureRect" parent="Menu"]
-margin_right = 512.0
-margin_bottom = 300.0
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_right = -6.10352e-05
+margin_bottom = 3.05176e-05
 texture = ExtResource( 17 )
 expand = true
 stretch_mode = 5
@@ -158,8 +152,10 @@ __meta__ = {
 }
 
 [node name="LoadingProgress" type="ProgressBar" parent="Menu"]
-visible = false
-margin_left = 20.5519
-margin_top = 512.701
-margin_right = 1008.55
-margin_bottom = 559.701
+margin_left = 20.0
+margin_top = 627.0
+margin_right = 1263.0
+margin_bottom = 693.0
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
