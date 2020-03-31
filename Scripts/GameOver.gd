@@ -17,7 +17,7 @@ func _on_player_die():
 	
 func _on_retry_pressed():
 	get_tree().paused = false
-	get_tree().change_scene("res://Scenes/Tests/GameTvdd.tscn")
+	get_tree().reload_current_scene()
 
 func _on_retry_unfocus():
 	$TextureButton/Retry.add_color_override("font_color",Color("8cfff9"))

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/go_player_hurt.ogg-e5b302eeed895cf5804f5a4b06577037.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

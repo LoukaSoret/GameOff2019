@@ -11,5 +11,5 @@ dest_files=[ "res://.import/go_cristal_recolt.ogg-1b95f6a85ab5978c0e1d2e04377637
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

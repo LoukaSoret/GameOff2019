@@ -11,5 +11,5 @@ dest_files=[ "res://.import/go_enemies_step.ogg-8a5444141c7906552228678a15b39a11
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
