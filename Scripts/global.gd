@@ -3,14 +3,13 @@ extends Node
 onready var root = get_tree().get_root()
 onready var loading_progress = root.find_node("LoadingProgress",true,false)
 
-var full_screen = false
 var load_thread : Thread = Thread.new()
 var loader : ResourceInteractiveLoader
 
 func _ready():
 	#get_viewport().set_size_override(true,Vector2(1920,1080))
 	#OS.set_window_size(Vector2(1280,720))
-	#OS.window_fullscreen = false
+	OS.window_fullscreen = false
 	set_process(false)
 
 func update_progress():
@@ -40,13 +39,9 @@ func load_thread_func(userdata):
 	loader = null
 	get_tree().change_scene_to(resource)
 
-"""
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		if global.full_screen == false:
+		if not OS.window_fullscreen:
 			OS.window_fullscreen = true
-			global.full_screen = true
 		else :
 			OS.window_fullscreen = false
-			global.full_screen = false
-"""

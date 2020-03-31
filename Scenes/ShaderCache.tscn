@@ -28,50 +28,54 @@ material = ExtResource( 11 )
 size = Vector2( 0.01, 0.01 )
 
 [node name="ShaderCache" type="Spatial"]
-editor/display_folded = true
 script = ExtResource( 1 )
 
-[node name="cristal" type="MeshInstance" parent="."]
+[node name="Cristal" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 2 )
 
-[node name="trail" type="MeshInstance" parent="."]
+[node name="Trail" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 3 )
 
-[node name="cristal_particules1" type="Particles" parent="."]
+[node name="CristalParticules1" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+emitting = false
 amount = 1
-lifetime = 0.01
+lifetime = 0.1
 process_material = ExtResource( 4 )
 draw_pass_1 = SubResource( 2 )
 
-[node name="cristal_particules2" type="Particles" parent="."]
+[node name="CristalParticules2" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+emitting = false
 amount = 1
-lifetime = 0.01
+lifetime = 0.1
 process_material = ExtResource( 6 )
 draw_pass_1 = SubResource( 2 )
 
-[node name="dustCircle" type="Particles" parent="."]
+[node name="DustCircle" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+emitting = false
 amount = 1
-lifetime = 0.01
+lifetime = 0.1
 process_material = ExtResource( 7 )
 draw_pass_1 = SubResource( 3 )
 
-[node name="hit" type="Particles" parent="."]
+[node name="Hit" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+emitting = false
 amount = 1
-lifetime = 0.01
+lifetime = 0.1
 process_material = ExtResource( 9 )
 draw_pass_1 = SubResource( 2 )
 
-[node name="dustTrail" type="Particles" parent="."]
+[node name="DustTrail" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+emitting = false
 amount = 1
-lifetime = 0.01
+lifetime = 0.1
 process_material = ExtResource( 10 )
 draw_pass_1 = SubResource( 4 )

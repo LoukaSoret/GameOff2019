@@ -152,6 +152,7 @@ __meta__ = {
 }
 
 [node name="LoadingProgress" type="ProgressBar" parent="Menu"]
+visible = false
 margin_left = 20.0
 margin_top = 627.0
 margin_right = 1263.0

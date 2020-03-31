@@ -10,8 +10,6 @@
 [ext_resource path="res://Ressources/Sounds/Ogg/hurt.ogg" type="AudioStream" id=8]
 [ext_resource path="res://Ressources/Sounds/Ogg/go_enemies_step.ogg" type="AudioStream" id=9]
 
-
-
 [sub_resource type="CapsuleShape" id=1]
 height = 1.41937
 
