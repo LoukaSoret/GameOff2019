@@ -1,0 +1,115 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Tools/UnusedResources/Rock/rock_material2.tres" type="Material" id=1]
+[ext_resource path="res://Tools/UnusedResources/Player/player_material.tres" type="Material" id=2]
+[ext_resource path="res://Ressources/grass/PerlinNoise.png" type="Texture" id=3]
+
+
+
+[sub_resource type="QuadMesh" id=1]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type spatial;
+render_mode blend_mix,depth_draw_alpha_prepass,cull_disabled,diffuse_burley,specular_schlick_ggx, unshaded;
+
+// Perlin Parameters
+uniform float amplitude : hint_range(0,10) = 2;
+uniform float frequency : hint_range(0,100) = 4;
+uniform float persistence : hint_range(0,1) = 0.2;
+uniform int nboctaves : hint_range(0,10) = 4;
+
+uniform vec4 colorTop : hint_color;
+uniform vec4 colorBottom : hint_color;
+
+uniform float _YSpacing : hint_range(0,1) = 1.0;
+//uniform sampler2D grassTexture;
+
+uniform sampler2D _NoiseTexture;
+uniform vec2 _NoiseScale = vec2(1,1);
+
+uniform float _Wind = 0.002;
+
+varying vec2 vertex_position;
+varying float height;
+
+// Noise functions
+vec2 hash(vec2 p) {
+	p = vec2(dot(p,vec2(127.1,311.7)), dot(p,vec2(269.5,183.3)));
+	return -1.0 + 2.0*fract(sin(p)*43758.5453123);
+}
+
+float gnoise(vec2 p) {
+	vec2 i = floor( p );
+	vec2 f = fract( p );
+	vec2 u = f*f*(3.0-2.0*f);
+	return mix( mix( dot( hash( i + vec2(0.0,0.0) ), f - vec2(0.0,0.0) ),
+				dot( hash( i + vec2(1.0,0.0) ), f - vec2(1.0,0.0) ), u.x),
+				mix( dot( hash( i + vec2(0.0,1.0) ), f - vec2(0.0,1.0) ),
+				dot( hash( i + vec2(1.0,1.0) ), f - vec2(1.0,1.0) ), u.x), u.y);
+}
+
+float pnoise(vec2 p,float amp,float freq,float pers, int nboct) {
+	float a = amp;
+	float f = freq;
+	float n = 0.0;
+	for(int i=0;i<nboct;++i) {
+		n = n+a*gnoise(p*f);
+		f = f*2.;
+		a = a*pers;
+	}
+	return n;
+}
+
+void vertex() {
+	UV=UV;
+}
+
+void fragment(){
+	
+	vec2 scrollUV = UV;
+	scrollUV.x += _Wind/100.0*cos( TIME*1.0)*height;
+	scrollUV.y += _Wind/100.0*cos( TIME*3.0)*height;
+	vec4 col = mix(colorBottom,colorTop,height);
+	float noise = pnoise(scrollUV*_NoiseScale,amplitude,frequency,persistence,nboctaves);
+	ALBEDO.rgb = vec3(noise,noise,noise);
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/amplitude = 1.5
+shader_param/frequency = 8.0
+shader_param/persistence = 0.2
+shader_param/nboctaves = 4
+shader_param/colorTop = Color( 0.333333, 0.533333, 0.258824, 1 )
+shader_param/colorBottom = Color( 0.137255, 0.215686, 0.105882, 1 )
+shader_param/_YSpacing = 1.0
+shader_param/_NoiseScale = Vector2( 40, 40 )
+shader_param/_Wind = 0.5
+shader_param/_NoiseTexture = ExtResource( 3 )
+
+[node name="TextureBaker" type="Spatial"]
+
+[node name="RockTexture" type="MeshInstance" parent="."]
+material_override = ExtResource( 1 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="GrassNoise" type="MeshInstance" parent="."]
+visible = false
+material_override = SubResource( 3 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="PlayerTexture" type="MeshInstance" parent="."]
+visible = false
+material_override = ExtResource( 2 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+projection = 1
+current = true
+fov = 75.7855

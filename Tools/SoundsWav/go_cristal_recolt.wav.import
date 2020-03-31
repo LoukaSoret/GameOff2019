@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/go_cristal_recolt.wav-0afb66f36cc3644b1fe9eb154b07b303.sample"
+
+[deps]
+
+source_file="res://Tools/SoundsWav/go_cristal_recolt.wav"
+dest_files=[ "res://.import/go_cristal_recolt.wav-0afb66f36cc3644b1fe9eb154b07b303.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
