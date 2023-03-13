@@ -3,22 +3,22 @@
 [ext_resource path="res://Scenes/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Tree.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Ressources/rock/Scenes/RockMenu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Fence.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Ressources/fence/Fence_material.tres" type="Material" id=7]
-[ext_resource path="res://Ressources/fence/fence_pole_mesh.tres" type="ArrayMesh" id=8]
-[ext_resource path="res://Ressources/fence/fence_middle_mesh.tres" type="ArrayMesh" id=9]
-[ext_resource path="res://Scripts/RotationCenter.gd" type="Script" id=10]
-[ext_resource path="res://Ressources/clouds/Clouds.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scripts/Menu.gd" type="Script" id=15]
-[ext_resource path="res://Ressources/font/riffic/riffic.otf" type="DynamicFontData" id=16]
-[ext_resource path="res://Ressources/title.png" type="Texture" id=17]
+[ext_resource path="res://Scenes/Fence.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Ressources/fence/Fence_material.tres" type="Material" id=5]
+[ext_resource path="res://Ressources/fence/fence_pole_mesh.tres" type="ArrayMesh" id=6]
+[ext_resource path="res://Ressources/fence/fence_middle_mesh.tres" type="ArrayMesh" id=7]
+[ext_resource path="res://Scripts/RotationCenter.gd" type="Script" id=8]
+[ext_resource path="res://Ressources/clouds/Clouds.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=10]
+[ext_resource path="res://Ressources/font/riffic/riffic.otf" type="DynamicFontData" id=11]
+[ext_resource path="res://Ressources/title.png" type="Texture" id=12]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.37564, 1, 0.297039 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 50
-font_data = ExtResource( 16 )
+font_data = ExtResource( 11 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.215686, 0.411765, 0.207843, 1 )
@@ -30,7 +30,7 @@ bg_color = Color( 0.247059, 0.215686, 0.176471, 1 )
 size = 40
 outline_size = 3
 outline_color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
-font_data = ExtResource( 16 )
+font_data = ExtResource( 11 )
 
 [node name="Spatial" type="Spatial"]
 
@@ -48,7 +48,7 @@ transform = Transform( -0.678785, 0.315787, -0.930743, 0.00306418, 1.13181, 0.38
 
 [node name="RockMenu" parent="." instance=ExtResource( 3 )]
 
-[node name="Fence" parent="." instance=ExtResource( 6 )]
+[node name="Fence" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.488795, 0.139732, -0.40241, -0.0205832, 0.619524, 0.19012, 0.425482, -0.130554, 0.471487, 2.21766, -6.88654, -1.76129 )
 
 [node name="Fence2" type="StaticBody" parent="."]
@@ -56,14 +56,14 @@ transform = Transform( -0.605047, -0.0527761, 0.226963, -0.107339, 0.623651, -0.
 
 [node name="Pole" type="MeshInstance" parent="Fence2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13655, 0.922802, 0 )
-material_override = ExtResource( 7 )
-mesh = ExtResource( 8 )
+material_override = ExtResource( 5 )
+mesh = ExtResource( 6 )
 material/0 = null
 
 [node name="Middle" type="MeshInstance" parent="Fence2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0288403, 0.922802, 0 )
-material_override = ExtResource( 7 )
-mesh = ExtResource( 9 )
+material_override = ExtResource( 5 )
+mesh = ExtResource( 7 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Fence2"]
@@ -75,14 +75,14 @@ transform = Transform( -0.596192, -0.243667, 0.0745714, -0.253043, 0.588495, -0.
 
 [node name="Pole" type="MeshInstance" parent="Fence3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13655, 0.922802, 0 )
-material_override = ExtResource( 7 )
-mesh = ExtResource( 8 )
+material_override = ExtResource( 5 )
+mesh = ExtResource( 6 )
 material/0 = null
 
 [node name="Middle" type="MeshInstance" parent="Fence3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0288403, 0.922802, 0 )
-material_override = ExtResource( 7 )
-mesh = ExtResource( 9 )
+material_override = ExtResource( 5 )
+mesh = ExtResource( 7 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Fence3"]
@@ -91,7 +91,7 @@ shape = SubResource( 1 )
 
 [node name="RotationCenter" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.34445, -0.00155497 )
-script = ExtResource( 10 )
+script = ExtResource( 8 )
 
 [node name="RotationHelper" type="Spatial" parent="RotationCenter"]
 transform = Transform( 1, 0, 0, 0, 0.929475, 0.368884, 0, -0.368884, 0.929475, -3.97411, 0, 0 )
@@ -100,7 +100,7 @@ transform = Transform( 1, 0, 0, 0, 0.929475, 0.368884, 0, -0.368884, 0.929475, -
 transform = Transform( 1, 0, 0, 0, 0.991306, -0.131577, 0, 0.131577, 0.991306, 0.0542455, -0.560109, 12.4443 )
 current = true
 
-[node name="Clouds" parent="RotationCenter/RotationHelper/Camera" instance=ExtResource( 11 )]
+[node name="Clouds" parent="RotationCenter/RotationHelper/Camera" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
@@ -112,7 +112,7 @@ shadow_enabled = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 0.00012207
-script = ExtResource( 15 )
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -144,7 +144,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_right = -6.10352e-05
 margin_bottom = 3.05176e-05
-texture = ExtResource( 17 )
+texture = ExtResource( 12 )
 expand = true
 stretch_mode = 5
 __meta__ = {
