@@ -6,4 +6,4 @@ func _ready():
 func _on_start_game():
 	$TextureButton/Label.text = "Loading..."
 	$LoadingProgress.show()
-	global.load_game()
+	Global.load_game()
